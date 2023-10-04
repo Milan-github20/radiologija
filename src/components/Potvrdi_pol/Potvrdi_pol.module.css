@@ -1,0 +1,10 @@
+.potvrdiPol {
+  font-size: 60px;
+  margin-top: 150px;
+}
+
+.buttons {
+  margin-top: 50px;
+  display: flex;
+  gap: 50px;
+}

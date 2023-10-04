@@ -1,0 +1,51 @@
+.pocetniDiv {
+  width: 100%;
+  height: 100%;
+}
+
+.nazad {
+  position: relative;
+  margin: 40px;
+  background-color: #34495e;
+  width: 300px;
+  height: 150px;
+  font-size: 30px;
+  color: #ecf0f1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.izaberiPregled {
+  display: flex;
+  justify-content: center;
+  font-size: 70px;
+  margin-top: -70px;
+}
+
+.pregledi {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.pregledi div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #34495e;
+  width: 350px;
+  height: 350px;
+  font-size: 45px;
+  text-align: center;
+  color: #ecf0f1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}

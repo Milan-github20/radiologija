@@ -1,0 +1,64 @@
+.divBtn {
+  display: flex;
+  justify-content: right;
+  /* margin-top: 20px; */
+  padding-top: 50px;
+  width: 95%;
+}
+
+.informacijeDiv {
+  font-size: 1.5vw;
+  height: 90%;
+  width: 95%;
+  text-align: center;
+  display: flex;
+  margin-top: 100px;
+  /* margin-top: 50px; */
+}
+
+.divSlika {
+  width: 40vw;
+}
+
+.divSlika div {
+  padding: 60px 60px 60px 30px;
+}
+
+.divSlika div img {
+  height: 445px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.divSlika div p {
+  font-style: normal;
+  margin: 40px 0 0;
+}
+
+.InformacijeOPregleduDiv {
+  width: 60vw;
+}
+
+.InformacijeOPregleduDiv div {
+  padding: 17px 30px;
+}
+
+.p1 {
+  font-size: 1.7vw;
+  line-height: 2;
+  margin-top: 50;
+}
+
+.p2 {
+  line-height: 2;
+  font-size: 1rem;
+  margin: 66px 0 0;
+}
+
+.buttons {
+  display: flex;
+  height: 30vh;
+  align-items: flex-end;
+  gap: 100px;
+  justify-content: center;
+}
