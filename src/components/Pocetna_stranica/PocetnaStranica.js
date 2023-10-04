@@ -5,7 +5,7 @@ import PotvrdaPol from "../Potvrdi_pol/Potvrdi_pol";
 // import ListaPregleda from "../ListaPregleda/ListaPregleda";
 import InformacijeOPregledu from "../InformacijeOPregledu/InformacijeOPregledu";
 import RadioloskiPregled from "../Pregledi/Radioloski_pregled/RadioloskiPregled";
-import kartica from "../../assets/184262-removebg-preview.png";
+import kartica from "../../assets/skeniranje_kartice.png";
 import HotToast from "../HotToast/HotToast";
 import { toast } from "react-hot-toast";
 

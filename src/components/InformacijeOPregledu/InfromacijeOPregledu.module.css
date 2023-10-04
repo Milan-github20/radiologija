@@ -1,6 +1,6 @@
 .divBtn {
   display: flex;
-  justify-content: right;
+  justify-content: left;
   /* margin-top: 20px; */
   padding-top: 50px;
   width: 95%;

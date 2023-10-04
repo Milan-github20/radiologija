@@ -94,15 +94,15 @@
 
 .divKartica {
   position: absolute;
-  width: 100%;
+  width: 95%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .karica {
-  width: 500px;
+  width: 400px;
   /* border-radius: 20px; */
   /* margin-bottom: 60px; */
   /* animation: treperenje 1.5s infinite; */
