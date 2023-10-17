@@ -5,12 +5,26 @@ import PotvrdaPol from "../Potvrdi_pol/Potvrdi_pol";
 // import ListaPregleda from "../ListaPregleda/ListaPregleda";
 import InformacijeOPregledu from "../InformacijeOPregledu/InformacijeOPregledu";
 import RadioloskiPregled from "../Pregledi/Radioloski_pregled/RadioloskiPregled";
-import kartica from "../../assets/skeniranje_kartice.png";
-import HotToast from "../HotToast/HotToast";
+// import kartica from "../../assets/skeniranje_kartice.png";
+import kartica from "../../assets/184262-removebg-preview.png";
+import logo from "../../assets/Logo UKC RS.png";
+// import HotToast from "../HotToast/HotToast";
 import { toast } from "react-hot-toast";
+import Header from "../UI/Header/Header";
+import back from "../../assets/back.png";
+// import HotToast from "../HotToast/HotToast";
+// import Footer from "../UI/Footer/Footer";
 
-const PocetnaStranica = ({ korisnik, setUser, pol, setKorisnik }) => {
+const PocetnaStranica = ({
+  korisnik,
+  setUser,
+  pol,
+  setKorisnik,
+  setTrenutnaStranicaApp,
+}) => {
   const [korak, setKorak] = useState(0); // Dodajemo stanje za praćenje koraka (stranica)
+
+  const imeKorisnika = korisnik ? `${korisnik.ime} ${korisnik.prezime}` : null;
 
   const focusInput = () => {
     const inputElement = document.getElementById("myInput");
@@ -33,17 +47,26 @@ const PocetnaStranica = ({ korisnik, setUser, pol, setKorisnik }) => {
 
   return (
     <>
-      <HotToast />
+      {/* <HotToast /> */}
       <div className={styles.mainDiv}>
         {!korisnik ? (
           <>
-            <h1 className={styles.h1}>DOBRODOŠLI</h1>
-
-            <h2 className={styles.ucitajKarticu}>Učitajte karticu...</h2>
-
-            <div className={styles.divKartica}>
-              <img className={styles.karica} src={kartica} alt="kartica" />
+            <div className={styles.nazadDiv}>
+              <Button
+                back
+                alt
+                onClick={() => {
+                  setTrenutnaStranicaApp(0);
+                }}
+              >
+                <img src={back} alt="back" />
+              </Button>
             </div>
+            <img className={styles.logo} src={logo} alt="logo UKC" />
+
+            <h2 className={styles.ucitajKarticu}>
+              Učitajte zdravstvenu karticu...
+            </h2>
 
             <input
               id="myInput"
@@ -54,48 +77,60 @@ const PocetnaStranica = ({ korisnik, setUser, pol, setKorisnik }) => {
                 setUser(e.target.value);
               }}
             />
+            <div className={styles.divKartica}>
+              <img className={styles.karica} src={kartica} alt="kartica" />
+            </div>
           </>
         ) : korak === 0 ? ( // Prikazuje se samo na prvom koraku
           <>
+            {/* <Header korisnik={korisnik} /> */}
+
             <h1 className={styles.h1Zavod}>
               Dobro došli na zavod za kliničku radiologiju UKC RS
             </h1>
 
-            <h2 className={styles.podaciOKorisniku}>
-              {korisnik.ime} {korisnik.prezime}
+            <h2
+              className={`${styles.podaciOKorisniku} ${
+                imeKorisnika.length > 25 ? styles.podaciOKorisniku__alt : ""
+              }`}
+            >
+              {imeKorisnika}
             </h2>
             <div className={styles.dat_rodAdresa}>
               <p>{korisnik.dat_rod}</p>
-              <h3>Zakazani ste danas za radiološki pregled</h3>
+              <h3>Danas ste zakazani za</h3>
+              <span>RADIOLOŠKI PREGLED?</span>
             </div>
             <div className={styles.buttons}>
               <Button
                 back
                 onClick={() => {
-                  setUser("");
+                  setTrenutnaStranicaApp(0);
                   setTimeout(() => {
                     toast.success("Uspjesno ste se odjavili!", {
                       duration: 3000,
                     });
+                    setUser("");
                   }, 1000);
                 }}
               >
-                NAZAD NA POČETAK
+                NE
               </Button>
               <Button next onClick={sledeciKorak}>
-                POTVRDI PREGLED
+                DA
               </Button>
             </div>
           </>
         ) : korak === 1 ? ( // Prikazuje se samo na drugom koraku
           <>
-            <h2 className={styles.podaciOKorisniku}>
+            <Header korisnik={korisnik} />
+            {/* <h2 className={styles.podaciOKorisniku}>
               {korisnik.ime} {korisnik.prezime}
-            </h2>
+            </h2> */}
             {pol === "M" && (
               <PotvrdaPol
-                pol="Muškog"
-                polAlt="Ženskog"
+                pol="muškog"
+                polAlt="ženskog"
                 korak={korak}
                 korisnik={korisnik}
                 setKorisnik={setKorisnik}
@@ -105,8 +140,8 @@ const PocetnaStranica = ({ korisnik, setUser, pol, setKorisnik }) => {
 
             {pol === "F" && (
               <PotvrdaPol
-                pol="Ženskog"
-                polAlt="Muškog"
+                pol="ženskog"
+                polAlt="muškog"
                 korak={korak}
                 korisnik={korisnik}
                 setKorisnik={setKorisnik}
@@ -115,19 +150,23 @@ const PocetnaStranica = ({ korisnik, setUser, pol, setKorisnik }) => {
             )}
           </>
         ) : korak === 2 ? (
-          // <ListaPregleda
-          //   korisnik={korisnik}
-          //   setKorisnik={setKorisnik}
-          //   setKorak={setKorak}
-          // />
-          <RadioloskiPregled
-            korak={korak}
-            korisnik={korisnik}
+          <>
+            <Header korisnik={korisnik} />
+            <RadioloskiPregled
+              korak={korak}
+              korisnik={korisnik}
+              setKorak={setKorak}
+              setKorisnik={setKorisnik}
+              setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+            />
+          </>
+        ) : korak === 3 ? (
+          <InformacijeOPregledu
             setKorak={setKorak}
             setKorisnik={setKorisnik}
+            korak={korak}
+            setTrenutnaStranicaApp={setTrenutnaStranicaApp}
           />
-        ) : korak === 3 ? (
-          <InformacijeOPregledu setKorak={setKorak} setKorisnik={setKorisnik} />
         ) : null}
       </div>
     </>

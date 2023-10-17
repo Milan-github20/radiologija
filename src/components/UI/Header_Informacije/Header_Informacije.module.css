@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 17vw;
+  justify-content: space-around;
+}
+
+.header img {
+  width: 350px;
+}
+
+.children {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.children h1 {
+  font-size: 45px;
+}

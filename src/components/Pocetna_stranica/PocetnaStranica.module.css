@@ -3,20 +3,17 @@
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  color: #006cc2;
 }
 
 .mainDiv .h1 {
-  margin: 0;
   font-size: 7vw;
-  margin-top: 50px;
-  font-family: "Krona One";
+  margin: 50px 0 0;
 }
 
 .ucitajKarticu {
-  font-size: 70px;
+  font-size: 50px;
   margin: 20px;
-  font-family: "Krona One";
+  color: rgb(42, 42, 42);
 }
 
 .inputUcitajKarticu {
@@ -26,11 +23,15 @@
 }
 
 .podaciOKorisniku {
-  font-size: 4vw;
+  font-size: 120px;
   letter-spacing: 5px;
-  margin: 20px;
-  margin-top: 100px;
-  font-family: "Krona One";
+  margin: 100px 20px 0;
+  font-family: "Myriad Pro Bold", serif;
+  text-align: center;
+}
+
+.podaciOKorisniku__alt {
+  font-size: 100px;
 }
 
 .dat_rodAdresa {
@@ -39,26 +40,42 @@
   align-items: center;
   font-size: 60px;
   margin-bottom: 100px;
+  font-family: "Myriad Pro Bold", serif;
+}
+
+.dat_rodAdresa > p {
+  font-size: 40px !important;
+  font-family: "Myriad Pro", serif;
 }
 
 .dat_rodAdresa h3 {
-  margin-top: 100px;
+  margin-top: 40px;
   margin-bottom: 0;
-  font-family: "Krona One";
+  padding: 0 200px;
+  text-align: center;
+  font-family: "Myriad Pro Italic", serif;
+  font-weight: 400;
+}
+
+.dat_rodAdresa span {
+  padding-top: 20px;
+  font-weight: bold;
 }
 
 .dat_rodAdresa p {
   margin: 10px;
   font-size: 50px;
-  font-family: "Courier New", Courier, monospace;
+  /*font-family: "Courier New", Courier, monospace;*/
 }
 
 .buttons {
   display: flex;
+  align-items: flex-end;
   justify-content: center;
   gap: 7vw;
   width: 100%;
   height: 100%;
+  margin-bottom: 80px;
 }
 
 .informacije {
@@ -87,35 +104,34 @@
   font-size: 3.5vw;
   text-align: center;
   margin-bottom: 0;
-  padding-top: 60px;
-  font-family: "Krona One";
+  /* padding-top: 60px; */
+  /* margin-top: 20px; */
+  margin-top: 200px;
+  font-family: "Myriad Pro Italic", serif;
   width: 90%;
+  font-weight: 400;
 }
 
 .divKartica {
-  position: absolute;
-  width: 95%;
-  height: 100%;
+  /* width: 95%; */
+  width: 100%;
+  height: 98%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
 }
 
 .karica {
-  width: 400px;
-  /* border-radius: 20px; */
-  /* margin-bottom: 60px; */
-  /* animation: treperenje 1.5s infinite; */
+  width: 500px;
 }
 
-@keyframes treperenje {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.logo {
+  margin: 250px 0 30px 0;
+  width: 500px;
+}
+
+.nazadDiv {
+  width: 95vw;
+  position: absolute;
+  top: 40px;
 }

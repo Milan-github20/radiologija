@@ -1,16 +1,20 @@
 import React, { useEffect } from "react";
 import styles from "./SalterNotifikacija.module.css";
 
-const SalterNotifikacija = ({ setKorak, setKorisnik }) => {
+const SalterNotifikacija = ({
+  setKorak,
+  setKorisnik,
+  setTrenutnaStranicaApp,
+}) => {
   useEffect(() => {
     setTimeout(() => {
       setKorisnik(null);
-      setKorak(0);
+      setTrenutnaStranicaApp(0);
     }, 5000);
-  }, [setKorak, setKorisnik]);
+  }, [setKorak, setKorisnik, setTrenutnaStranicaApp]);
   return (
     <div className={styles.mainDiv}>
-      <h2 className={styles.h2}>MOLIMO VAS DA SE JAVITE NA ŠALTER</h2>
+      <h2 className={styles.h2}>JAVITE SE OSOBLJU NA ŠALTERU</h2>
     </div>
   );
 };

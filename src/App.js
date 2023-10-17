@@ -3,13 +3,15 @@ import "./App.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
-import PotvrdaPol from "./components/Potvrdi_pol/Potvrdi_pol";
+import Button from "./components/UI/Button/Button";
+import logo from "./assets/Logo UKC RS.png";
+import HotToast from "./components/HotToast/HotToast";
 
 function App() {
   const [user, setUser] = useState("");
   const [pol, setPol] = useState(null);
   const [korisnik, setKorisnik] = useState(null);
-  const [currentComponent, setCurrentComponent] = useState("PocetnaStranica");
+  const [trenutnaStranicaApp, setTrenutnaStranicaApp] = useState(0);
 
   const fetchData = useCallback(async () => {
     try {
@@ -45,22 +47,47 @@ function App() {
     return () => clearTimeout(timer);
   }, [fetchData]);
 
-  return (
-    <div className="App">
-      {currentComponent === "PocetnaStranica" && (
-        <PocetnaStranica
-          setCurrentComponent={setCurrentComponent}
-          korisnik={korisnik}
-          setUser={setUser}
-          pol={pol}
-          setPol={setPol}
-          setKorisnik={setKorisnik}
-        />
-      )}
-
-      {currentComponent === "PotvrdaPol" && <PotvrdaPol />}
-    </div>
-  );
+  switch (trenutnaStranicaApp) {
+    case 0:
+      return (
+        <>
+          <HotToast />
+          <div className="divApp">
+            <div className="bodyDiv">
+              <img className="logo" src={logo} alt="logo UKC" />
+              <h1 className="divApp_h1">
+                Danas ste zakazani za radiološki pregled?
+              </h1>
+            </div>
+            <div className="buttons">
+              <Button
+                next
+                onClick={() => {
+                  setTrenutnaStranicaApp(1);
+                }}
+              >
+                PRIJAVITE SE OVDJE
+              </Button>
+            </div>
+          </div>
+        </>
+      );
+    case 1:
+      return (
+        <div className="App">
+          <PocetnaStranica
+            korisnik={korisnik}
+            setUser={setUser}
+            pol={pol}
+            setPol={setPol}
+            setKorisnik={setKorisnik}
+            setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+          />
+        </div>
+      );
+    default:
+      return null;
+  }
 }
 
 export default App;

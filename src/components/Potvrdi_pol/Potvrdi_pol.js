@@ -2,31 +2,21 @@ import React from "react";
 import Button from "../UI/Button/Button";
 import styles from "./Potvrdi_pol.module.css";
 
-const PotvrdaPol = ({ pol, setKorak, korisnik, setKorisnik, polAlt }) => {
-  console.log(korisnik);
-  console.log(pol);
+const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt }) => {
   return (
     <>
-      <h2 className={styles.potvrdiPol}>Vi ste {pol} pola? Potvrdite.</h2>
+      <h2 className={styles.potvrdiPol}>Vi ste {pol} pola?</h2>
       <div className={styles.buttons}>
-        <Button
-          next
-          onClick={() => {
-            setKorak(2);
-          }}
-        >
-          DA
-        </Button>
         <Button
           back
           onClick={() => {
             setKorak(2);
             setKorisnik((prev) => {
-              if (pol === "Muškog") {
+              if (pol === "muškog") {
                 const noviKorisnikMusko = { ...prev };
                 noviKorisnikMusko.pol = "F";
                 return noviKorisnikMusko;
-              } else if (pol === "Ženskog") {
+              } else if (pol === "ženskog") {
                 const noviKorisnikZensko = { ...prev };
                 noviKorisnikZensko.pol = "M";
                 return noviKorisnikZensko;
@@ -35,6 +25,14 @@ const PotvrdaPol = ({ pol, setKorak, korisnik, setKorisnik, polAlt }) => {
           }}
         >
           NE, {polAlt} pola sam
+        </Button>
+        <Button
+          next
+          onClick={() => {
+            setKorak(2);
+          }}
+        >
+          DA
         </Button>
       </div>
     </>

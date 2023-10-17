@@ -1,8 +1,8 @@
 .btn {
   background-color: #34495e;
   width: 350px;
-  height: 150px;
-  font-size: 30px;
+  height: 170px;
+  font-size: 35px;
   color: #ecf0f1;
   border: none;
   outline: none;
@@ -10,6 +10,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s;
+  font-family: "Myriad Pro Bold", serif;
 }
 
 /* .btn:hover {
@@ -19,8 +20,8 @@
 
 .btn-alt {
   background-color: #34495e;
-  width: 200px;
-  height: 130px;
+  width: 230px;
+  height: 150px;
   font-size: 30px;
   color: #ecf0f1;
   border: none;

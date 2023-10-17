@@ -1,64 +1,98 @@
+.informacijeDiv {
+  margin-top: 14.5% !important;
+  font-size: 1.5vw;
+  height: 100%;
+  width: 95%;
+  text-align: center;
+  display: flex;
+}
+
+.buttons {
+  position: absolute;
+  top: 75%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7vw;
+  width: 100%;
+  height: 23%;
+  margin-bottom: 72px;
+}
+
 .divBtn {
   display: flex;
+  position: absolute;
   justify-content: left;
-  /* margin-top: 20px; */
   padding-top: 50px;
   width: 95%;
 }
 
-.informacijeDiv {
-  font-size: 1.5vw;
-  height: 90%;
-  width: 95%;
-  text-align: center;
-  display: flex;
+.slika {
   margin-top: 100px;
-  /* margin-top: 50px; */
 }
 
-.divSlika {
-  width: 40vw;
-}
-
-.divSlika div {
-  padding: 60px 60px 60px 30px;
-}
-
-.divSlika div img {
-  height: 445px;
+.h4 {
+  font-family: "Myriad Pro Bold", serif;
+  font-size: 45px;
   margin-top: 0;
-  margin-bottom: 0;
 }
 
-.divSlika div p {
-  font-style: normal;
-  margin: 40px 0 0;
-}
-
-.InformacijeOPregleduDiv {
-  width: 60vw;
-}
-
-.InformacijeOPregleduDiv div {
-  padding: 17px 30px;
+.button {
+  display: flex;
+  align-items: center;
 }
 
 .p1 {
-  font-size: 1.7vw;
+  font-size: 2.1vw;
   line-height: 2;
-  margin-top: 50;
+  margin-top: 50px;
+  text-align: left;
+  font-family: "Myriad Pro", serif;
+  margin-left: 80px;
 }
 
-.p2 {
-  line-height: 2;
-  font-size: 1rem;
-  margin: 66px 0 0;
-}
-
-.buttons {
+.informacijeDivDrugaVarijanta {
+  margin-top: 12% !important;
+  font-size: 1.5vw;
+  height: 100%;
+  width: 95%;
+  text-align: center;
   display: flex;
-  height: 30vh;
-  align-items: flex-end;
-  gap: 100px;
-  justify-content: center;
+}
+
+.p1DrugaVarijanta {
+  font-size: 2.1vw;
+  line-height: 2;
+  margin-top: 50px;
+  text-align: left;
+  font-family: "Myriad Pro", serif;
+}
+
+.slikaDrugaVarijanta {
+  margin-top: 50px;
+  width: 50%;
+}
+
+.tekst {
+  height: 80%;
+}
+
+.slikaTrecaVarijanta {
+  margin-top: 0;
+}
+
+.slikaCetvrtaVarijanta {
+  margin-top: 150px;
+  display: flex;
+  justify-content: flex-end;
+  width: 55%;
+}
+
+.p1TrecaVarijanta {
+  margin-left: 150px;
+  font-size: 2.1vw;
+  line-height: 2;
+  margin-top: 50px;
+  text-align: left;
+  font-family: "Myriad Pro", serif;
 }
