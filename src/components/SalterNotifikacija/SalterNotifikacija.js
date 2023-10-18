@@ -5,13 +5,15 @@ const SalterNotifikacija = ({
   setKorak,
   setKorisnik,
   setTrenutnaStranicaApp,
+  setUser,
 }) => {
   useEffect(() => {
     setTimeout(() => {
       setKorisnik(null);
+      setUser("");
       setTrenutnaStranicaApp(0);
-    }, 5000);
-  }, [setKorak, setKorisnik, setTrenutnaStranicaApp]);
+    }, 10000);
+  }, [setKorak, setKorisnik, setTrenutnaStranicaApp, setUser]);
   return (
     <div className={styles.mainDiv}>
       <h2 className={styles.h2}>JAVITE SE OSOBLJU NA ŠALTERU</h2>

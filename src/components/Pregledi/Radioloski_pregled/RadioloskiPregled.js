@@ -8,6 +8,7 @@ const RadioloskiPregled = ({
   korisnik,
   setKorak,
   setKorisnik,
+  setUser,
   setTrenutnaStranicaApp,
 }) => {
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
@@ -17,18 +18,19 @@ const RadioloskiPregled = ({
       const timeoutId = setTimeout(() => {
         setTrenutnaStranicaApp(0);
         setKorisnik(null);
+        setUser("");
         setTimeout(() => {
           toast.success("Uspjesno ste se odjavili!", {
             duration: 3000,
           });
         }, 1000);
-      }, 10000000);
+      }, 10000);
 
       return () => {
         clearTimeout(timeoutId);
       };
     }
-  }, [trenutnaStranica, setKorisnik, setTrenutnaStranicaApp]);
+  }, [trenutnaStranica, setKorisnik, setTrenutnaStranicaApp, setUser]);
 
   switch (trenutnaStranica) {
     case 0:
@@ -68,6 +70,7 @@ const RadioloskiPregled = ({
       return (
         <SalterNotifikacija
           setKorak={setKorak}
+          setUser={setUser}
           setKorisnik={setKorisnik}
           setTrenutnaStranicaApp={setTrenutnaStranicaApp}
         />
@@ -88,6 +91,7 @@ const RadioloskiPregled = ({
               onClick={() => {
                 setTrenutnaStranicaApp(0);
                 setKorisnik(null);
+                setUser("");
                 setTimeout(() => {
                   toast.success("Uspjesno ste se odjavili!", {
                     duration: 3000,

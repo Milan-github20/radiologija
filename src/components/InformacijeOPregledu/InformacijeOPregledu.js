@@ -14,7 +14,11 @@ import doktor from "../../assets/medical-5459654_1280.png";
 import toast from "react-hot-toast";
 import HeaderInformacije from "../UI/Header_Informacije/Header_Informacije";
 
-const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
+const InformacijeOPregledu = ({
+  setKorisnik,
+  setTrenutnaStranicaApp,
+  setUser,
+}) => {
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
   useEffect(() => {
@@ -47,6 +51,7 @@ const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
                       duration: 3000,
                     });
                     setKorisnik(null);
+                    setUser("");
                   }, 1000);
                 }}
               >
@@ -102,6 +107,7 @@ const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
                       duration: 3000,
                     });
                     setKorisnik(null);
+                    setUser("");
                   }, 1000);
                 }}
               >
@@ -159,6 +165,7 @@ const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
                       duration: 3000,
                     });
                     setKorisnik(null);
+                    setUser("");
                   }, 1000);
                 }}
               >
@@ -221,6 +228,7 @@ const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
                       duration: 3000,
                     });
                     setKorisnik(null);
+                    setUser("");
                   }, 1000);
                 }}
               >
@@ -285,6 +293,7 @@ const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
                       duration: 3000,
                     });
                     setKorisnik(null);
+                    setUser("");
                   }, 1000);
                 }}
               >
@@ -345,6 +354,7 @@ const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
                       duration: 3000,
                     });
                     setKorisnik(null);
+                    setUser("");
                   }, 1000);
                 }}
               >
@@ -410,6 +420,7 @@ const InformacijeOPregledu = ({ setKorisnik, setTrenutnaStranicaApp }) => {
                       duration: 3000,
                     });
                     setKorisnik(null);
+                    setUser("");
                   }, 1000);
                 }}
               >

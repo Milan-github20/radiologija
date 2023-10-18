@@ -20,6 +20,7 @@ function App() {
         setKorisnik(null); // Resetuj korisnika na null
         return;
       }
+      console.log(user);
 
       const response = await fetch(
         `http://10.166.115.3:9999/apex/ehcr/IzisSif/OsiguranikUID/${user}`,
