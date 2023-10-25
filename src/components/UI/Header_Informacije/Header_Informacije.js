@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../assets/ukc.png";
+import logo from "../../../assets/ukcrs-removebg-preview.png";
 import styles from "./Header_Informacije.module.css";
 
 const Header = (props) => {

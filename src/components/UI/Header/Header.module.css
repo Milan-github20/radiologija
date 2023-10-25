@@ -3,10 +3,17 @@
   align-items: center;
   width: 95vw;
   justify-content: space-between;
+  height: 165px;
+  /* height: 100%; */
+}
+
+.header-alt {
+  height: 375px;
 }
 
 .header img {
-  width: 350px;
+  width: 450px;
+  height: 90px;
 }
 
 .header h1 {

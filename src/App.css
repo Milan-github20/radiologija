@@ -5,6 +5,7 @@ body {
   height: 100%;
   width: 100%;
   font-family: "Myriad Pro", serif;
+  color: white;
 }
 
 @font-face {
@@ -41,7 +42,7 @@ body {
     url("./fonts/WarnockPro-Regular.otf") format("opentype");
 }
 
-body::before {
+/* body::before {
   content: "";
   display: flex;
   align-items: center;
@@ -55,6 +56,21 @@ body::before {
   z-index: -1;
   opacity: 60%;
   opacity: var(--before-opacity, 0.6);
+} */
+
+body::before {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("./assets/bg-min.jpg");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 
 .App {
@@ -84,8 +100,9 @@ input:focus {
 }
 
 .divApp_h1 {
-  margin: 0;
-  font-size: 5vw;
+  /* margin: 0; */
+  font-size: 4vw;
+  margin: 20px;
 }
 
 .logo {

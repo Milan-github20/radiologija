@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
 import Button from "./components/UI/Button/Button";
-import logo from "./assets/Logo UKC RS.png";
+import logo from "./assets/ukc_logo_faktura-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
 
 function App() {

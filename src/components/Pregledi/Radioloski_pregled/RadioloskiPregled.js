@@ -38,7 +38,7 @@ const RadioloskiPregled = ({
         <div>
           {korisnik.pol === "F" ? (
             <div className={styles.mainDiv}>
-              <h1 className={styles.h1}>Da li ste trudni?</h1>
+              <h1 className={styles.h1Pitanje}>Da li ste trudni?</h1>
               <div className={styles.buttons}>
                 <Button
                   back
