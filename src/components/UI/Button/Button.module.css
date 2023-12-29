@@ -41,6 +41,14 @@
   cursor: default;
 }
 
+.btn-disabled2 {
+  border: 1px solid #999999;
+  background-color: #cccccc !important;
+  color: #ffffff;
+  opacity: 50%;
+  cursor: default;
+}
+
 /* .btn-add:hover {
   background-color: green;
   color: white;
@@ -56,4 +64,10 @@
 
 .btn-back {
   background-color: #b54c4c;
+}
+
+.btn-buttonBack {
+  position: absolute;
+  top: 30px;
+  left: 40px;
 }

@@ -6,7 +6,7 @@
 }
 
 .header img {
-  width: 500px;
+  width: 460px;
   height: 90px;
 }
 
@@ -19,4 +19,6 @@
 
 .children h1 {
   font-size: 45px;
+  text-align: center;
+  margin: 0;
 }

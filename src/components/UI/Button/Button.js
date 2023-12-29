@@ -8,7 +8,9 @@ const Button = (props) => {
         props.disabled ? styles["btn-disabled"] : ""
       } ${props.next ? styles["btn-next"] : ""} ${
         props.back ? styles["btn-back"] : ""
-      } ${props.info ? styles["btn-info"] : ""}`}
+      } ${props.info ? styles["btn-info"] : ""} ${
+        props.disabled2 ? styles["btn-disabled2"] : ""
+      } ${props.buttonBack ? styles["btn-buttonBack"] : ""}`}
       onClick={props.onClick}
       style={props.style}
     >

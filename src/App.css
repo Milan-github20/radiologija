@@ -105,6 +105,16 @@ input:focus {
   margin: 20px;
 }
 
+.divTekst {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+}
+
+.divLogo {
+  height: 20vh;
+}
+
 .logo {
   margin: 0px 0 30px 0;
   width: 500px;
@@ -123,8 +133,8 @@ input:focus {
 .bodyDiv {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100vw;
-  height: 252vh;
+  height: 100vh;
 }

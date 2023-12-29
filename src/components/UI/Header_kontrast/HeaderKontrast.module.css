@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+  /* width: 95vw; */
+  justify-content: space-between;
+  height: 165px;
+  /* height: 100%; */
+  width: 56vw;
+  margin-left: 35vw;
+}
+
+.header-alt {
+  height: 375px;
+}
+
+.header img {
+  width: 450px;
+  height: 90px;
+}
+
+.header h1 {
+  font-size: 45px;
+}

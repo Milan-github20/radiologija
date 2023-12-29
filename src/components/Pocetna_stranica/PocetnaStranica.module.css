@@ -58,6 +58,10 @@
   font-family: "Myriad Pro", serif;
   font-weight: 400;
   font-size: 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80%;
 }
 
 .dat_rodAdresa span {
@@ -200,4 +204,54 @@ body.show-backdrop {
   width: 100%;
   height: 20vh;
   margin-bottom: 80px;
+}
+
+.bodyDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 165vh;
+}
+
+.divTekst {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+}
+
+.divLogo {
+  height: 20vh;
+}
+
+.logo {
+  margin: 0px 0 30px 0;
+  width: 500px;
+}
+
+.divApp_h1 {
+  /* margin: 0; */
+  font-size: 4vw;
+  margin: 20px;
+}
+
+.selectOption {
+  font-family: "Myriad Pro", serif;
+  padding: 8px;
+  font-size: 45px;
+  border: none;
+  border-radius: 4px;
+  width: 450px;
+  outline: none;
+  cursor: pointer;
+}
+
+.selectOption:active {
+  border: none;
+}
+
+.selectOption option {
+  background-color: transparent;
+  cursor: pointer;
 }

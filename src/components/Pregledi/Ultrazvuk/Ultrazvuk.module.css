@@ -4,6 +4,7 @@
   align-items: center;
   width: 100vw;
   height: 85.55vh;
+  font-family: "Myriad Pro", serif;
 }
 
 .h1 {
@@ -17,6 +18,31 @@
 .h1Pitanje {
   margin: 0;
   margin-top: 250px;
+  font-size: 4vw;
+  font-family: "Myriad Pro", serif;
+  text-align: center;
+}
+
+.h1Rezerva {
+  margin: 0;
+  width: 95%;
+  margin-top: 100px;
+  font-size: 4vw;
+  font-family: "Myriad Pro", serif;
+  text-align: center;
+}
+
+.h1Rezerva span {
+  font-size: 3.3vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.h1Rezerva2 {
+  margin: 0;
+  width: 95%;
+  margin-top: 60px;
   font-size: 4vw;
   font-family: "Myriad Pro", serif;
   text-align: center;
@@ -39,6 +65,41 @@
   width: 100%;
   height: 100%;
   margin-bottom: 72px;
+}
+
+.slider {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60%;
+  width: 65%;
+  margin-top: 100px;
+}
+
+.sliderPrevuci {
+  width: 50%;
+  height: 20px;
+  color: white;
+}
+
+.slider button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  font-size: 8vh;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slider button img {
+  width: 60px;
+}
+
+.sliderP {
+  font-size: 100px;
 }
 
 .qrCode {

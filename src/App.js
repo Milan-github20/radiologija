@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
 import Button from "./components/UI/Button/Button";
-import logo from "./assets/ukc_logo_faktura-removebg-preview.png";
+import logo from "./assets/ukcrs-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
 
 function App() {
@@ -16,16 +16,19 @@ function App() {
   const fetchData = useCallback(async () => {
     try {
       if (user.trim() === "") {
-        // Ako je user prazan ili samo bijeli prostor, ne izvršavaj zahtjev
-        setKorisnik(null); // Resetuj korisnika na null
+        setKorisnik(null);
         return;
       }
       console.log(user);
 
       const response = await fetch(
-        `http://10.166.115.3:9999/apex/ehcr/IzisSif/OsiguranikUID/${user}`,
+        `../rpc/izis_rs.cfc?method=OsiguranikUID2&id=${user}&__BDRETURNFORMAT=json`,
         {
           method: "GET",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          mode: "no-cors",
         }
       );
 
@@ -55,10 +58,14 @@ function App() {
           <HotToast />
           <div className="divApp">
             <div className="bodyDiv">
-              <img className="logo" src={logo} alt="logo UKC" />
-              <h1 className="divApp_h1">
-                Danas ste zakazani za radiološki pregled?
-              </h1>
+              <div className="divLogo">
+                <img className="logo" src={logo} alt="logo UKC" />
+              </div>
+              <div className="divTekst">
+                <h1 className="divApp_h1">
+                  Danas ste zakazani za radiološki pregled?
+                </h1>
+              </div>
             </div>
             <div className="buttons">
               <Button

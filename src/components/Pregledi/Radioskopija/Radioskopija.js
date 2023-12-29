@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../UI/Button/Button";
-import styles from "./RadioloskiPregled.module.css";
+import styles from "./Radioskopija.module.css";
 import SalterNotifikacija from "../../SalterNotifikacija/SalterNotifikacija";
 import toast from "react-hot-toast";
 import x from "../../../assets/back.png";
 import info from "../../../assets/info.png";
 
-const RadioloskiPregled = ({
+const Radioskopija = ({
+  epizoda,
   korisnik,
   setKorak,
   setKorisnik,
@@ -14,8 +15,8 @@ const RadioloskiPregled = ({
   setTrenutnaStranicaApp,
 }) => {
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
-  const [odgovoriRadioloskiPregled, setOdgovoriRadioloskiPregled] =
-    useState("");
+
+  // console.log(epizoda.lista[0].id);
 
   const posaljiPodatke = async () => {
     const newData = new URLSearchParams();
@@ -28,9 +29,17 @@ const RadioloskiPregled = ({
       if (trenutnaStranica === 2) {
         newData.append("id_forme", 817);
       }
+
       newData.append("id_pacijenta", 465820);
-      newData.append("id_epizode", 4690706);
-      newData.append("broj_protokola", 4690706);
+
+      try {
+        newData.append("id_epizode", epizoda.lista[0].id);
+        newData.append("broj_protokola", epizoda.lista[0].id);
+      } catch (error) {
+        console.error("Greška prilikom pristupa ID-u:", error);
+        newData.append("id_epizode", 4761263);
+        newData.append("broj_protokola", 4761263);
+      }
 
       const response = await fetch(
         `../rpc/radiologija.cfc?method=napravi_dokument`,
@@ -44,9 +53,9 @@ const RadioloskiPregled = ({
       );
 
       if (response.ok) {
-        console.log("Podaci uspešno poslati!");
+        console.log(response);
       } else {
-        console.error("Došlo je do greške pri slanju podataka.");
+        console.error("Došlo je do greške pri slanju podataka");
       }
     }
   };
@@ -65,7 +74,6 @@ const RadioloskiPregled = ({
       }, 20000);
 
       posaljiPodatke();
-
       return () => {
         clearTimeout(timeoutId);
       };
@@ -219,7 +227,7 @@ const RadioloskiPregled = ({
                 <div
                   className={styles.pregled}
                   onClick={() => {
-                    setKorak(3);
+                    setKorak(12);
                   }}
                 >
                   <div className={styles.pregledDiv}>
@@ -241,4 +249,4 @@ const RadioloskiPregled = ({
   }
 };
 
-export default RadioloskiPregled;
+export default Radioskopija;
