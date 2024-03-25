@@ -1,0 +1,73 @@
+.btn {
+  /* background-color: #34495e; */
+  background-color: #75a9d9;
+  width: 350px;
+  height: 170px;
+  font-size: 35px;
+  color: #ecf0f1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Myriad Pro Bold", serif;
+}
+
+/* .btn:hover {
+  background-color: #7f8c8d;
+  color: #ecf0f1;
+} */
+
+.btn-alt {
+  background-color: #34495e;
+  width: 230px;
+  height: 150px;
+  font-size: 30px;
+  color: #ecf0f1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  opacity: 50%;
+  cursor: default;
+}
+
+.btn-disabled2 {
+  border: 1px solid #999999;
+  background-color: #cccccc !important;
+  color: #ffffff;
+  opacity: 50%;
+  cursor: default;
+}
+
+/* .btn-add:hover {
+  background-color: green;
+  color: white;
+} */
+
+.btn-info {
+  background-color: rgb(78, 78, 192);
+}
+
+.btn-next {
+  background-color: #389a46;
+}
+
+.btn-back {
+  background-color: #b54c4c;
+}
+
+.btn-buttonBack {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+}

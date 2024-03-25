@@ -1,0 +1,62 @@
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.backdrop h1 {
+  font-size: 100px;
+  color: black;
+  font-family: "Myriad Pro Bold", serif;
+}
+
+.backdrop p {
+  font-size: 70px;
+  color: black;
+  font-family: "Myriad Pro", serif;
+}
+
+.poruka {
+  width: 100%;
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dodatni stil za onemogućavanje pozadinskog sadržaja */
+body.show-backdrop {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.buttons2 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7vw;
+  width: 100%;
+  height: 20vh;
+  margin-bottom: 80px;
+}
