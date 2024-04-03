@@ -7,7 +7,7 @@ import Button from "./components/UI/Button/Button";
 import logo from "./assets/ukcrs-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
 import Potpis from "./potpis/Potpis";
-import {ultrazvukPocetnaPolja} from "./konstante/konstante";
+import { mrPocetnaPolja, ultrazvukPocetnaPolja } from "./konstante/konstante";
 
 function App() {
   const [user, setUser] = useState("");
@@ -18,18 +18,22 @@ function App() {
 
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
-  const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(ultrazvukPocetnaPolja);
+  const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(
+    ultrazvukPocetnaPolja
+  );
+  const [odgovoriMR, setOdgovoriMR] = useState(mrPocetnaPolja);
 
   const posaljiPodatke = async (vrsta) => {
     let podaci = {};
-    if (vrsta === 'ultrazvuk') podaci = {...odgovoriUltrazvuk};
-    if (vrsta === 'mr') podaci = {...odgovoriUltrazvuk};
+    if (vrsta === "ultrazvuk") podaci = { ...odgovoriUltrazvuk };
+    if (vrsta === "mr") podaci = { ...odgovoriMR };
     const newData = new URLSearchParams();
 
     const filteredModuli = podaci.modul.filter(
       (odgovor) => odgovor.vrijednost !== ""
     );
     newData.append("id_forme", podaci.id_forme);
+    console.log(podaci.id_forme);
     //korisnik.nesto
     newData.append("id_pacijenta", 465820);
     newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
@@ -185,6 +189,8 @@ function App() {
             posaljiPodatke={posaljiPodatke}
             setTrenutnaStranica={setTrenutnaStranica}
             trenutnaStranica={trenutnaStranica}
+            setOdgovoriMR={setOdgovoriMR}
+            odgovoriMR={odgovoriMR}
           />
         </div>
       );

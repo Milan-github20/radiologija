@@ -35,6 +35,8 @@ const PocetnaStranica = ({
   posaljiPodatke,
   setTrenutnaStranica,
   trenutnaStranica,
+  setOdgovoriMR,
+  odgovoriMR,
 }) => {
   const [korak, setKorak] = useState(0);
   const [showBackdrop, setShowBackdrop] = useState(false);
@@ -432,6 +434,11 @@ const PocetnaStranica = ({
                 setKorak={setKorak}
                 setKorisnik={setKorisnik}
                 setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+                posaljiPodatke={posaljiPodatke}
+                setOdgovoriMR={setOdgovoriMR}
+                odgovoriMR={odgovoriMR}
+                setTrenutnaStranica={setTrenutnaStranica}
+                trenutnaStranica={trenutnaStranica}
               />
             </>
           ) : korak === 6 ? (
