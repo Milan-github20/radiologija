@@ -6,12 +6,77 @@ import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
 import Button from "./components/UI/Button/Button";
 import logo from "./assets/ukcrs-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
+import Potpis from "./potpis/Potpis";
 
 function App() {
   const [user, setUser] = useState("");
   const [pol, setPol] = useState(null);
   const [korisnik, setKorisnik] = useState(null);
   const [trenutnaStranicaApp, setTrenutnaStranicaApp] = useState(0);
+  const [idDokumenta, setIdDokumenta] = useState();
+
+  const [trenutnaStranica, setTrenutnaStranica] = useState(0);
+
+  const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState({
+    modul: [
+      {
+        id: 73958,
+        vrijednost: "",
+      },
+      {
+        id: 73959,
+        vrijednost: "",
+      },
+      {
+        id: 73960,
+        vrijednost: "",
+      },
+      {
+        id: 73961,
+        vrijednost: "",
+      },
+      {
+        id: 73962,
+        vrijednost: "",
+      },
+      {
+        id: 73963,
+        vrijednost: "",
+      },
+    ],
+  });
+
+  const posaljiPodatke = async () => {
+    const newData = new URLSearchParams();
+
+    const filteredModuli = odgovoriUltrazvuk.modul.filter(
+      (odgovor) => odgovor.vrijednost !== ""
+    );
+    newData.append("id_forme", 810);
+    newData.append("id_pacijenta", 465820);
+    newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
+
+    const response = await fetch(
+      `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=napravi_dokument`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: newData,
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      setIdDokumenta(data.id.id_dokumenta);
+      console.log("Podaci uspešno poslati!");
+    } else {
+      console.error("Došlo je do greške pri slanju podataka.");
+    }
+  };
+
+  //IZIS KARTICA UNOS PACIJENTA
 
   // const fetchData = useCallback(async () => {
   //   try {
@@ -61,13 +126,13 @@ function App() {
       }
 
       const response = await fetch(
-        `../rpc/radiologija.cfc?method=povuci_pacijenta&jmbg=${user}`,
+        `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=povuci_pacijenta&jmbg=${user}`,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          mode: "no-cors",
+          // mode: "no-cors",
         }
       );
 
@@ -101,6 +166,14 @@ function App() {
               <div className="divLogo">
                 <img className="logo" src={logo} alt="logo UKC" />
               </div>
+              {/* <Button
+                potpisButton
+                onClick={() => {
+                  setTrenutnaStranicaApp(2);
+                }}
+              >
+                Potpis
+              </Button> */}
               <div className="divTekst">
                 <h1 className="divApp_h1">
                   Danas ste zakazani za radiološki pregled?
@@ -130,6 +203,22 @@ function App() {
             setPol={setPol}
             setKorisnik={setKorisnik}
             setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+            setOdgovoriUltrazvuk={setOdgovoriUltrazvuk}
+            posaljiPodatke={posaljiPodatke}
+            setTrenutnaStranica={setTrenutnaStranica}
+            trenutnaStranica={trenutnaStranica}
+          />
+        </div>
+      );
+    case 2:
+      return (
+        <div className="App">
+          <HotToast />
+          <Potpis
+            setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+            idDokumenta={idDokumenta}
+            setUser={setUser}
+            setKorisnik={setKorisnik}
           />
         </div>
       );

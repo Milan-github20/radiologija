@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Button from "../../UI/Button/Button";
 import styles from "./Ultrazvuk.module.css";
 import toast from "react-hot-toast";
@@ -10,65 +10,70 @@ const Ultrazvuk = ({
   setKorisnik,
   setUser,
   setTrenutnaStranicaApp,
+  setOdgovoriUltrazvuk,
+  posaljiPodatke,
+  setTrenutnaStranica,
+  trenutnaStranica,
 }) => {
-  const [trenutnaStranica, setTrenutnaStranica] = useState(0);
-  const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState({
-    modul: [
-      {
-        id: 73958,
-        vrijednost: "",
-      },
-      {
-        id: 73959,
-        vrijednost: "",
-      },
-      {
-        id: 73960,
-        vrijednost: "",
-      },
-      {
-        id: 73961,
-        vrijednost: "",
-      },
-      {
-        id: 73962,
-        vrijednost: "",
-      },
-      {
-        id: 73963,
-        vrijednost: "",
-      },
-    ],
-  });
+  // const [trenutnaStranica, setTrenutnaStranica] = useState(0);
+  // const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState({
+  //   modul: [
+  //     {
+  //       id: 73958,
+  //       vrijednost: "",
+  //     },
+  //     {
+  //       id: 73959,
+  //       vrijednost: "",
+  //     },
+  //     {
+  //       id: 73960,
+  //       vrijednost: "",
+  //     },
+  //     {
+  //       id: 73961,
+  //       vrijednost: "",
+  //     },
+  //     {
+  //       id: 73962,
+  //       vrijednost: "",
+  //     },
+  //     {
+  //       id: 73963,
+  //       vrijednost: "",
+  //     },
+  //   ],
+  // });
 
-  const posaljiPodatke = async () => {
-    const newData = new URLSearchParams();
+  // const posaljiPodatke = async () => {
+  //   const newData = new URLSearchParams();
 
-    const filteredModuli = odgovoriUltrazvuk.modul.filter(
-      (odgovor) => odgovor.vrijednost !== ""
-    );
-    newData.append("id_forme", 810);
-    newData.append("id_pacijenta", 465820);
-    newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
+  //   const filteredModuli = odgovoriUltrazvuk.modul.filter(
+  //     (odgovor) => odgovor.vrijednost !== ""
+  //   );
+  //   newData.append("id_forme", 810);
+  //   newData.append("id_pacijenta", 465820);
+  //   newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
 
-    const response = await fetch(
-      `../rpc/radiologija.cfc?method=napravi_dokument`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: newData,
-      }
-    );
+  //   const response = await fetch(
+  //     `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=napravi_dokument`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/x-www-form-urlencoded",
+  //       },
+  //       body: newData,
+  //     }
+  //   );
 
-    if (response.ok) {
-      console.log("Podaci uspešno poslati!");
-    } else {
-      console.error("Došlo je do greške pri slanju podataka.");
-    }
-  };
-  console.log(odgovoriUltrazvuk);
+  //   if (response.ok) {
+  //     console.log(response);
+  //     console.log("Podaci uspešno poslati!");
+  //   } else {
+  //     console.error("Došlo je do greške pri slanju podataka.");
+  //   }
+  // };
+  // console.log(odgovoriUltrazvuk);
 
   useEffect(() => {
     if (trenutnaStranica === 6) {
@@ -471,6 +476,14 @@ const Ultrazvuk = ({
                   }}
                 >
                   NE
+                </Button>
+                <Button
+                  info
+                  onClick={() => {
+                    setTrenutnaStranicaApp(2);
+                  }}
+                >
+                  POTPIS
                 </Button>
                 <Button
                   next

@@ -71,3 +71,25 @@
   top: 30px;
   left: 40px;
 }
+
+.btn-potpis {
+  background-color: #23a525;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-family: "Myriad Pro Bold", serif;
+  font-size: 35px;
+  height: 120px;
+  width: 230px;
+}
+
+.btn-potpis-nazad {
+  background-color: #b54c4c;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-family: "Myriad Pro Bold", serif;
+  font-size: 35px;
+  height: 120px;
+  width: 230px;
+}

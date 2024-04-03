@@ -12,8 +12,10 @@ const RadioloskiPregled = ({
   setKorisnik,
   setUser,
   setTrenutnaStranicaApp,
+  setTrenutnaStranica,
+  trenutnaStranica,
 }) => {
-  const [trenutnaStranica, setTrenutnaStranica] = useState(0);
+  // const [trenutnaStranica, setTrenutnaStranica] = useState(0);
   const [odgovoriRadioloskiPregled, setOdgovoriRadioloskiPregled] =
     useState("");
 

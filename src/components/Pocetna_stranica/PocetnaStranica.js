@@ -19,7 +19,7 @@ import Kt from "../Pregledi/KT/KT";
 import InformacijeKT from "../Informacije/InformacijeKT/InformacijeKT";
 import Radioskopija from "../Pregledi/Radioskopija/Radioskopija";
 import InformacijeRadioskopija from "../Informacije/InformacijeRadioskopija/InformacijeRadioskopija";
-import Timer from "../Timer/timer";
+// import Timer from "../Timer/timer";
 import Ivu from "../Pregledi/IVU/IVU";
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
@@ -31,6 +31,10 @@ const PocetnaStranica = ({
   pol,
   setKorisnik,
   setTrenutnaStranicaApp,
+  setOdgovoriUltrazvuk,
+  posaljiPodatke,
+  setTrenutnaStranica,
+  trenutnaStranica,
 }) => {
   const [korak, setKorak] = useState(0);
   const [showBackdrop, setShowBackdrop] = useState(false);
@@ -83,13 +87,9 @@ const PocetnaStranica = ({
     if (korisnik) {
       const response = await fetch(
         // `../rpc/radiologija.cfc?method=povuci_epizodu&jmbg=${korisnik.jmbg}`,
-        `../rpc/radiologija.cfc?method=povuci_epizodu&jmbg=3107018100555`,
+        `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=povuci_epizodu&jmbg=3107018100555`,
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          mode: "no-cors",
         }
       );
       const data = await response.json();
@@ -395,6 +395,8 @@ const PocetnaStranica = ({
                 setKorak={setKorak}
                 setKorisnik={setKorisnik}
                 setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+                setTrenutnaStranica={setTrenutnaStranica}
+                trenutnaStranica={trenutnaStranica}
               />
             </>
           ) : korak === 3 ? (
@@ -444,6 +446,10 @@ const PocetnaStranica = ({
                 setKorak={setKorak}
                 setKorisnik={setKorisnik}
                 setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+                setOdgovoriUltrazvuk={setOdgovoriUltrazvuk}
+                posaljiPodatke={posaljiPodatke}
+                setTrenutnaStranica={setTrenutnaStranica}
+                trenutnaStranica={trenutnaStranica}
               />
             </>
           ) : korak === 7 ? (

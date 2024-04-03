@@ -10,7 +10,10 @@ const Button = (props) => {
         props.back ? styles["btn-back"] : ""
       } ${props.info ? styles["btn-info"] : ""} ${
         props.disabled2 ? styles["btn-disabled2"] : ""
-      } ${props.buttonBack ? styles["btn-buttonBack"] : ""}`}
+      } ${props.buttonBack ? styles["btn-buttonBack"] : ""}
+      ${props.potpisButton ? styles["btn-potpis"] : ""} ${
+        props.potpisButtonNazad ? styles["btn-potpis-nazad"] : ""
+      }`}
       onClick={props.onClick}
       style={props.style}
     >

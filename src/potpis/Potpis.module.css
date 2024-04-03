@@ -1,0 +1,70 @@
+.mainPotpis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sigCanvas {
+  background-color: white;
+}
+
+.potpisMode {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  z-index: 2;
+}
+
+.buttons {
+  padding-top: 50px;
+  display: flex;
+  gap: 20px;
+}
+
+.ocisti {
+  background-color: #b54c4c;
+  width: 250px;
+  height: 100px;
+  font-size: 35px;
+  color: #ecf0f1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Myriad Pro Bold", serif;
+}
+
+.ocisti:hover {
+  background-color: #d04848;
+}
+
+.sacuvaj {
+  background-color: #389a46;
+  width: 250px;
+  height: 100px;
+  font-size: 35px;
+  color: #ecf0f1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Myriad Pro Bold", serif;
+}
+
+.sacuvaj:hover {
+  background-color: #37b94a;
+}
+
+label {
+  color: black;
+}
+
+textarea {
+  background-color: red;
+}
