@@ -23,6 +23,8 @@ function App() {
   );
   const [odgovoriMR, setOdgovoriMR] = useState(mrPocetnaPolja);
 
+  console.log(odgovoriMR);
+
   const posaljiPodatke = async (vrsta) => {
     let podaci = {};
     if (vrsta === "ultrazvuk") podaci = { ...odgovoriUltrazvuk };

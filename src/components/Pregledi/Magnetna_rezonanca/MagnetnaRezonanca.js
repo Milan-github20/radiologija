@@ -58,8 +58,6 @@ const MagnetnaRezonanca = ({
         )
       : null;
 
-  console.log();
-
   const godine = racunanjeGodina(formatiranDatumRodjenja);
 
   // Dodajemo funkciju za izračun eGFR-a
@@ -102,8 +100,6 @@ const MagnetnaRezonanca = ({
       return;
     }
   }, [eGFR]);
-
-  console.log(odgovoriMR);
 
   const handleSliderChange = (e) => {
     setSliderValue(parseInt(e.target.value, 10));
