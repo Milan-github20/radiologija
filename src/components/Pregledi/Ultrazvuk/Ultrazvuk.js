@@ -88,7 +88,7 @@ const Ultrazvuk = ({
         }, 1000);
       }, 20000);
 
-      posaljiPodatke();
+      posaljiPodatke('ultrazvuk');
 
       return () => {
         clearTimeout(timeoutId);

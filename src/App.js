@@ -7,6 +7,7 @@ import Button from "./components/UI/Button/Button";
 import logo from "./assets/ukcrs-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
 import Potpis from "./potpis/Potpis";
+import {ultrazvukPocetnaPolja} from "./konstante/konstante";
 
 function App() {
   const [user, setUser] = useState("");
@@ -17,42 +18,19 @@ function App() {
 
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
-  const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState({
-    modul: [
-      {
-        id: 73958,
-        vrijednost: "",
-      },
-      {
-        id: 73959,
-        vrijednost: "",
-      },
-      {
-        id: 73960,
-        vrijednost: "",
-      },
-      {
-        id: 73961,
-        vrijednost: "",
-      },
-      {
-        id: 73962,
-        vrijednost: "",
-      },
-      {
-        id: 73963,
-        vrijednost: "",
-      },
-    ],
-  });
+  const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(ultrazvukPocetnaPolja);
 
-  const posaljiPodatke = async () => {
+  const posaljiPodatke = async (vrsta) => {
+    let podaci = {};
+    if (vrsta === 'ultrazvuk') podaci = {...odgovoriUltrazvuk};
+    if (vrsta === 'mr') podaci = {...odgovoriUltrazvuk};
     const newData = new URLSearchParams();
 
-    const filteredModuli = odgovoriUltrazvuk.modul.filter(
+    const filteredModuli = podaci.modul.filter(
       (odgovor) => odgovor.vrijednost !== ""
     );
-    newData.append("id_forme", 810);
+    newData.append("id_forme", podaci.id_forme);
+    //korisnik.nesto
     newData.append("id_pacijenta", 465820);
     newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
 
@@ -150,7 +128,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       // fetchData();
-      fetchDataPacijent();
+      fetchDataPacijent().then();
     }, 1000);
 
     return () => clearTimeout(timer);
