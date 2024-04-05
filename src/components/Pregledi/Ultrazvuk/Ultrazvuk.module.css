@@ -102,14 +102,14 @@
   font-size: 100px;
 }
 
-.qrCode {
+.qr_kod_alt {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 25%;
 }
 
-.qrCode img {
+.qr_kod_alt img {
   width: 70%;
 }
 
@@ -141,14 +141,14 @@
   height: 100%;
 }
 
-.qrkodDiv {
+.qr_kod_div {
   width: 50%;
   height: 70%;
   background-color: #00000040;
   border-radius: 50px;
 }
 
-.qrkodDiv h1 {
+.qr_kod_div h1 {
   font-size: 50px;
   font-family: "Myriad Pro", sans-serif;
 }

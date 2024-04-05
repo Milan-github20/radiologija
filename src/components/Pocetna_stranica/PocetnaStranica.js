@@ -4,12 +4,10 @@ import Button from "../UI/Button/Button";
 import PotvrdaPol from "../Potvrdi_pol/Potvrdi_pol";
 import InformacijeOPregledu from "../Informacije/InformacijeRadiografija/InformacijeOPregledu";
 import RadioloskiPregled from "../Pregledi/Radioloski_pregled/RadioloskiPregled";
-import kartica from "../../assets/184262-removebg-preview.png";
 import logo from "../../assets/ukcrs-removebg-preview.png";
 import { toast } from "react-hot-toast";
 import Header from "../UI/Header/Header";
 import back from "../../assets/back.png";
-// import RadioloskiPregledKontrast from "../Pregledi/Radioloski_pregled_kontrast/RadioloskiPregledKontrast";
 import HeaderKontrastInfo from "../UI/Header_kontrast/HeaderKontrast";
 import MagnetnaRezonanca from "../Pregledi/Magnetna_rezonanca/MagnetnaRezonanca";
 import Ultrazvuk from "../Pregledi/Ultrazvuk/Ultrazvuk";
@@ -19,7 +17,6 @@ import Kt from "../Pregledi/KT/KT";
 import InformacijeKT from "../Informacije/InformacijeKT/InformacijeKT";
 import Radioskopija from "../Pregledi/Radioskopija/Radioskopija";
 import InformacijeRadioskopija from "../Informacije/InformacijeRadioskopija/InformacijeRadioskopija";
-// import Timer from "../Timer/timer";
 import Ivu from "../Pregledi/IVU/IVU";
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
@@ -36,7 +33,7 @@ const PocetnaStranica = ({
   setTrenutnaStranica,
   trenutnaStranica,
   setOdgovoriMR,
-  odgovoriMR,
+  odjava
 }) => {
   const [korak, setKorak] = useState(0);
   const [showBackdrop, setShowBackdrop] = useState(false);
@@ -231,9 +228,8 @@ const PocetnaStranica = ({
                   onClick={() => {
                     setTrenutnaStranicaApp(0);
                   }}
-                >
-                  <img src={back} alt="back" />
-                </Button>
+                  text={<img src={`${back}`} alt="back"/>}
+                 />
               </div>
 
               <div className={styles.bodyDiv}>
@@ -334,12 +330,11 @@ const PocetnaStranica = ({
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  NE
-                </Button>
+                  text={'NE'} />
+
                 <Button
                   next
-                  disabled2={!selectedOption}
+                  disabled={!selectedOption}
                   onClick={() => {
                     if (selectedOption === "Magnetna rezonanca") {
                       setKorak(1);
@@ -355,9 +350,8 @@ const PocetnaStranica = ({
                       setKorak(1);
                     }
                   }}
-                >
-                  DA
-                </Button>
+                  text={'DA'}
+                />
               </div>
             </>
           ) : korak === 1 ? ( // Prikazuje se samo na drugom koraku
@@ -427,16 +421,10 @@ const PocetnaStranica = ({
             <>
               <HeaderKontrastInfo korisnik={korisnik} />
               <MagnetnaRezonanca
-                epizoda={epizoda}
-                korak={korak}
-                setUser={setUser}
+                odjava={odjava}
                 korisnik={korisnik}
                 setKorak={setKorak}
-                setKorisnik={setKorisnik}
-                setTrenutnaStranicaApp={setTrenutnaStranicaApp}
-                posaljiPodatke={posaljiPodatke}
                 setOdgovoriMR={setOdgovoriMR}
-                odgovoriMR={odgovoriMR}
                 setTrenutnaStranica={setTrenutnaStranica}
                 trenutnaStranica={trenutnaStranica}
               />

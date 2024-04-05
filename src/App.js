@@ -8,6 +8,7 @@ import logo from "./assets/ukcrs-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
 import Potpis from "./potpis/Potpis";
 import { mrPocetnaPolja, ultrazvukPocetnaPolja } from "./konstante/konstante";
+import toast from "react-hot-toast";
 
 function App() {
   const [user, setUser] = useState("");
@@ -23,7 +24,6 @@ function App() {
   );
   const [odgovoriMR, setOdgovoriMR] = useState(mrPocetnaPolja);
 
-  console.log(odgovoriMR);
 
   const posaljiPodatke = async (vrsta) => {
     let podaci = {};
@@ -131,6 +131,29 @@ function App() {
     }
   }, [user]);
 
+  const odjaviSe = () => {
+    setTrenutnaStranicaApp(0);
+    setKorisnik(null);
+    setUser("");
+    toast.success("Uspjesno ste se odjavili!", {
+      duration: 3000,
+    });
+  }
+
+  useEffect(() => {
+    if (trenutnaStranica === 33) {
+      const timeoutId = setTimeout(() => {
+        odjaviSe();
+      }, 20000);
+
+      posaljiPodatke("mr").then();
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [trenutnaStranica]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       // fetchData();
@@ -170,9 +193,8 @@ function App() {
                 onClick={() => {
                   setTrenutnaStranicaApp(1);
                 }}
-              >
-                PRIJAVITE SE OVDJE
-              </Button>
+                text={'PRIJAVITE SE OVDJE'}
+               />
             </div>
           </div>
         </>
@@ -185,6 +207,7 @@ function App() {
             setUser={setUser}
             pol={pol}
             setPol={setPol}
+            odjava={odjaviSe}
             setKorisnik={setKorisnik}
             setTrenutnaStranicaApp={setTrenutnaStranicaApp}
             setOdgovoriUltrazvuk={setOdgovoriUltrazvuk}

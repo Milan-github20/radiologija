@@ -1,23 +1,38 @@
 import React from "react";
 import styles from "./Button.module.css";
 
-const Button = (props) => {
+const Button = ({
+                  alt,
+                  disabled,
+                  buttonBack,
+                  back,
+                  potpisButtonNazad,
+                  potpisButton,
+                  onClick,
+                  style,
+                  next,
+                  info,
+                  disabled2,
+                  text
+                }) => {
   return (
     <button
-      className={`${styles.btn} ${props.alt ? styles["btn-alt"] : ""} ${
-        props.disabled ? styles["btn-disabled"] : ""
-      } ${props.next ? styles["btn-next"] : ""} ${
-        props.back ? styles["btn-back"] : ""
-      } ${props.info ? styles["btn-info"] : ""} ${
-        props.disabled2 ? styles["btn-disabled2"] : ""
-      } ${props.buttonBack ? styles["btn-buttonBack"] : ""}
-      ${props.potpisButton ? styles["btn-potpis"] : ""} ${
-        props.potpisButtonNazad ? styles["btn-potpis-nazad"] : ""
-      }`}
-      onClick={props.onClick}
-      style={props.style}
+      className={`
+        ${styles.btn}
+        ${alt ? styles.btn_alt : ""}
+        ${disabled ? styles.btn_disabled : ""}
+        ${next ? styles.btn_next : ""} 
+        ${back ? styles.btn_back : ""}
+        ${info ? styles.btn_info : ""}
+        ${disabled2 ? styles.btn_disabled2 : ""}
+        ${buttonBack ? styles.btn_buttonBack : ""}
+        ${potpisButton ? styles.btn_potpis : ""} 
+        ${potpisButtonNazad ? styles.btn_potpis_nazad : ""}
+      `}
+      onClick={onClick}
+      style={style}
     >
-      {props.children}
+      {text}
     </button>
   );
 };

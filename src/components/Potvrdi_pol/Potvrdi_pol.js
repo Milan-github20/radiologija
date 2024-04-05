@@ -3,7 +3,6 @@ import Button from "../UI/Button/Button";
 import styles from "./Potvrdi_pol.module.css";
 
 const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
-  console.log(pol);
   return (
     <>
       <h2 className={styles.potvrdiPol}>Vi ste {pol} pola?</h2>
@@ -37,9 +36,8 @@ const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
               }
             });
           }}
-        >
-          NE, {polAlt} pola sam
-        </Button>
+          text={`NE, ${polAlt} pola sam`}
+        />
         <Button
           next
           onClick={() => {
@@ -56,10 +54,22 @@ const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
             } else if (selectedOption === "IVU") {
               setKorak(4);
             }
+
+
+            setKorisnik((prev) => {
+              if (pol === "muškog") {
+                const noviKorisnikMusko = { ...prev };
+                noviKorisnikMusko.pol = 1;
+                return noviKorisnikMusko;
+              } else if (pol === "ženskog") {
+                const noviKorisnikZensko = { ...prev };
+                noviKorisnikZensko.pol = 0;
+                return noviKorisnikZensko;
+              }
+            });
           }}
-        >
-          DA
-        </Button>
+          text={'DA'}
+        />
       </div>
     </>
   );
