@@ -265,212 +265,249 @@ export const mrPocetnaPolja = {
 export const magnetnaPitanja = [
   {
     id: 0,
-    uslov: {pol: 0, akoNije: 5},
-    pitanje: 'Da li ste trudni?',
-    da: {ima: true, tekst: 'DA', akcija: 1, odgovor: 74173},
-    ne: {ima: true, tekst: 'NE', akcija: 2, odgovor: 74174},
-    nazad: {ima: true, tip: 'korak', broj: 1}
+    uslov: { pol: 0, akoNije: 5 },
+    pitanje: "Da li ste trudni?",
+    da: { ima: true, tekst: "DA", akcija: 1, odgovor: 74173 },
+    ne: { ima: true, tekst: "NE", akcija: 2, odgovor: 74174 },
+    nazad: { ima: true, tip: "korak", broj: 1 },
   },
   {
     id: 1,
-    uslov: {pol: 0, akoNije: 5},
-    pitanje: 'Pregled će se uraditi bez davanja injekcije kontrasta.',
-    da: {ima: true, tekst: 'NASTAVI', akcija: 2},
-    ne: {ima: false, tekst: 'NE', akcija: undefined},
-    nazad: {ima: true, tip: 'stranica', broj: 0}
+    uslov: { pol: 0, akoNije: 5 },
+    pitanje: "Pregled će se uraditi bez davanja injekcije kontrasta.",
+    da: { ima: true, tekst: "NASTAVI", akcija: 2 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 0 },
   },
   {
     id: 2,
-    uslov: {pol: 0, akoNije: 5},
-    pitanje: 'Da li ste dojilja?',
-    da: {ima: true, tekst: 'DA', akcija: 3, odgovor: 74175},
-    ne: {ima: true, tekst: 'NE', akcija: 4, odgovor: 74176},
-    nazad: {ima: true, tip: 'stranica', broj: 0}
+    uslov: { pol: 0, akoNije: 5 },
+    pitanje: "Da li ste dojilja?",
+    da: { ima: true, tekst: "DA", akcija: 3, odgovor: 74175 },
+    ne: { ima: true, tekst: "NE", akcija: 4, odgovor: 74176 },
+    nazad: { ima: true, tip: "stranica", broj: 0 },
   },
   {
     id: 3,
     uslov: {},
-    pitanje: <>Ukoliko primite kontrastno sredstvo morate da prestanete da dojite
-      Vaše dijete do {dayjs().add(2, 'd').format('DD.MM.YYYY')}</>,
-    da: {ima: true, tekst: 'NASTAVI', akcija: 4},
-    ne: {ima: false, tekst: 'NE', akcija: undefined},
-    nazad: {ima: true, tip: 'stranica', broj: 2}
+    pitanje: (
+      <>
+        Ukoliko primite kontrastno sredstvo morate da prestanete da dojite Vaše
+        dijete do {dayjs().add(2, "d").format("DD.MM.YYYY")}
+      </>
+    ),
+    da: { ima: true, tekst: "NASTAVI", akcija: 4 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 2 },
   },
   {
     id: 4,
     uslov: {},
-    pitanje: 'Da li imate kontracepcijski uložak (spiralu)?',
-    da: {ima: true, tekst: 'DA', akcija: 5, odgovor: 74177},
-    ne: {ima: true, tekst: 'NE', akcija: 5, odgovor: 74178},
-    nazad: {ima: true, tip: 'stranica', broj: 2}
+    pitanje: "Da li imate kontracepcijski uložak (spiralu)?",
+    da: { ima: true, tekst: "DA", akcija: 5, odgovor: 74177 },
+    ne: { ima: true, tekst: "NE", akcija: 5, odgovor: 74178 },
+    nazad: { ima: true, tip: "stranica", broj: 2 },
   },
   {
     id: 5,
     uslov: {},
-    pitanje: 'Da li ste već imali MR pregled?',
-    da: {ima: true, tekst: 'DA', akcija: 6, odgovor: 74194},
-    ne: {ima: true, tekst: 'NE', akcija: 7, odgovor: 74195},
-    nazad: {ima: true, tip: 'pol', akoMusko: {tip: 'korak', broj: 1}, akoZensko: {tip: 'stranica', broj: 4}}
+    pitanje: "Da li ste već imali MR pregled?",
+    da: { ima: true, tekst: "DA", akcija: 6, odgovor: 74194 },
+    ne: { ima: true, tekst: "NE", akcija: 7, odgovor: 74195 },
+    nazad: {
+      ima: true,
+      tip: "pol",
+      akoMusko: { tip: "korak", broj: 1 },
+      akoZensko: { tip: "stranica", broj: 4 },
+    },
   },
   {
     id: 6,
     uslov: {},
-    pitanje: <>
-      Da li ste imali neki od slijedećih problema prilikom prethodnog
-      pregleda:
-      <br/> <br/>
-      Strah od zatvorenog prostora?
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: 7, odgovor: 74196},
-    ne: {ima: true, tekst: 'NE', akcija: 7, odgovor: 74197},
-    nazad: {ima: true, tip: 'stranica', broj: 5}
+    pitanje: (
+      <>
+        Da li ste imali neki od slijedećih problema prilikom prethodnog
+        pregleda:
+        <br /> <br />
+        Strah od zatvorenog prostora?
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: 7, odgovor: 74196 },
+    ne: { ima: true, tekst: "NE", akcija: 7, odgovor: 74197 },
+    nazad: { ima: true, tip: "stranica", broj: 5 },
   },
   {
     id: 7,
     uslov: {},
-    pitanje: <>
-      Jeste li već imali neki pregled koji je zahtijevao upotrebu
-      kontrastnih sredstava?
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: 8, odgovor: 74198},
-    ne: {ima: true, tekst: 'NE', akcija: 14, odgovor: 74199},
-    nazad: {ima: true, tip: 'stranica', broj: 6}
+    pitanje: (
+      <>
+        Jeste li već imali neki pregled koji je zahtijevao upotrebu kontrastnih
+        sredstava?
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: 8, odgovor: 74198 },
+    ne: { ima: true, tekst: "NE", akcija: 14, odgovor: 74199 },
+    nazad: { ima: true, tip: "stranica", broj: 6 },
   },
   {
     id: 19,
     uslov: {},
-    pitanje: <>
-      Da li ste imali operativne zahvate?
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: 20, odgovor: 74222},
-    ne: {ima: true, tekst: 'NE', akcija: 21, odgovor: 74223},
-    nazad: {ima: true, tip: 'stranica', broj: 18}
+    pitanje: <>Da li ste imali operativne zahvate?</>,
+    da: { ima: true, tekst: "DA", akcija: 20, odgovor: 74222 },
+    ne: { ima: true, tekst: "NE", akcija: 21, odgovor: 74223 },
+    nazad: { ima: true, tip: "stranica", broj: 18 },
   },
   {
     id: 20,
     uslov: {},
-    pitanje: <>
-      Molimo Vas da kad budete prozvani obavijestite osoblje na šalteru
-      koje ste operativne zahvate imali.
-    </>,
-    da: {ima: true, tekst: 'NASTAVI', akcija: 21},
-    ne: {ima: false, tekst: 'NE', akcija: undefined},
-    nazad: {ima: true, tip: 'stranica', broj: 19}
+    pitanje: (
+      <>
+        Molimo Vas da kad budete prozvani obavijestite osoblje na šalteru koje
+        ste operativne zahvate imali.
+      </>
+    ),
+    da: { ima: true, tekst: "NASTAVI", akcija: 21 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 19 },
   },
   {
-    id: 21
+    id: 21,
   },
   {
     id: 22,
     uslov: {},
-    da: {ima: true, tekst: 'NASTAVI', akcija: 23, odgovor: 74169},
-    ne: {ima: false, tekst: 'NE', akcija: undefined},
-    nazad: {ima: true, tip: 'stranica', broj: 21},
-    posebniNaslov: true
+    da: { ima: true, tekst: "NASTAVI", akcija: 23, odgovor: 74169 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 21 },
+    posebniNaslov: true,
   },
   {
     id: 29,
     uslov: {},
-    pitanje: <>
-      Molimo Vas da kada budete prozvani obavijestite osoblje na šalteru
-      da imate ugrađen materijal.
-    </>,
-    da: {ima: true, tekst: 'NASTAVI', akcija: 30},
-    ne: {ima: false, tekst: 'NE', akcija: undefined},
-    nazad: {ima: true, tip: 'stranica', broj: 28}
+    pitanje: (
+      <>
+        Molimo Vas da kada budete prozvani obavijestite osoblje na šalteru da
+        imate ugrađen materijal.
+      </>
+    ),
+    da: { ima: true, tekst: "NASTAVI", akcija: 30 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 28 },
   },
   {
     id: 30,
     uslov: {},
-    pitanje: <>
-      Da li ste imali povredu oka metalnim predmetom?
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: 31, odgovor: 74236},
-    ne: {ima: true, tekst: 'NE', akcija: 31, odgovor: 74237},
-    nazad: {ima: true, tip: 'stranica', broj: 28}
+    pitanje: <>Da li ste imali povredu oka metalnim predmetom?</>,
+    da: { ima: true, tekst: "DA", akcija: 31, odgovor: 74236 },
+    ne: { ima: true, tekst: "NE", akcija: 31, odgovor: 74237 },
+    nazad: { ima: true, tip: "stranica", broj: 28 },
   },
   {
     id: 31,
     uslov: {},
-    pitanje: <>
-      Da li u svom tijelu imate metalna strana tijela (metak , geler…)?
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: 32, odgovor: 74238},
-    ne: {ima: true, tekst: 'NE', akcija: 32, odgovor: 74239},
-    nazad: {ima: true, tip: 'stranica', broj: 30}
+    pitanje: (
+      <>Da li u svom tijelu imate metalna strana tijela (metak , geler…)?</>
+    ),
+    da: { ima: true, tekst: "DA", akcija: 32, odgovor: 74238 },
+    ne: { ima: true, tekst: "NE", akcija: 32, odgovor: 74239 },
+    nazad: { ima: true, tip: "stranica", broj: 30 },
   },
   {
     id: 32,
     uslov: {},
-    pitanje: <>
-      Da li ste tetovirani?
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: 33, odgovor: 74240},
-    ne: {ima: true, tekst: 'NE', akcija: 33, odgovor: 74241},
-    nazad: {ima: true, tip: 'stranica', broj: 31}
+    pitanje: <>Da li ste tetovirani?</>,
+    da: { ima: true, tekst: "DA", akcija: 33, odgovor: 74240 },
+    ne: { ima: true, tekst: "NE", akcija: 33, odgovor: 74241 },
+    nazad: { ima: true, tip: "stranica", broj: 31 },
   },
   {
     id: 33,
     uslov: {},
-    da: {ima: true, tekst: 'DA', akcija: 34},
-    ne: {ima: true, tekst: 'NE'},
-    nazad: {ima: false},
-    posebniNaslov: true
+    da: { ima: true, tekst: "DA", akcija: 34 },
+    ne: { ima: true, tekst: "NE" },
+    nazad: { ima: false },
+    posebniNaslov: true,
   },
   {
-    id: 34
-  }
-]
+    id: 34,
+  },
+];
 
-const kontrastPitanja = ['Mučnina?', 'Povraćanje?', 'Osjećaj davljenja/gušenje?', 'Osip?', 'Grčevi?', 'Nesvjestica?'];
+const kontrastPitanja = [
+  "Mučnina?",
+  "Povraćanje?",
+  "Osjećaj davljenja/gušenje?",
+  "Osip?",
+  "Grčevi?",
+  "Nesvjestica?",
+];
 
 for (let i = 8, j = 0; i < 14; i++, j++) {
   magnetnaPitanja.push({
     id: i,
     uslov: {},
-    pitanje: <>
-      Da li ste nakon primanja kontrasta imali neku od sljedećih tegoba:
-      <br/> <br/>
-      {kontrastPitanja[j]}
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74200 + j},
-    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74201 + j},
-    nazad: {ima: true, tip: 'stranica', broj: i - 1},
+    pitanje: (
+      <>
+        Da li ste nakon primanja kontrasta imali neku od sljedećih tegoba:
+        <br /> <br />
+        {kontrastPitanja[j]}
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: i + 1, odgovor: 74200 + j },
+    ne: { ima: true, tekst: "NE", akcija: i + 1, odgovor: 74201 + j },
+    nazad: { ima: true, tip: "stranica", broj: i - 1 },
   });
 }
 
-const bolestiPitanja = ['Astma?', 'Alergija koju morate liječiti?', 'Bolesti bubrega ili nadbubrežnih žlijezda?', 'Bolesti štitne žlijezde?', 'Šećerna bolest?'];
+const bolestiPitanja = [
+  "Astma?",
+  "Alergija koju morate liječiti?",
+  "Bolesti bubrega ili nadbubrežnih žlijezda?",
+  "Bolesti štitne žlijezde?",
+  "Šećerna bolest?",
+];
 
 for (let i = 14, j = 0; i < 19; i++, j++) {
   magnetnaPitanja.push({
     id: i,
     uslov: {},
-    pitanje: <>
-      Da li bolujete od neke od slijedećih bolesti:
-      <br/> <br/>
-      {bolestiPitanja[j]}
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74212 + j},
-    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74213 + j},
-    nazad: {ima: true, tip: 'stranica', broj: i - 1},
+    pitanje: (
+      <>
+        Da li bolujete od neke od slijedećih bolesti:
+        <br /> <br />
+        {bolestiPitanja[j]}
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: i + 1, odgovor: 74212 + j },
+    ne: { ima: true, tekst: "NE", akcija: i + 1, odgovor: 74213 + j },
+    nazad: { ima: true, tip: "stranica", broj: i - 1 },
   });
 }
 
-const ugradjenPitanja = ['Pejsmejker (srčani stimulator)?', 'Defibrilator?', 'Vještački srčani zalistak?', 'Slušni implant?', 'Vještački kuk , koljeno ili druge metalne zglobne proteze?', 'Bilo kakav drugi implant, metalne pločice, šipke ili zavrtnje?'];
+const ugradjenPitanja = [
+  "Pejsmejker (srčani stimulator)?",
+  "Defibrilator?",
+  "Vještački srčani zalistak?",
+  "Slušni implant?",
+  "Vještački kuk , koljeno ili druge metalne zglobne proteze?",
+  "Bilo kakav drugi implant, metalne pločice, šipke ili zavrtnje?",
+];
 
 for (let i = 23, j = 0; i < 29; i++, j++) {
   magnetnaPitanja.push({
     id: i,
     uslov: {},
-    pitanje: <>
-      Da li imate ugrađen:
-      <br/> <br/>
-      {ugradjenPitanja[j]}
-    </>,
-    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74224 + j},
-    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74225 + j},
-    nazad: {ima: true, tip: 'stranica', broj: i - 1},
+    pitanje: (
+      <>
+        Da li imate ugrađen:
+        <br /> <br />
+        {ugradjenPitanja[j]}
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: i + 1, odgovor: 74224 + j },
+    ne: { ima: true, tekst: "NE", akcija: i + 1, odgovor: 74225 + j },
+    nazad: { ima: true, tip: "stranica", broj: i - 1 },
   });
 }
 
-magnetnaPitanja.sort((a,b) => a.id > b.id ? 1 : -1);
+magnetnaPitanja.sort((a, b) => (a.id > b.id ? 1 : -1));
