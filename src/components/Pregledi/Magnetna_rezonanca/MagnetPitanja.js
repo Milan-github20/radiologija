@@ -3,8 +3,8 @@ import Button from "../../UI/Button/Button";
 import styles from "./MagnetnaRezonanca.module.css";
 import x from "../../../assets/back.png";
 import {magnetnaPitanja} from "../../../konstante/konstante";
-// 1008994103258
-const MagnetPitanja = ({trenutnaStranica, setTrenutnaStranica, korisnik, setKorak, sacuvaj, ocisti, setPrehodniKorak, prethodna, posebniNaslov, odjava}) => {
+
+const MagnetPitanja = ({trenutnaStranica, setTrenutnaStranica, korisnik, setKorak, sacuvaj, ocisti, setPrehodniKorak, prethodna, posebniNaslov, odjava, automatskaOdjava}) => {
   const trenutnaPitanja = magnetnaPitanja[trenutnaStranica];
 
   useEffect(() => {
@@ -14,6 +14,7 @@ const MagnetPitanja = ({trenutnaStranica, setTrenutnaStranica, korisnik, setKora
   const vratiNaPocetnu = () => {
     setKorak(trenutnaPitanja.nazad.akoMusko.broj);
     setTrenutnaStranica(0);
+    ocisti(74158, 74159);
   }
 
   const ocistiVrijednosti = () => {
@@ -24,27 +25,42 @@ const MagnetPitanja = ({trenutnaStranica, setTrenutnaStranica, korisnik, setKora
       ocisti(daModul, neModul);
   }
 
+  const uslovnoVracanjeNaOdabirPola = () => {
+    // console.log(korisnik.pol);
+    // console.log(trenutnaPitanja.nazad.akoZensko.tip);
+    if (korisnik.pol === 1) {
+      if (trenutnaPitanja.nazad.akoMusko.tip === 'korak') vratiNaPocetnu();
+      else setTrenutnaStranica(trenutnaPitanja.nazad.akoMusko.broj)
+    } else {
+      ocistiVrijednosti();
+      if (trenutnaPitanja.nazad.akoZensko.tip === 'korak') setKorak(trenutnaPitanja.nazad.akoZensko.broj);
+      else setTrenutnaStranica(trenutnaPitanja.nazad.akoZensko.broj)
+    }
+  }
+
   const mapaZaNazad = {
     korak: () => {
       setKorak(trenutnaPitanja.nazad.broj);
+      setPrehodniKorak(magnetnaPitanja[trenutnaPitanja.nazad.broj].nazad.broj);
       if (prethodna !== null) ocistiVrijednosti();
     },
     stranica: () => {
       setTrenutnaStranica(trenutnaPitanja.nazad.broj);
+      setPrehodniKorak(magnetnaPitanja[trenutnaPitanja.nazad.broj].nazad.broj);
       if (prethodna !== null) ocistiVrijednosti();
     },
-    pol: trenutnaPitanja.nazad.tip === 'pol' ? korisnik.pol === 1 ? trenutnaPitanja.nazad.akoMusko.tip === 'korak' ? vratiNaPocetnu : () => setTrenutnaStranica(trenutnaPitanja.nazad.akoMusko.broj) :
-      trenutnaPitanja.nazad.akoZensko.tip === 'korak' ? () => setKorak(trenutnaPitanja.nazad.akoZensko.broj) : () => setTrenutnaStranica(trenutnaPitanja.nazad.akoZensko.broj) : () => {
-    },
+    pol: () => uslovnoVracanjeNaOdabirPola()
   }
 
   const daFunkcija = () => {
+    if (trenutnaStranica === 32) automatskaOdjava();
     setPrehodniKorak(trenutnaStranica);
     setTrenutnaStranica(trenutnaPitanja.da.akcija);
     if (trenutnaPitanja.da.odgovor !== undefined) sacuvaj(trenutnaPitanja.da.odgovor);
   }
 
   const neFunkcija = () => {
+    if (trenutnaStranica === 32) automatskaOdjava();
     if (trenutnaStranica === 33) return odjava();
     setPrehodniKorak(trenutnaStranica);
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);

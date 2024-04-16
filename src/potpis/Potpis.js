@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 const Potpis = ({
   setTrenutnaStranicaApp,
   idDokumenta,
-  setUser,
   setKorisnik,
 }) => {
   const [sign, setSign] = useState();
@@ -51,7 +50,6 @@ const Potpis = ({
       toast.error("Polje za potpis ne smije biti prazno!");
     } else {
       await dodajPotpis();
-      setUser("");
       setKorisnik(null);
       setTimeout(() => {
         toast.success("Uspjesno ste se odjavili i sačuvali potpis!", {

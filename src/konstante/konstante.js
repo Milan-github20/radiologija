@@ -37,62 +37,82 @@ export const mrPocetnaPolja = {
     {
       id: 74173,
       vrijednost: "",
+      odgovor: "Trudna"
     },
     {
       id: 74174,
       vrijednost: "",
+      odgovor: "Nije trudna"
     },
     {
       id: 74175,
       vrijednost: "",
+      odgovor: "Dojilja"
     },
     {
       id: 74176,
       vrijednost: "",
+      odgovor: "Nije dojilja"
     },
     {
       id: 74177,
       vrijednost: "",
+      odgovor: "Spirala"
+    },
+    {
+      id: 74178,
+      vrijednost: "",
+      odgovor: "Nije spirala"
     },
     {
       id: 74194,
       vrijednost: "",
+      odgovor: "MR pregled"
     },
     {
       id: 74195,
       vrijednost: "",
+      odgovor: "Nije MR pregled"
     },
     {
       id: 74196,
       vrijednost: "",
+      odgovor: 'Strah'
     },
     {
       id: 74197,
       vrijednost: "",
+      odgovor: "Nema Straha"
     },
     {
       id: 74198,
       vrijednost: "",
+      odgovor: "Kontrast"
     },
     {
       id: 74199,
       vrijednost: "",
+      odgovor: "Nema kontrasta"
     },
     {
       id: 74200,
       vrijednost: "",
+      odgovor: "Mucnina"
     },
     {
       id: 74201,
       vrijednost: "",
+      odgovor: "Nije mucnina"
     },
     {
       id: 74202,
       vrijednost: "",
+      odgovor: "Povracanje"
     },
     {
       id: 74203,
       vrijednost: "",
+      odgovor: "Nije povracanje"
     },
     {
       id: 74204,
@@ -177,6 +197,7 @@ export const mrPocetnaPolja = {
     {
       id: 74169,
       vrijednost: "",
+      odgovor: "EGFR"
     },
     {
       id: 74224,
@@ -245,19 +266,23 @@ export const mrPocetnaPolja = {
     {
       id: 74240,
       vrijednost: "",
+      odgovor: "Tetoviran"
     },
     {
       id: 74241,
       vrijednost: "",
+      odgovor: "Nije tetoviran"
     },
 
     {
       id: 74158,
       vrijednost: "",
+      odgovor: "Musko"
     },
     {
       id: 74159,
       vrijednost: "",
+      odgovor: "Zensko"
     },
   ],
 };
@@ -358,7 +383,10 @@ export const magnetnaPitanja = [
     nazad: {ima: true, tip: 'stranica', broj: 19}
   },
   {
-    id: 21
+    id: 21,
+    ne: {odgovor: 74169},
+    da: {},
+    nazad: {broj: 19}
   },
   {
     id: 22,
@@ -433,8 +461,8 @@ for (let i = 8, j = 0; i < 14; i++, j++) {
       <br/> <br/>
       {kontrastPitanja[j]}
     </>,
-    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74200 + j},
-    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74201 + j},
+    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74200 + (j * 2)},
+    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74201 + (j * 2)},
     nazad: {ima: true, tip: 'stranica', broj: i - 1},
   });
 }
@@ -450,8 +478,8 @@ for (let i = 14, j = 0; i < 19; i++, j++) {
       <br/> <br/>
       {bolestiPitanja[j]}
     </>,
-    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74212 + j},
-    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74213 + j},
+    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74212 + (j * 2)},
+    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74213 + (j * 2)},
     nazad: {ima: true, tip: 'stranica', broj: i - 1},
   });
 }
@@ -467,8 +495,8 @@ for (let i = 23, j = 0; i < 29; i++, j++) {
       <br/> <br/>
       {ugradjenPitanja[j]}
     </>,
-    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74224 + j},
-    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74225 + j},
+    da: {ima: true, tekst: 'DA', akcija: i + 1, odgovor: 74224 + (j * 2)},
+    ne: {ima: true, tekst: 'NE', akcija: i + 1, odgovor: 74225 + (j * 2)},
     nazad: {ima: true, tip: 'stranica', broj: i - 1},
   });
 }

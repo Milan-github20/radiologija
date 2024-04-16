@@ -11,9 +11,11 @@ const MagnetnaRezonanca = ({
                              setOdgovoriMR,
                              setTrenutnaStranica,
                              trenutnaStranica,
+                             automatskaOdjava
                            }) => {
   const [eGFR, setEGFR] = useState(null);
   const [eGFRPrikaz, setEGFRPrikaz] = useState(null);
+  const [eGFRTekst, setEGFRTekst] = useState(null);
   const [prethodniKorak, setPrethodniKorak] = useState(null);
 
   useEffect(() => {
@@ -37,6 +39,9 @@ const MagnetnaRezonanca = ({
       }
     }
 
+    setEGFRTekst(`${message[0]} 
+    ${message[1]}`);
+
     setEGFRPrikaz(<h1 className={styles.h1_slajder}>
               <span>
                 Vaš eGFR iznosi {eGFR.toFixed(2)} ml/min (1,73m
@@ -50,7 +55,8 @@ const MagnetnaRezonanca = ({
   const postaviOdgovor = id => {
     setOdgovoriMR(prethodnaVrijednost => {
       const trenutniModul = prethodnaVrijednost.modul.findIndex(modul => modul.id === id);
-      prethodnaVrijednost.modul[trenutniModul].vrijednost = 1;
+      if (id === 74169) prethodnaVrijednost.modul[trenutniModul].vrijednost = eGFRTekst;
+      else prethodnaVrijednost.modul[trenutniModul].vrijednost = 1;
 
       return prethodnaVrijednost;
     })
@@ -78,13 +84,16 @@ const MagnetnaRezonanca = ({
     </h3>
   </>
 
+  const automatskaOdjavaMagnet = () => automatskaOdjava('mr');
+
   return trenutnaStranica === 21 ?
     <MagnetSlider setTrenutnaStranica={setTrenutnaStranica} korisnik={korisnik} setEGFR={setEGFR}/>
-    : trenutnaStranica === 34 ? <QrKodStranica setTrenutnaStranica={setTrenutnaStranica} setKorak={setKorak} /> :
-    <MagnetPitanja setPrehodniKorak={setPrethodniKorak} trenutnaStranica={trenutnaStranica} odjava={odjava}
-                   posebniNaslov={trenutnaStranica === 22 ? eGFRPrikaz : posebniNaslov33Pitanje}
-                   ocisti={ponistiVrijednosti} sacuvaj={postaviOdgovor} setTrenutnaStranica={setTrenutnaStranica}
-                   korisnik={korisnik} setKorak={setKorak} prethodna={prethodniKorak}/>
+    : trenutnaStranica === 34 ? <QrKodStranica setTrenutnaStranica={setTrenutnaStranica} setKorak={setKorak}/> :
+      <MagnetPitanja setPrehodniKorak={setPrethodniKorak} trenutnaStranica={trenutnaStranica} odjava={odjava}
+                     posebniNaslov={trenutnaStranica === 22 ? eGFRPrikaz : posebniNaslov33Pitanje}
+                     ocisti={ponistiVrijednosti} sacuvaj={postaviOdgovor} setTrenutnaStranica={setTrenutnaStranica}
+                     korisnik={korisnik} setKorak={setKorak} prethodna={prethodniKorak}
+                     automatskaOdjava={automatskaOdjavaMagnet} />
 };
 
 export default MagnetnaRezonanca;

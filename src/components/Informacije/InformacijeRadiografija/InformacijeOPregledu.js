@@ -11,6 +11,7 @@ const InformacijeOPregledu = ({
   setKorisnik,
   setTrenutnaStranicaApp,
   setUser,
+  odjava
 }) => {
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
@@ -27,16 +28,7 @@ const InformacijeOPregledu = ({
                 <Button
                   alt
                   back
-                  onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
-                  }}
+                  onClick={() => odjava}
                 >
                   <img src={x} alt="x" />
                 </Button>
@@ -59,14 +51,14 @@ const InformacijeOPregledu = ({
             </div>
             <div className={styles.buttons}>
               <Button disabled>
-                <img src={nazad} alt="nazad" />
+                <img src={`${nazad}`} alt="nazad" />
               </Button>
               <Button
                 onClick={() => {
                   setTrenutnaStranica(1);
                 }}
               >
-                <img src={naprijed} alt="naprijed" />
+                <img src={`${naprijed}`} alt="naprijed" />
               </Button>
             </div>
           </div>
@@ -85,18 +77,9 @@ const InformacijeOPregledu = ({
                 <Button
                   alt
                   back
-                  onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
-                  }}
+                  onClick={odjava}
                 >
-                  <img src={x} alt="x" />
+                  <img src={`${x}`} alt="x" />
                 </Button>
               </div>
             </div>

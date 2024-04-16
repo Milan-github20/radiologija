@@ -10,17 +10,17 @@ const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
         <Button
           back
           onClick={() => {
-            if (selectedOption === "Magnetna rezonanca") {
+            if (selectedOption === "1") {
               setKorak(5);
-            } else if (selectedOption === "Radioskopija") {
+            } else if (selectedOption === "2") {
               setKorak(11);
-            } else if (selectedOption === "Radiografija") {
+            } else if (selectedOption === "3") {
               setKorak(2);
-            } else if (selectedOption === "Ultrazvuk") {
+            } else if (selectedOption === "4") {
               setKorak(6);
-            } else if (selectedOption === "KT") {
+            } else if (selectedOption === "5") {
               setKorak(9);
-            } else if (selectedOption === "IVU") {
+            } else if (selectedOption === "6") {
               setKorak(4);
             }
 
@@ -41,17 +41,17 @@ const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
         <Button
           next
           onClick={() => {
-            if (selectedOption === "Magnetna rezonanca") {
+            if (selectedOption === "1") {
               setKorak(5);
-            } else if (selectedOption === "Radioskopija") {
+            } else if (selectedOption === "2") {
               setKorak(11);
-            } else if (selectedOption === "Radiografija") {
+            } else if (selectedOption === "3") {
               setKorak(2);
-            } else if (selectedOption === "Ultrazvuk") {
+            } else if (selectedOption === "4") {
               setKorak(6);
-            } else if (selectedOption === "KT") {
+            } else if (selectedOption === "5") {
               setKorak(9);
-            } else if (selectedOption === "IVU") {
+            } else if (selectedOption === "6") {
               setKorak(4);
             }
 
