@@ -15,7 +15,6 @@ const MagnetPitanja = ({
   prethodna,
   posebniNaslov,
   odjava,
-  automatskaOdjava,
 }) => {
   const trenutnaPitanja = magnetnaPitanja[trenutnaStranica];
 
@@ -44,8 +43,6 @@ const MagnetPitanja = ({
   };
 
   const uslovnoVracanjeNaOdabirPola = () => {
-    // console.log(korisnik.pol);
-    // console.log(trenutnaPitanja.nazad.akoZensko.tip);
     if (korisnik.pol === 1) {
       if (trenutnaPitanja.nazad.akoMusko.tip === "korak") vratiNaPocetnu();
       else setTrenutnaStranica(trenutnaPitanja.nazad.akoMusko.broj);
@@ -72,7 +69,6 @@ const MagnetPitanja = ({
   };
 
   const daFunkcija = () => {
-    if (trenutnaStranica === 32) automatskaOdjava();
     setPrehodniKorak(trenutnaStranica);
     setTrenutnaStranica(trenutnaPitanja.da.akcija);
     if (trenutnaPitanja.da.odgovor !== undefined)
@@ -80,7 +76,6 @@ const MagnetPitanja = ({
   };
 
   const neFunkcija = () => {
-    if (trenutnaStranica === 32) automatskaOdjava();
     if (trenutnaStranica === 33) return odjava();
     setPrehodniKorak(trenutnaStranica);
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);

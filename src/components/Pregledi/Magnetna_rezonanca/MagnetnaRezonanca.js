@@ -76,6 +76,8 @@ const MagnetnaRezonanca = ({
 
       return prethodnaVrijednost;
     });
+
+    if (id === 74240 || id === 74241) automatskaOdjava("mr");
   };
 
   //poništi odgovor za oba modula vezana za pitanje
@@ -108,8 +110,6 @@ const MagnetnaRezonanca = ({
     </>
   );
 
-  const automatskaOdjavaMagnet = () => automatskaOdjava("mr");
-
   return trenutnaStranica === 21 ? (
     <MagnetSlider
       setTrenutnaStranica={setTrenutnaStranica}
@@ -135,7 +135,6 @@ const MagnetnaRezonanca = ({
       korisnik={korisnik}
       setKorak={setKorak}
       prethodna={prethodniKorak}
-      automatskaOdjava={automatskaOdjavaMagnet}
     />
   );
 };

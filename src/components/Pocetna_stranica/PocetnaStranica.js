@@ -20,7 +20,6 @@ import { format } from "date-fns";
 import PocetnaStranicaNemaKorisnika from "./PocetnaStranicaNemaKorisnika";
 import OdabirPregleda from "./OdabirPregleda";
 import Timer from "../Timer/Timer";
-import { toast } from "react-hot-toast";
 
 //1008994103258
 
@@ -68,16 +67,16 @@ const PocetnaStranica = ({
 
   return (
     <>
-      <Timer
-        showBackdrop={showBackdrop}
-        setShowBackdrop={setShowBackdrop}
-        setTrenutnaStranicaApp={setTrenutnaStranicaApp}
-        setKorisnik={setKorisnik}
-        setUser={setUser}
-        setShowCountdownBackdrop={setShowCountdownBackdrop}
-        showCountdownBackdrop={showCountdownBackdrop}
-        odjava={odjava}
-      />
+      {/*<Timer*/}
+      {/*  showBackdrop={showBackdrop}*/}
+      {/*  setShowBackdrop={setShowBackdrop}*/}
+      {/*  setTrenutnaStranicaApp={setTrenutnaStranicaApp}*/}
+      {/*  setKorisnik={setKorisnik}*/}
+      {/*  setUser={setUser}*/}
+      {/*  setShowCountdownBackdrop={setShowCountdownBackdrop}*/}
+      {/*  showCountdownBackdrop={showCountdownBackdrop}*/}
+      {/*  odjava={odjava}*/}
+      {/*/>*/}
 
       <div className={styles.mainDiv}>
         {!korisnik ? (

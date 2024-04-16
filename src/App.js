@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, {useCallback, useEffect} from "react";
 import "./App.css";
 import { useState } from "react";
 import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
@@ -21,8 +21,9 @@ function App() {
   const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(
     ultrazvukPocetnaPolja
   );
-  const [odgovoriMR, setOdgovoriMR] = useState(mrPocetnaPolja);
-  console.log(odgovoriMR);
+  const [odgovoriMR, setOdgovoriMR] = useState(JSON.parse(JSON.stringify(mrPocetnaPolja)));
+
+  const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
 
   const povuciPodatke = useCallback(async (url, metod, data = null) => {
     const response = await fetch(
@@ -47,28 +48,28 @@ function App() {
       setOdgovoriUltrazvuk(ultrazvukPocetnaPolja);
     }
     if (vrsta === "mr") {
-      console.log(mrPocetnaPolja);
-      podaci = { ...odgovoriMR };
+      podaci = (JSON.parse(JSON.stringify(odgovoriMR)));
       setOdgovoriMR(mrPocetnaPolja);
     }
 
-    const newData = new URLSearchParams();
-
-    const filteredModuli = podaci.modul.filter(
-      (odgovor) => odgovor.vrijednost !== ""
-    );
-    newData.append("id_forme", podaci.id_forme);
-    //korisnik.nesto
-    newData.append("id_pacijenta", "465820");
-    newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
-
-    const response = await povuciPodatke("napravi_dokument", "POST", newData);
-
-    if (response.ok) {
-      setIdDokumenta(response.data.id["id_dokumenta"]);
-    } else {
-      console.error("Došlo je do greške pri slanju podataka.");
-    }
+    // const newData = new URLSearchParams();
+    //
+    //
+    // const filteredModuli = podaci.modul.filter(
+    //   (odgovor) => odgovor.vrijednost !== ""
+    // );
+    // newData.append("id_forme", podaci.id_forme);
+    // //korisnik.nesto
+    // newData.append("id_pacijenta", "465820");
+    // newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
+    //
+    // const response = await povuciPodatke("napravi_dokument", "POST", newData);
+    //
+    // if (response.ok) {
+    //   setIdDokumenta(response.data.id["id_dokumenta"]);
+    // } else {
+    //   console.error("Došlo je do greške pri slanju podataka.");
+    // }
   };
 
   const fetchDataPacijent = async (jmbg) => {
@@ -85,6 +86,7 @@ function App() {
 
   const odjaviSe = () => {
     setTrenutnaStranicaApp(0);
+    setTrenutnaStranica(0);
     setKorisnik(null);
     setTimeout(() => {
       toast.success("Uspjesno ste se odjavili!", {
@@ -93,17 +95,29 @@ function App() {
     }, 100);
   };
 
-  const automatskaOdjava = (pregled) => {
-    const timeoutId = setTimeout(() => {
-      odjaviSe();
-    }, 20000);
+  const automatskaOdjava = pregled => {
+    const timeoutIdSecond = setTimeout(() => {
+      posaljiPodatke(pregled).then();
+    }, 200);
 
-    posaljiPodatke(pregled).then();
+    if (pregled === 'mr') setPokreniOdjavu(true);
+
+    return () => {
+      clearTimeout(timeoutIdSecond);
+    };
+  };
+
+  useEffect(() => {
+    if (!pokreniOdjavu) return;
+    const timeoutId = setTimeout(() => {
+      if (trenutnaStranica === 33) odjaviSe();
+      else setPokreniOdjavu(false);
+    }, 5000);
 
     return () => {
       clearTimeout(timeoutId);
-    };
-  };
+    }
+  }, [pokreniOdjavu, trenutnaStranica]);
 
   switch (trenutnaStranicaApp) {
     case 0:
