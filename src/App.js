@@ -36,17 +36,19 @@ function App() {
       }
     );
 
-    return {ok: response.ok, data: await response.json()};
-  }, [])
+    return { ok: response.ok, data: await response.json() };
+  }, []);
 
-  const posaljiPodatke = async vrsta => {
+  const posaljiPodatke = async (vrsta) => {
     let podaci = {};
+
     if (vrsta === "ultrazvuk") {
-      podaci = {...odgovoriUltrazvuk};
+      podaci = { ...odgovoriUltrazvuk };
       setOdgovoriUltrazvuk(ultrazvukPocetnaPolja);
     }
     if (vrsta === "mr") {
-      podaci = {...odgovoriMR};
+      console.log(mrPocetnaPolja);
+      podaci = { ...odgovoriMR };
       setOdgovoriMR(mrPocetnaPolja);
     }
 
@@ -57,24 +59,27 @@ function App() {
     );
     newData.append("id_forme", podaci.id_forme);
     //korisnik.nesto
-    newData.append("id_pacijenta", '465820');
+    newData.append("id_pacijenta", "465820");
     newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
 
-    const response = await povuciPodatke('napravi_dokument', 'POST', newData);
+    const response = await povuciPodatke("napravi_dokument", "POST", newData);
 
     if (response.ok) {
-      setIdDokumenta(response.data.id['id_dokumenta']);
+      setIdDokumenta(response.data.id["id_dokumenta"]);
     } else {
       console.error("Došlo je do greške pri slanju podataka.");
     }
   };
 
-  const fetchDataPacijent = async jmbg => {
-    const response = await povuciPodatke(`povuci_pacijenta&jmbg=${jmbg}`, 'GET');
+  const fetchDataPacijent = async (jmbg) => {
+    const response = await povuciPodatke(
+      `povuci_pacijenta&jmbg=${jmbg}`,
+      "GET"
+    );
 
     if (response.ok) {
-      setKorisnik(response.data['lista'][0]);
-      setPol(response.data['lista'][0].pol);
+      setKorisnik(response.data["lista"][0]);
+      setPol(response.data["lista"][0].pol);
     }
   };
 
@@ -86,9 +91,9 @@ function App() {
         duration: 3000,
       });
     }, 100);
-  }
+  };
 
-  const automatskaOdjava = pregled => {
+  const automatskaOdjava = (pregled) => {
     const timeoutId = setTimeout(() => {
       odjaviSe();
     }, 20000);
@@ -98,7 +103,7 @@ function App() {
     return () => {
       clearTimeout(timeoutId);
     };
-  }
+  };
 
   switch (trenutnaStranicaApp) {
     case 0:
@@ -122,8 +127,8 @@ function App() {
                 onClick={() => {
                   setTrenutnaStranicaApp(1);
                 }}
-                text={'PRIJAVITE SE OVDJE'}
-               />
+                text={"PRIJAVITE SE OVDJE"}
+              />
             </div>
           </div>
         </>

@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Timer.module.css";
 import Button from "../UI/Button/Button";
-import toast from "react-hot-toast";
 
 const Timer = ({
   showBackdrop,
   setShowBackdrop,
-  setTrenutnaStranicaApp,
-  setKorisnik,
-  setUser,
   setShowCountdownBackdrop,
   showCountdownBackdrop,
-  izadjiIzPregleda,
+  odjava,
 }) => {
   const [timer, setTimer] = useState(30);
 
@@ -50,7 +46,7 @@ const Timer = ({
       clearTimeout(inactivityTimeout);
       window.removeEventListener("touchstart", handleUserInteraction);
     };
-  }, [showCountdownBackdrop]);
+  }, [showCountdownBackdrop, setShowCountdownBackdrop, setShowBackdrop]);
 
   useEffect(() => {
     let interval;
@@ -62,13 +58,15 @@ const Timer = ({
     }
 
     if (timer === 0) {
-      izadjiIzPregleda();
+      setShowCountdownBackdrop(false);
+      setShowBackdrop(false);
+      odjava();
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [showBackdrop, timer]);
+  }, [showBackdrop, timer, odjava, setShowBackdrop, setShowCountdownBackdrop]);
 
   // console.log(timer);
 
@@ -85,18 +83,10 @@ const Timer = ({
               back
               onClick={() => {
                 setShowBackdrop(false);
-                setTrenutnaStranicaApp(0);
-                setTimeout(() => {
-                  setKorisnik(null);
-                  toast.success("Uspješno ste se odjavili!", {
-                    duration: 3000,
-                  });
-                  setUser("");
-                }, 1000);
+                odjava();
               }}
-            >
-              Ne
-            </Button>
+              text={"NE"}
+            />
             <Button
               next
               onClick={() => {
@@ -104,9 +94,8 @@ const Timer = ({
                 setShowCountdownBackdrop(true);
                 setTimer(30);
               }}
-            >
-              Da
-            </Button>
+              text={"DA"}
+            />
           </div>
         </div>
       )}

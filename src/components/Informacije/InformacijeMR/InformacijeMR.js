@@ -33,9 +33,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -60,16 +59,13 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
               </div>
             </div>
             <div className={styles.buttons}>
-              <Button disabled>
-                <img src={nazad} alt="nazad" />
-              </Button>
+              <Button disabled text={<img src={nazad} alt="nazad" />} />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(1);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -97,9 +93,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -123,16 +118,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(0);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(2);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -160,9 +153,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -190,16 +182,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(1);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(3);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -226,9 +216,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -261,16 +250,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(2);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(4);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -295,9 +282,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -329,16 +315,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(3);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(5);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -363,9 +347,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -398,16 +381,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(4);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(6);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -432,9 +413,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -465,16 +445,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(5);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(7);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -500,9 +478,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -527,16 +504,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(6);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(8);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -562,9 +537,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -588,16 +562,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(7);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(9);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -623,9 +595,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -651,16 +622,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(8);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(10);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -688,9 +657,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -716,16 +684,14 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(9);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
               <Button
                 onClick={() => {
                   setTrenutnaStranica(11);
                 }}
-              >
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={naprijed} alt="naprijed" />}
+              />
             </div>
           </div>
         </>
@@ -753,9 +719,8 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                       setUser("");
                     }, 1000);
                   }}
-                >
-                  <img src={x} alt="x" />
-                </Button>
+                  text={<img src={x} alt="x" />}
+                />
               </div>
             </div>
             <div className={styles.informacijeDivDrugaVarijanta}>
@@ -777,12 +742,10 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                 onClick={() => {
                   setTrenutnaStranica(10);
                 }}
-              >
-                <img src={nazad} alt="nazad" />
-              </Button>
-              <Button disabled>
-                <img src={naprijed} alt="naprijed" />
-              </Button>
+                text={<img src={nazad} alt="nazad" />}
+              />
+
+              <Button disabled text={<img src={naprijed} alt="naprijed" />} />
             </div>
           </div>
         </>

@@ -1,42 +1,61 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 import Button from "../../UI/Button/Button";
 import styles from "./MagnetnaRezonanca.module.css";
 import x from "../../../assets/back.png";
-import {magnetnaPitanja} from "../../../konstante/konstante";
+import { magnetnaPitanja } from "../../../konstante/konstante";
 
-const MagnetPitanja = ({trenutnaStranica, setTrenutnaStranica, korisnik, setKorak, sacuvaj, ocisti, setPrehodniKorak, prethodna, posebniNaslov, odjava, automatskaOdjava}) => {
+const MagnetPitanja = ({
+  trenutnaStranica,
+  setTrenutnaStranica,
+  korisnik,
+  setKorak,
+  sacuvaj,
+  ocisti,
+  setPrehodniKorak,
+  prethodna,
+  posebniNaslov,
+  odjava,
+  automatskaOdjava,
+}) => {
   const trenutnaPitanja = magnetnaPitanja[trenutnaStranica];
 
   useEffect(() => {
-    if (trenutnaPitanja.uslov.pol !== undefined && korisnik.pol !== trenutnaPitanja.uslov.pol) setTrenutnaStranica(trenutnaPitanja.uslov.akoNije)
+    if (
+      trenutnaPitanja.uslov.pol !== undefined &&
+      korisnik.pol !== trenutnaPitanja.uslov.pol
+    )
+      setTrenutnaStranica(trenutnaPitanja.uslov.akoNije);
   }, []);
 
   const vratiNaPocetnu = () => {
     setKorak(trenutnaPitanja.nazad.akoMusko.broj);
     setTrenutnaStranica(0);
     ocisti(74158, 74159);
-  }
+  };
 
   const ocistiVrijednosti = () => {
-    const prethodnaPitanja = prethodna !== null ? magnetnaPitanja[prethodna] : null;
-    const neModul = prethodnaPitanja.ne.odgovor, daModul = prethodnaPitanja.da.odgovor;
+    const prethodnaPitanja =
+      prethodna !== null ? magnetnaPitanja[prethodna] : null;
+    const neModul = prethodnaPitanja.ne.odgovor,
+      daModul = prethodnaPitanja.da.odgovor;
 
     if (daModul !== undefined || neModul !== undefined)
       ocisti(daModul, neModul);
-  }
+  };
 
   const uslovnoVracanjeNaOdabirPola = () => {
     // console.log(korisnik.pol);
     // console.log(trenutnaPitanja.nazad.akoZensko.tip);
     if (korisnik.pol === 1) {
-      if (trenutnaPitanja.nazad.akoMusko.tip === 'korak') vratiNaPocetnu();
-      else setTrenutnaStranica(trenutnaPitanja.nazad.akoMusko.broj)
+      if (trenutnaPitanja.nazad.akoMusko.tip === "korak") vratiNaPocetnu();
+      else setTrenutnaStranica(trenutnaPitanja.nazad.akoMusko.broj);
     } else {
       ocistiVrijednosti();
-      if (trenutnaPitanja.nazad.akoZensko.tip === 'korak') setKorak(trenutnaPitanja.nazad.akoZensko.broj);
-      else setTrenutnaStranica(trenutnaPitanja.nazad.akoZensko.broj)
+      if (trenutnaPitanja.nazad.akoZensko.tip === "korak")
+        setKorak(trenutnaPitanja.nazad.akoZensko.broj);
+      else setTrenutnaStranica(trenutnaPitanja.nazad.akoZensko.broj);
     }
-  }
+  };
 
   const mapaZaNazad = {
     korak: () => {
@@ -49,56 +68,64 @@ const MagnetPitanja = ({trenutnaStranica, setTrenutnaStranica, korisnik, setKora
       setPrehodniKorak(magnetnaPitanja[trenutnaPitanja.nazad.broj].nazad.broj);
       if (prethodna !== null) ocistiVrijednosti();
     },
-    pol: () => uslovnoVracanjeNaOdabirPola()
-  }
+    pol: () => uslovnoVracanjeNaOdabirPola(),
+  };
 
   const daFunkcija = () => {
     if (trenutnaStranica === 32) automatskaOdjava();
     setPrehodniKorak(trenutnaStranica);
     setTrenutnaStranica(trenutnaPitanja.da.akcija);
-    if (trenutnaPitanja.da.odgovor !== undefined) sacuvaj(trenutnaPitanja.da.odgovor);
-  }
+    if (trenutnaPitanja.da.odgovor !== undefined)
+      sacuvaj(trenutnaPitanja.da.odgovor);
+  };
 
   const neFunkcija = () => {
     if (trenutnaStranica === 32) automatskaOdjava();
     if (trenutnaStranica === 33) return odjava();
     setPrehodniKorak(trenutnaStranica);
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);
-    if (trenutnaPitanja.ne.odgovor !== undefined) sacuvaj(trenutnaPitanja.ne.odgovor);
-  }
+    if (trenutnaPitanja.ne.odgovor !== undefined)
+      sacuvaj(trenutnaPitanja.ne.odgovor);
+  };
 
   return (
     <div>
       <Button
-        text={<img alt="x" src={`${x}`}/>}
+        text={<img alt="x" src={`${x}`} />}
         back
         alt
         buttonBack
         disabled={!trenutnaPitanja.nazad.ima}
-        onClick={trenutnaPitanja.nazad.ima ? mapaZaNazad[trenutnaPitanja.nazad.tip] : () => {
-        }}
+        onClick={
+          trenutnaPitanja.nazad.ima
+            ? mapaZaNazad[trenutnaPitanja.nazad.tip]
+            : () => {}
+        }
       />
-      {trenutnaPitanja.uslov.pol === undefined || korisnik.pol === trenutnaPitanja.uslov.pol ? <div className={styles.main_div}>
-        {!trenutnaPitanja.posebniNaslov ? <h1 className={styles.h1_pitanje}>
-          {trenutnaPitanja.pitanje}
-        </h1> : posebniNaslov}
-        <div className={styles.buttons}>
-          <Button
-            text={trenutnaPitanja.ne.tekst}
-            back
-            disabled={!trenutnaPitanja.ne.ima}
-            onClick={trenutnaPitanja.ne.ima ? neFunkcija : () => {
-            }}
-          />
-          <Button
-            text={trenutnaPitanja.da.tekst}
-            next
-            disabled={!trenutnaPitanja.da.ima}
-            onClick={trenutnaPitanja.da.ima ? daFunkcija : () => {
-            }}
-          />
+      {trenutnaPitanja.uslov.pol === undefined ||
+      korisnik.pol === trenutnaPitanja.uslov.pol ? (
+        <div className={styles.main_div}>
+          {!trenutnaPitanja.posebniNaslov ? (
+            <h1 className={styles.h1_pitanje}>{trenutnaPitanja.pitanje}</h1>
+          ) : (
+            posebniNaslov
+          )}
+          <div className={styles.buttons}>
+            <Button
+              text={trenutnaPitanja.ne.tekst}
+              back
+              disabled={!trenutnaPitanja.ne.ima}
+              onClick={trenutnaPitanja.ne.ima ? neFunkcija : () => {}}
+            />
+            <Button
+              text={trenutnaPitanja.da.tekst}
+              next
+              disabled={!trenutnaPitanja.da.ima}
+              onClick={trenutnaPitanja.da.ima ? daFunkcija : () => {}}
+            />
+          </div>
         </div>
-      </div> : null}
+      ) : null}
     </div>
   );
 };
