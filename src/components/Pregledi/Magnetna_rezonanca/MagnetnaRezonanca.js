@@ -3,6 +3,7 @@ import styles from "./MagnetnaRezonanca.module.css";
 import MagnetPitanja from "./MagnetPitanja";
 import MagnetSlider from "./MagnetSlider";
 import QrKodStranica from "./QrKodStranica";
+import MagnetPotpis from "./MagnetPotpis";
 
 const MagnetnaRezonanca = ({
   odjava,
@@ -12,6 +13,7 @@ const MagnetnaRezonanca = ({
   setTrenutnaStranica,
   trenutnaStranica,
   automatskaOdjava,
+  idDokumenta,
 }) => {
   const [eGFR, setEGFR] = useState(null);
   const [eGFRPrikaz, setEGFRPrikaz] = useState(null);
@@ -99,7 +101,7 @@ const MagnetnaRezonanca = ({
     });
   };
 
-  const posebniNaslov33Pitanje = (
+  const posebniNaslov34Pitanje = (
     <>
       <h1 className={styles.h1}>
         USPJEŠNO STE PRIJAVLJENI NA PREGLED, SAČEKAJTE DA VAS PROZOVEMO
@@ -116,7 +118,13 @@ const MagnetnaRezonanca = ({
       korisnik={korisnik}
       setEGFR={setEGFR}
     />
-  ) : trenutnaStranica === 34 ? (
+  ) : trenutnaStranica === 33 ? (
+    <MagnetPotpis
+      setTrenutnaStranica={setTrenutnaStranica}
+      setKorak={setKorak}
+      idDokumenta={idDokumenta}
+    />
+  ) : trenutnaStranica === 35 ? (
     <QrKodStranica
       setTrenutnaStranica={setTrenutnaStranica}
       setKorak={setKorak}
@@ -127,7 +135,7 @@ const MagnetnaRezonanca = ({
       trenutnaStranica={trenutnaStranica}
       odjava={odjava}
       posebniNaslov={
-        trenutnaStranica === 22 ? eGFRPrikaz : posebniNaslov33Pitanje
+        trenutnaStranica === 22 ? eGFRPrikaz : posebniNaslov34Pitanje
       }
       ocisti={ponistiVrijednosti}
       sacuvaj={postaviOdgovor}

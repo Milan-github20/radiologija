@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from "react";
+import React, { useCallback, useEffect } from "react";
 import "./App.css";
 import { useState } from "react";
 import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
@@ -21,19 +21,23 @@ function App() {
   const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(
     ultrazvukPocetnaPolja
   );
-  const [odgovoriMR, setOdgovoriMR] = useState(JSON.parse(JSON.stringify(mrPocetnaPolja)));
+  const [odgovoriMR, setOdgovoriMR] = useState(
+    JSON.parse(JSON.stringify(mrPocetnaPolja))
+  );
 
   const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
 
   const povuciPodatke = useCallback(async (url, metod, data = null) => {
     const response = await fetch(
       `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=${url}`,
+      // `../rpc/radiologija.cfc?method=${url}`,
       {
         method: metod,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: data,
+        // mode: "no-cors",
       }
     );
 
@@ -48,28 +52,28 @@ function App() {
       setOdgovoriUltrazvuk(ultrazvukPocetnaPolja);
     }
     if (vrsta === "mr") {
-      podaci = (JSON.parse(JSON.stringify(odgovoriMR)));
+      podaci = JSON.parse(JSON.stringify(odgovoriMR));
       setOdgovoriMR(mrPocetnaPolja);
     }
 
-    // const newData = new URLSearchParams();
-    //
-    //
-    // const filteredModuli = podaci.modul.filter(
-    //   (odgovor) => odgovor.vrijednost !== ""
-    // );
-    // newData.append("id_forme", podaci.id_forme);
-    // //korisnik.nesto
-    // newData.append("id_pacijenta", "465820");
-    // newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
-    //
-    // const response = await povuciPodatke("napravi_dokument", "POST", newData);
-    //
-    // if (response.ok) {
-    //   setIdDokumenta(response.data.id["id_dokumenta"]);
-    // } else {
-    //   console.error("Došlo je do greške pri slanju podataka.");
-    // }
+    const newData = new URLSearchParams();
+
+    const filteredModuli = podaci.modul.filter(
+      (odgovor) => odgovor.vrijednost !== ""
+    );
+    newData.append("id_forme", podaci.id_forme);
+    //korisnik.id
+    // newData.append("id_pacijenta", korisnik.id);
+    newData.append("id_pacijenta", "465820");
+    newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
+
+    const response = await povuciPodatke("napravi_dokument", "POST", newData);
+
+    if (response.ok) {
+      setIdDokumenta(response.data.id["id_dokumenta"]);
+    } else {
+      console.error("Došlo je do greške pri slanju podataka.");
+    }
   };
 
   const fetchDataPacijent = async (jmbg) => {
@@ -95,12 +99,13 @@ function App() {
     }, 100);
   };
 
-  const automatskaOdjava = pregled => {
+  const automatskaOdjava = (pregled) => {
+    console.log("Uradio sam");
     const timeoutIdSecond = setTimeout(() => {
       posaljiPodatke(pregled).then();
     }, 200);
 
-    if (pregled === 'mr') setPokreniOdjavu(true);
+    if (pregled === "mr") setPokreniOdjavu(true);
 
     return () => {
       clearTimeout(timeoutIdSecond);
@@ -110,13 +115,13 @@ function App() {
   useEffect(() => {
     if (!pokreniOdjavu) return;
     const timeoutId = setTimeout(() => {
-      if (trenutnaStranica === 33) odjaviSe();
+      if (trenutnaStranica === 34) odjaviSe();
       else setPokreniOdjavu(false);
-    }, 5000);
+    }, 20000);
 
     return () => {
       clearTimeout(timeoutId);
-    }
+    };
   }, [pokreniOdjavu, trenutnaStranica]);
 
   switch (trenutnaStranicaApp) {
@@ -165,6 +170,7 @@ function App() {
             setTrenutnaStranica={setTrenutnaStranica}
             trenutnaStranica={trenutnaStranica}
             setOdgovoriMR={setOdgovoriMR}
+            idDokumenta={idDokumenta}
           />
         </div>
       );
@@ -176,6 +182,7 @@ function App() {
             setTrenutnaStranicaApp={setTrenutnaStranicaApp}
             idDokumenta={idDokumenta}
             setKorisnik={setKorisnik}
+            setTrenutnaStranica={setTrenutnaStranica}
           />
         </div>
       );

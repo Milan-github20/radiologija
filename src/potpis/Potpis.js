@@ -5,9 +5,10 @@ import Button from "../components/UI/Button/Button";
 import toast from "react-hot-toast";
 
 const Potpis = ({
-  setTrenutnaStranicaApp,
+  // setTrenutnaStranicaApp,
   idDokumenta,
-  setKorisnik,
+  // setKorisnik,
+  setTrenutnaStranica,
 }) => {
   const [sign, setSign] = useState();
 
@@ -22,12 +23,14 @@ const Potpis = ({
     try {
       const response = await fetch(
         `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=dodaj_potpis`,
+        // `../rpc/radiologija.cfc?method=dodaj_potpis`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: newData,
+          // mode: "no-cors",
         }
       );
 
@@ -49,22 +52,21 @@ const Potpis = ({
     if (sign.isEmpty()) {
       toast.error("Polje za potpis ne smije biti prazno!");
     } else {
+      console.log("Potpis uradio");
       await dodajPotpis();
-      setKorisnik(null);
-      setTimeout(() => {
-        toast.success("Uspjesno ste se odjavili i sačuvali potpis!", {
-          duration: 3000,
-        });
-      }, 1000);
-      setTrenutnaStranicaApp(0);
+      setTrenutnaStranica(34);
+      // setKorisnik(null);
+      // setTimeout(() => {
+      //   toast.success("Uspjesno ste se odjavili i sačuvali potpis!", {
+      //     duration: 3000,
+      //   });
+      // }, 1000);
+      // setTrenutnaStranicaApp(0);
     }
   };
 
   return (
     <div className={styles.mainPotpis}>
-      <Button onClick={() => setTrenutnaStranicaApp(0)} potpisButtonNazad>
-        Nazad
-      </Button>
       <div>
         <SignatureCanvas
           canvasProps={{
@@ -76,13 +78,22 @@ const Potpis = ({
         />
       </div>
       <div className={styles.buttons}>
+        <Button text={"OCISTI"} back onClick={handleOcisti} />
+        <Button
+          text={"NASTAVI"}
+          next
+          // disabled={sign.isEmpty()}
+          onClick={handleSacuvaj}
+        />
+      </div>
+      {/* <div className={styles.buttons}>
         <button onClick={handleOcisti} className={styles.ocisti}>
           Ocisti
         </button>
         <button onClick={handleSacuvaj} className={styles.sacuvaj}>
           Sacuvaj potpis
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -76,7 +76,7 @@ const MagnetPitanja = ({
   };
 
   const neFunkcija = () => {
-    if (trenutnaStranica === 33) return odjava();
+    if (trenutnaStranica === 34) return odjava();
     setPrehodniKorak(trenutnaStranica);
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);
     if (trenutnaPitanja.ne.odgovor !== undefined)

@@ -38,6 +38,7 @@ const PocetnaStranica = ({
   povuciPodatke,
   povuciKorisnika,
   automatskaOdjava,
+  idDokumenta,
 }) => {
   const [korak, setKorak] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
@@ -67,16 +68,16 @@ const PocetnaStranica = ({
 
   return (
     <>
-      {/*<Timer*/}
-      {/*  showBackdrop={showBackdrop}*/}
-      {/*  setShowBackdrop={setShowBackdrop}*/}
-      {/*  setTrenutnaStranicaApp={setTrenutnaStranicaApp}*/}
-      {/*  setKorisnik={setKorisnik}*/}
-      {/*  setUser={setUser}*/}
-      {/*  setShowCountdownBackdrop={setShowCountdownBackdrop}*/}
-      {/*  showCountdownBackdrop={showCountdownBackdrop}*/}
-      {/*  odjava={odjava}*/}
-      {/*/>*/}
+      {/* <Timer
+        showBackdrop={showBackdrop}
+        setShowBackdrop={setShowBackdrop}
+        setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+        setKorisnik={setKorisnik}
+        setUser={setUser}
+        setShowCountdownBackdrop={setShowCountdownBackdrop}
+        showCountdownBackdrop={showCountdownBackdrop}
+        odjava={odjava}
+      /> */}
 
       <div className={styles.mainDiv}>
         {!korisnik ? (
@@ -184,6 +185,7 @@ const PocetnaStranica = ({
               setTrenutnaStranica={setTrenutnaStranica}
               trenutnaStranica={trenutnaStranica}
               automatskaOdjava={automatskaOdjava}
+              idDokumenta={idDokumenta}
             />
           </>
         ) : korak === 6 ? (
