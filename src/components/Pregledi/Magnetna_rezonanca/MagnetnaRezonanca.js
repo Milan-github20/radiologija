@@ -53,7 +53,8 @@ const MagnetnaRezonanca = ({
       }
     }
 
-    setEGFRTekst(`${message[0]} ${message[1]}`);
+    setEGFRTekst(`Vrijednost eGFR-a iznosi: ${eGFR.toFixed(2)}
+${message[0]} ${message[1]}`);
 
     setEGFRPrikaz(
       <h1 className={styles.h1_slajder}>
@@ -123,11 +124,13 @@ const MagnetnaRezonanca = ({
       setTrenutnaStranica={setTrenutnaStranica}
       setKorak={setKorak}
       idDokumenta={idDokumenta}
+      korisnik={korisnik}
     />
   ) : trenutnaStranica === 35 ? (
     <QrKodStranica
       setTrenutnaStranica={setTrenutnaStranica}
       setKorak={setKorak}
+      odjava={odjava}
     />
   ) : (
     <MagnetPitanja

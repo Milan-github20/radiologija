@@ -5,7 +5,7 @@ import x from "../../../assets/back.png";
 import info from "../../../assets/info.png";
 import qrCode from "../../../assets/Untitled 1.png";
 
-const QrKodStranica = ({ setTrenutnaStranica, setKorak }) => {
+const QrKodStranica = ({ setTrenutnaStranica, setKorak, odjava }) => {
   return (
     <div>
       <Button
@@ -13,7 +13,8 @@ const QrKodStranica = ({ setTrenutnaStranica, setKorak }) => {
         alt
         buttonBack
         onClick={() => {
-          setTrenutnaStranica(34);
+          odjava();
+          // setTrenutnaStranica(34);
         }}
         text={<img alt="x" src={`${x}`} />}
       />

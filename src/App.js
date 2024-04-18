@@ -29,7 +29,7 @@ function App() {
 
   const povuciPodatke = useCallback(async (url, metod, data = null) => {
     const response = await fetch(
-      `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=${url}`,
+      `http://10.8.0.14:8080/kis/rpc/radiologija_lokal.cfc?method=${url}`,
       // `../rpc/radiologija.cfc?method=${url}`,
       {
         method: metod,
@@ -92,6 +92,7 @@ function App() {
     setTrenutnaStranicaApp(0);
     setTrenutnaStranica(0);
     setKorisnik(null);
+    setOdgovoriMR(mrPocetnaPolja);
     setTimeout(() => {
       toast.success("Uspjesno ste se odjavili!", {
         duration: 3000,

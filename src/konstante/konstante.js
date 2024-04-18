@@ -366,8 +366,8 @@ export const magnetnaPitanja = [
     uslov: {},
     pitanje: (
       <>
-        Jeste li već imali neki pregled koji je zahtijevao upotrebu kontrastnih
-        sredstava?
+        Jeste li već imali neki radiološki pregled koji je zahtijevao upotrebu
+        kontrastnih sredstava?
       </>
     ),
     da: { ima: true, tekst: "DA", akcija: 8, odgovor: 74198 },

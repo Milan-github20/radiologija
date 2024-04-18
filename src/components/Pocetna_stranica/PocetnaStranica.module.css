@@ -62,7 +62,8 @@
   font-size: 4vw;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  /* justify-content: space-evenly; */
   width: 80%;
 }
 
@@ -271,4 +272,8 @@ body.show-backdrop {
   width: 100px;
   height: 100px;
   font-size: 24px;
+}
+
+.selected_option_magnet {
+  margin: none;
 }

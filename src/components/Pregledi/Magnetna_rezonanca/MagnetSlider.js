@@ -1,22 +1,27 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import Button from "../../UI/Button/Button";
 import x from "../../../assets/back.png";
 import styles from "./MagnetnaRezonanca.module.css";
 import minus from "../../../assets/minus.png";
-import {Slider} from "@mui/material";
+import { Slider } from "@mui/material";
 import plus from "../../../assets/plus.png";
 import dayjs from "dayjs";
 
-const MagnetSlider = ({setTrenutnaStranica, korisnik, setEGFR}) => {
+const MagnetSlider = ({ setTrenutnaStranica, korisnik, setEGFR }) => {
   const [sliderValue, setSliderValue] = useState(100);
 
-  const dodajOduzmi = val => {
-    if (val === 1 && sliderValue < 200) setSliderValue(prevState => prevState + 1);
-    if (val === -1 && sliderValue > 0) setSliderValue(prevState => prevState - 1);
-  }
+  const dodajOduzmi = (val) => {
+    if (val === 1 && sliderValue < 200)
+      setSliderValue((prevState) => prevState + 1);
+    if (val === -1 && sliderValue > 0)
+      setSliderValue((prevState) => prevState - 1);
+  };
 
   const calculateEGFR = () => {
-    const godine = korisnik && korisnik['datum_rodjenja'] ? dayjs().diff(dayjs(korisnik['datum_rodjenja']), 'y') : null;
+    const godine =
+      korisnik && korisnik["datum_rodjenja"]
+        ? dayjs().diff(dayjs(korisnik["datum_rodjenja"]), "y")
+        : null;
     const creatinine = sliderValue * 0.011312;
     let vrijednostEGFR = 175 * creatinine ** -1.154 * godine ** -0.203;
 
@@ -31,16 +36,15 @@ const MagnetSlider = ({setTrenutnaStranica, korisnik, setEGFR}) => {
     if (sliderValue !== 0) setTrenutnaStranica(22);
   };
 
-
   const daFunkcija = () => {
     calculateEGFR();
     handleNastaviClick();
-  }
+  };
 
   return (
     <div>
       <Button
-        text={<img alt="x" src={`${x}`}/>}
+        text={<img alt="x" src={`${x}`} />}
         back
         alt
         buttonBack
@@ -52,14 +56,14 @@ const MagnetSlider = ({setTrenutnaStranica, korisnik, setEGFR}) => {
         </h1>
         <div className={styles.slider}>
           <button onClick={() => dodajOduzmi(-1)}>
-            <img alt="minus" src={`${minus}`}/>
+            <img alt="minus" src={`${minus}`} />
           </button>
 
           <Slider
             min={0}
             max={200}
             value={sliderValue}
-            onChange={ev => setSliderValue(+ev.target.value)}
+            onChange={(ev) => setSliderValue(+ev.target.value)}
             className={styles.slider_prevuci}
             sx={{
               "& .MuiSlider-thumb": {
@@ -75,19 +79,15 @@ const MagnetSlider = ({setTrenutnaStranica, korisnik, setEGFR}) => {
             }}
           />
           <button onClick={() => dodajOduzmi(1)}>
-            <img alt="minus" src={`${plus}`}/>
+            <img alt="minus" src={`${plus}`} />
           </button>
         </div>
         <p className={styles.slider_p}>{sliderValue} μmol/l </p>
 
         <div className={styles.buttons}>
+          <Button text={"NE"} back disabled />
           <Button
-            text={'NE'}
-            back
-            disabled
-          />
-          <Button
-            text={'NASTAVI'}
+            text={"NASTAVI"}
             next
             disabled={sliderValue === 0}
             onClick={sliderValue > 0 ? daFunkcija : () => {}}

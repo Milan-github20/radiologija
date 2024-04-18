@@ -7,7 +7,12 @@ import x from "../../../assets/close.png";
 import toast from "react-hot-toast";
 import HeaderInformacije from "../../UI/Header_Informacije/Header_Informacije";
 
-const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
+const InformacijeMR = ({
+  setKorisnik,
+  setTrenutnaStranicaApp,
+  setUser,
+  odjava,
+}) => {
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
   switch (trenutnaStranica) {
@@ -24,14 +29,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -84,14 +82,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -144,14 +135,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -207,14 +191,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -273,14 +250,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -338,14 +308,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -404,14 +367,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -469,14 +425,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -528,14 +477,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -586,14 +528,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -648,14 +583,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />
@@ -710,14 +638,7 @@ const InformacijeMR = ({ setKorisnik, setTrenutnaStranicaApp, setUser }) => {
                   alt
                   back
                   onClick={() => {
-                    setTrenutnaStranicaApp(0);
-                    setTimeout(() => {
-                      toast.success("Uspjesno ste se odjavili!", {
-                        duration: 3000,
-                      });
-                      setKorisnik(null);
-                      setUser("");
-                    }, 1000);
+                    odjava();
                   }}
                   text={<img src={x} alt="x" />}
                 />

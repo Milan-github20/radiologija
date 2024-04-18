@@ -41,7 +41,7 @@ const PocetnaStranica = ({
   idDokumenta,
 }) => {
   const [korak, setKorak] = useState(0);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("1");
   const [epizoda, setEpizoda] = useState([]);
 
   const [showBackdrop, setShowBackdrop] = useState(false);
@@ -117,7 +117,7 @@ const PocetnaStranica = ({
 
               <Button
                 next
-                disabled={!selectedOption}
+                // disabled={!selectedOption}
                 onClick={() =>
                   selectedOption === "4" ? setKorak(6) : setKorak(1)
                 }
@@ -213,6 +213,7 @@ const PocetnaStranica = ({
             setKorisnik={setKorisnik}
             korak={korak}
             setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+            odjava={odjava}
           />
         ) : korak === 8 ? (
           <InformacijeUltrazvuk

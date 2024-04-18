@@ -4,12 +4,7 @@ import styles from "./Potpis.module.css";
 import Button from "../components/UI/Button/Button";
 import toast from "react-hot-toast";
 
-const Potpis = ({
-  // setTrenutnaStranicaApp,
-  idDokumenta,
-  // setKorisnik,
-  setTrenutnaStranica,
-}) => {
+const Potpis = ({ idDokumenta, setTrenutnaStranica, korisnik }) => {
   const [sign, setSign] = useState();
 
   const dodajPotpis = async () => {
@@ -17,12 +12,13 @@ const Potpis = ({
 
     const newData = new URLSearchParams();
     newData.append("id_dokumenta", idDokumenta);
+    // newData.append("id_pacijenta", korisnik.id);
     newData.append("id_pacijenta", 465820);
     newData.append("potpis", JSON.stringify(potpisUrl));
 
     try {
       const response = await fetch(
-        `http://10.8.0.14:8080/kis/rpc/radiologija.cfc?method=dodaj_potpis`,
+        `http://10.8.0.14:8080/kis/rpc/radiologija_lokal.cfc?method=dodaj_potpis`,
         // `../rpc/radiologija.cfc?method=dodaj_potpis`,
         {
           method: "POST",
@@ -79,21 +75,8 @@ const Potpis = ({
       </div>
       <div className={styles.buttons}>
         <Button text={"OCISTI"} back onClick={handleOcisti} />
-        <Button
-          text={"NASTAVI"}
-          next
-          // disabled={sign.isEmpty()}
-          onClick={handleSacuvaj}
-        />
+        <Button text={"NASTAVI"} next onClick={handleSacuvaj} />
       </div>
-      {/* <div className={styles.buttons}>
-        <button onClick={handleOcisti} className={styles.ocisti}>
-          Ocisti
-        </button>
-        <button onClick={handleSacuvaj} className={styles.sacuvaj}>
-          Sacuvaj potpis
-        </button>
-      </div> */}
     </div>
   );
 };
