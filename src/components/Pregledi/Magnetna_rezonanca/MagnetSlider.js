@@ -7,7 +7,7 @@ import { Slider } from "@mui/material";
 import plus from "../../../assets/plus.png";
 import dayjs from "dayjs";
 
-const MagnetSlider = ({ setTrenutnaStranica, korisnik, setEGFR }) => {
+const MagnetSlider = ({ setTrenutnaStranica, korisnik, setEGFR, setTokKoraka }) => {
   const [sliderValue, setSliderValue] = useState(100);
 
   const dodajOduzmi = (val) => {
@@ -41,6 +41,11 @@ const MagnetSlider = ({ setTrenutnaStranica, korisnik, setEGFR }) => {
     handleNastaviClick();
   };
 
+  const nazad = () => {
+    setTrenutnaStranica(19);
+    setTokKoraka(prevState => prevState.slice(0, -1));
+  }
+
   return (
     <div>
       <Button
@@ -48,7 +53,7 @@ const MagnetSlider = ({ setTrenutnaStranica, korisnik, setEGFR }) => {
         back
         alt
         buttonBack
-        onClick={() => setTrenutnaStranica(19)}
+        onClick={nazad}
       />
       <div className={styles.main_div}>
         <h1 className={styles.h1_slajder}>

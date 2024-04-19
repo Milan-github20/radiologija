@@ -11,10 +11,10 @@ const MagnetPitanja = ({
   setKorak,
   sacuvaj,
   ocisti,
-  setPrehodniKorak,
-  prethodna,
   posebniNaslov,
   odjava,
+  tokKoraka,
+  setTokKoraka,
 }) => {
   const trenutnaPitanja = magnetnaPitanja[trenutnaStranica];
 
@@ -27,14 +27,13 @@ const MagnetPitanja = ({
   }, []);
 
   const vratiNaPocetnu = () => {
-    setKorak(trenutnaPitanja.nazad.akoMusko.broj);
+    setKorak(1);
     setTrenutnaStranica(0);
     ocisti(74158, 74159);
   };
 
   const ocistiVrijednosti = () => {
-    const prethodnaPitanja =
-      prethodna !== null ? magnetnaPitanja[prethodna] : null;
+    const prethodnaPitanja = magnetnaPitanja[tokKoraka[tokKoraka.length - 1]];
     const neModul = prethodnaPitanja.ne.odgovor,
       daModul = prethodnaPitanja.da.odgovor;
 
@@ -42,34 +41,39 @@ const MagnetPitanja = ({
       ocisti(daModul, neModul);
   };
 
-  const uslovnoVracanjeNaOdabirPola = () => {
-    if (korisnik.pol === 1) {
-      if (trenutnaPitanja.nazad.akoMusko.tip === "korak") vratiNaPocetnu();
-      else setTrenutnaStranica(trenutnaPitanja.nazad.akoMusko.broj);
-    } else {
-      ocistiVrijednosti();
-      if (trenutnaPitanja.nazad.akoZensko.tip === "korak")
-        setKorak(trenutnaPitanja.nazad.akoZensko.broj);
-      else setTrenutnaStranica(trenutnaPitanja.nazad.akoZensko.broj);
-    }
-  };
-
-  const mapaZaNazad = {
-    korak: () => {
-      setKorak(trenutnaPitanja.nazad.broj);
-      setPrehodniKorak(magnetnaPitanja[trenutnaPitanja.nazad.broj].nazad.broj);
-      if (prethodna !== null) ocistiVrijednosti();
-    },
-    stranica: () => {
-      setTrenutnaStranica(trenutnaPitanja.nazad.broj);
-      setPrehodniKorak(magnetnaPitanja[trenutnaPitanja.nazad.broj].nazad.broj);
-      if (prethodna !== null) ocistiVrijednosti();
-    },
-    pol: () => uslovnoVracanjeNaOdabirPola(),
-  };
+  // const uslovnoVracanjeNaOdabirPola = () => {
+  //   if (korisnik.pol === 1) {
+  //     if (trenutnaPitanja.nazad.akoMusko.tip === "korak") vratiNaPocetnu();
+  //     else setTrenutnaStranica(trenutnaPitanja.nazad.akoMusko.broj);
+  //   } else {
+  //     if (!trenutnaPitanja.nazad.akoZensko) vratiNaPocetnu();
+  //     else {
+  //       ocistiVrijednosti();
+  //       if (trenutnaPitanja.nazad.akoZensko.tip === "korak")
+  //         setKorak(trenutnaPitanja.nazad.akoZensko.broj);
+  //       else setTrenutnaStranica(trenutnaPitanja.nazad.akoZensko.broj);
+  //     }
+  //   }
+  // };
+  //
+  // const mapaZaNazad = {
+  //   korak: () => {
+  //     setKorak(trenutnaPitanja.nazad.broj);
+  //     // setPrehodniKorak(magnetnaPitanja[trenutnaPitanja.nazad.broj].nazad.broj);
+  //     setTokKoraka(prevState => prevState.slice(0, -1));
+  //     if (tokKoraka[tokKoraka.length - 1] !== null) ocistiVrijednosti();
+  //   },
+  //   stranica: () => {
+  //     setTrenutnaStranica(tokKoraka[tokKoraka.length - 1]);
+  //     // setPrehodniKorak(magnetnaPitanja[prethodna].nazad.broj);
+  //     setTokKoraka(prevState => prevState.slice(0, -1));
+  //     if (tokKoraka[tokKoraka.length - 1] !== null) ocistiVrijednosti();
+  //   },
+  //   pol: () => uslovnoVracanjeNaOdabirPola(),
+  // };
 
   const daFunkcija = () => {
-    setPrehodniKorak(trenutnaStranica);
+    setTokKoraka(prevState => ([...prevState, trenutnaStranica]));
     setTrenutnaStranica(trenutnaPitanja.da.akcija);
     if (trenutnaPitanja.da.odgovor !== undefined)
       sacuvaj(trenutnaPitanja.da.odgovor);
@@ -77,11 +81,21 @@ const MagnetPitanja = ({
 
   const neFunkcija = () => {
     if (trenutnaStranica === 34) return odjava();
-    setPrehodniKorak(trenutnaStranica);
+    setTokKoraka(prevState => ([...prevState, trenutnaStranica]))
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);
     if (trenutnaPitanja.ne.odgovor !== undefined)
       sacuvaj(trenutnaPitanja.ne.odgovor);
   };
+
+  const vratiNazad = () => {
+    if (trenutnaStranica === 0 || trenutnaStranica === 5 && korisnik.pol ===1) vratiNaPocetnu();
+    else {
+      setTrenutnaStranica(tokKoraka[tokKoraka.length - 1]);
+      setTokKoraka(prevState => prevState.slice(0, -1));
+      if (tokKoraka.length > 0) ocistiVrijednosti();
+    }
+  }
+
 
   return (
     <div>
@@ -91,11 +105,7 @@ const MagnetPitanja = ({
         alt
         buttonBack
         disabled={!trenutnaPitanja.nazad.ima}
-        onClick={
-          trenutnaPitanja.nazad.ima
-            ? mapaZaNazad[trenutnaPitanja.nazad.tip]
-            : () => {}
-        }
+        onClick={vratiNazad}
       />
       {trenutnaPitanja.uslov.pol === undefined ||
       korisnik.pol === trenutnaPitanja.uslov.pol ? (

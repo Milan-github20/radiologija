@@ -18,8 +18,6 @@ function App() {
 
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
-  console.log(trenutnaStranica);
-
   const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(
     ultrazvukPocetnaPolja
   );
@@ -27,7 +25,7 @@ function App() {
     JSON.parse(JSON.stringify(mrPocetnaPolja))
   );
 
-  console.log(odgovoriMR);
+  console.log(odgovoriMR.modul);
 
   const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
 
@@ -60,24 +58,25 @@ function App() {
       setOdgovoriMR(mrPocetnaPolja);
     }
 
-    const newData = new URLSearchParams();
+    // const newData = new URLSearchParams();
 
     const filteredModuli = podaci.modul.filter(
       (odgovor) => odgovor.vrijednost !== ""
     );
-    newData.append("id_forme", podaci.id_forme);
-    //korisnik.id
-    // newData.append("id_pacijenta", korisnik.id);
-    newData.append("id_pacijenta", "465820");
-    newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
-
-    const response = await povuciPodatke("napravi_dokument", "POST", newData);
-
-    if (response.ok) {
-      setIdDokumenta(response.data.id["id_dokumenta"]);
-    } else {
-      console.error("Došlo je do greške pri slanju podataka.");
-    }
+    console.log(filteredModuli);
+    // newData.append("id_forme", podaci.id_forme);
+    // //korisnik.id
+    // // newData.append("id_pacijenta", korisnik.id);
+    // newData.append("id_pacijenta", "465820");
+    // newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
+    //
+    // const response = await povuciPodatke("napravi_dokument", "POST", newData);
+    //
+    // if (response.ok) {
+    //   setIdDokumenta(response.data.id["id_dokumenta"]);
+    // } else {
+    //   console.error("Došlo je do greške pri slanju podataka.");
+    // }
   };
 
   const fetchDataPacijent = async (jmbg) => {

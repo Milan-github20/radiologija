@@ -18,7 +18,7 @@ const MagnetnaRezonanca = ({
   const [eGFR, setEGFR] = useState(null);
   const [eGFRPrikaz, setEGFRPrikaz] = useState(null);
   const [eGFRTekst, setEGFRTekst] = useState(null);
-  const [prethodniKorak, setPrethodniKorak] = useState(null);
+  const [tokKoraka, setTokKoraka] = useState([]);
 
   useEffect(() => {
     postaviOdgovor(korisnik.pol === 0 ? 74159 : 74158);
@@ -118,6 +118,7 @@ ${message[0]} ${message[1]}`);
       setTrenutnaStranica={setTrenutnaStranica}
       korisnik={korisnik}
       setEGFR={setEGFR}
+      setTokKoraka={setTokKoraka}
     />
   ) : trenutnaStranica === 33 ? (
     <MagnetPotpis
@@ -134,7 +135,6 @@ ${message[0]} ${message[1]}`);
     />
   ) : (
     <MagnetPitanja
-      setPrehodniKorak={setPrethodniKorak}
       trenutnaStranica={trenutnaStranica}
       odjava={odjava}
       posebniNaslov={
@@ -145,7 +145,8 @@ ${message[0]} ${message[1]}`);
       setTrenutnaStranica={setTrenutnaStranica}
       korisnik={korisnik}
       setKorak={setKorak}
-      prethodna={prethodniKorak}
+      tokKoraka={tokKoraka}
+      setTokKoraka={setTokKoraka}
     />
   );
 };

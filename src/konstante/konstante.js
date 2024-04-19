@@ -117,82 +117,102 @@ export const mrPocetnaPolja = {
     {
       id: 74204,
       vrijednost: "",
+      odgovor: "Gusenje",
     },
     {
       id: 74205,
       vrijednost: "",
+      odgovor: "Nije gusenje",
     },
     {
       id: 74206,
       vrijednost: "",
+      odgovor: "Osip",
     },
     {
       id: 74207,
       vrijednost: "",
+      odgovor: "Nije osip",
     },
     {
       id: 74208,
       vrijednost: "",
+      odgovor: "Grcevi",
     },
     {
       id: 74209,
       vrijednost: "",
+      odgovor: "Nisu grcevi",
     },
     {
       id: 74210,
       vrijednost: "",
+      odgovor: "Nesvjestica",
     },
     {
       id: 74211,
       vrijednost: "",
+      odgovor: "Nije nesvjestica",
     },
     {
       id: 74212,
       vrijednost: "",
+      odgovor: "Astma",
     },
     {
       id: 74213,
       vrijednost: "",
+      odgovor: "Nije astma",
     },
     {
       id: 74214,
       vrijednost: "",
+      odgovor: "Alergija",
     },
     {
       id: 74215,
       vrijednost: "",
+      odgovor: "Nije alergija",
     },
     {
       id: 74216,
       vrijednost: "",
+      odgovor: "Bubrezi",
     },
     {
       id: 74217,
       vrijednost: "",
+      odgovor: "Nisu bubrezi",
     },
     {
       id: 74218,
       vrijednost: "",
+      odgovor: "Stitna",
     },
     {
       id: 74219,
       vrijednost: "",
+      odgovor: "Nije stitna",
     },
     {
       id: 74220,
       vrijednost: "",
+      odgovor: "Secer",
     },
     {
       id: 74221,
       vrijednost: "",
+      odgovor: "Nije secer",
     },
     {
       id: 74222,
       vrijednost: "",
+      odgovor: "Operacije",
     },
     {
       id: 74223,
       vrijednost: "",
+      odgovor: "Nema operacije",
     },
     {
       id: 74169,
@@ -296,7 +316,7 @@ export const magnetnaPitanja = [
     pitanje: "Da li ste trudni?",
     da: { ima: true, tekst: "DA", akcija: 1, odgovor: 74173 },
     ne: { ima: true, tekst: "NE", akcija: 2, odgovor: 74174 },
-    nazad: { ima: true, tip: "korak", broj: 1 },
+    nazad: { ima: true, tip: "pol", broj: 1 },
   },
   {
     id: 1,
@@ -374,7 +394,7 @@ export const magnetnaPitanja = [
     ),
     da: { ima: true, tekst: "DA", akcija: 8, odgovor: 74198 },
     ne: { ima: true, tekst: "NE", akcija: 14, odgovor: 74199 },
-    nazad: { ima: true, tip: "stranica", broj: 6 },
+    nazad: { ima: true, tip: "stranica", broj: 5 },
   },
   {
     id: 19,
