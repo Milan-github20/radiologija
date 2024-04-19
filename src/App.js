@@ -18,12 +18,16 @@ function App() {
 
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
+  console.log(trenutnaStranica);
+
   const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(
     ultrazvukPocetnaPolja
   );
   const [odgovoriMR, setOdgovoriMR] = useState(
     JSON.parse(JSON.stringify(mrPocetnaPolja))
   );
+
+  console.log(odgovoriMR);
 
   const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
 

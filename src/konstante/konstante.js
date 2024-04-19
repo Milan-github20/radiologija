@@ -242,10 +242,12 @@ export const mrPocetnaPolja = {
     {
       id: 74234,
       vrijednost: "",
+      odgovor: "implant",
     },
     {
       id: 74235,
       vrijednost: "",
+      odgovor: "nema implant",
     },
     {
       id: 74236,
@@ -535,8 +537,18 @@ for (let i = 23, j = 0; i < 29; i++, j++) {
         {ugradjenPitanja[j]}
       </>
     ),
-    da: { ima: true, tekst: "DA", akcija: i + 1, odgovor: 74224 + j * 2 },
-    ne: { ima: true, tekst: "NE", akcija: i + 1, odgovor: 74225 + j * 2 },
+    da: {
+      ima: true,
+      tekst: "DA",
+      akcija: i + 1,
+      odgovor: 74224 + j * 2,
+    },
+    ne: {
+      ima: true,
+      tekst: "NE",
+      akcija: i === 28 ? i + 2 : i + 1,
+      odgovor: 74225 + j * 2,
+    },
     nazad: { ima: true, tip: "stranica", broj: i - 1 },
   });
 }
