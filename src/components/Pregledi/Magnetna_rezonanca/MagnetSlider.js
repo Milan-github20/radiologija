@@ -7,7 +7,14 @@ import { Slider } from "@mui/material";
 import plus from "../../../assets/plus.png";
 import dayjs from "dayjs";
 
-const MagnetSlider = ({ setTrenutnaStranica, korisnik, setEGFR, setTokKoraka }) => {
+const MagnetSlider = ({
+  setTrenutnaStranica,
+  korisnik,
+  setEGFR,
+  setTokKoraka,
+  tokKoraka,
+  ocistiVrijednosti,
+}) => {
   const [sliderValue, setSliderValue] = useState(100);
 
   const dodajOduzmi = (val) => {
@@ -41,10 +48,21 @@ const MagnetSlider = ({ setTrenutnaStranica, korisnik, setEGFR, setTokKoraka }) 
     handleNastaviClick();
   };
 
+  // const ocistiVrijednosti = () => {
+  //   const prethodnaPitanja = magnetnaPitanja[tokKoraka[tokKoraka.length - 1]];
+  //   const neModul = prethodnaPitanja.ne.odgovor,
+  //     daModul = prethodnaPitanja.da.odgovor;
+
+  //   if (daModul !== undefined || neModul !== undefined)
+  //     ocisti(daModul, neModul);
+  // };
+
   const nazad = () => {
-    setTrenutnaStranica(19);
-    setTokKoraka(prevState => prevState.slice(0, -1));
-  }
+    // setTrenutnaStranica(19);
+    setTrenutnaStranica(tokKoraka[tokKoraka.length - 1]);
+    setTokKoraka((prevState) => prevState.slice(0, -1));
+    if (tokKoraka.length > 0) ocistiVrijednosti();
+  };
 
   return (
     <div>

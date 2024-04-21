@@ -4,6 +4,7 @@ import MagnetPitanja from "./MagnetPitanja";
 import MagnetSlider from "./MagnetSlider";
 import QrKodStranica from "./QrKodStranica";
 import MagnetPotpis from "./MagnetPotpis";
+import { magnetnaPitanja } from "../../../konstante/konstante";
 
 const MagnetnaRezonanca = ({
   odjava,
@@ -113,12 +114,24 @@ ${message[0]} ${message[1]}`);
     </>
   );
 
+  const ocistiVrijednosti = () => {
+    const prethodnaPitanja = magnetnaPitanja[tokKoraka[tokKoraka.length - 1]];
+    const neModul = prethodnaPitanja.ne.odgovor,
+      daModul = prethodnaPitanja.da.odgovor;
+
+    if (daModul !== undefined || neModul !== undefined)
+      ponistiVrijednosti(daModul, neModul);
+  };
+
   return trenutnaStranica === 21 ? (
     <MagnetSlider
       setTrenutnaStranica={setTrenutnaStranica}
       korisnik={korisnik}
       setEGFR={setEGFR}
       setTokKoraka={setTokKoraka}
+      tokKoraka={tokKoraka}
+      ocisti={ponistiVrijednosti}
+      ocistiVrijednosti={ocistiVrijednosti}
     />
   ) : trenutnaStranica === 33 ? (
     <MagnetPotpis
@@ -147,6 +160,7 @@ ${message[0]} ${message[1]}`);
       setKorak={setKorak}
       tokKoraka={tokKoraka}
       setTokKoraka={setTokKoraka}
+      ocistiVrijednosti={ocistiVrijednosti}
     />
   );
 };

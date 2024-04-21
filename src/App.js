@@ -25,9 +25,9 @@ function App() {
     JSON.parse(JSON.stringify(mrPocetnaPolja))
   );
 
-  console.log(odgovoriMR.modul);
-
   const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
+
+  console.log(odgovoriMR);
 
   const povuciPodatke = useCallback(async (url, metod, data = null) => {
     const response = await fetch(
@@ -58,25 +58,24 @@ function App() {
       setOdgovoriMR(mrPocetnaPolja);
     }
 
-    // const newData = new URLSearchParams();
+    const newData = new URLSearchParams();
 
     const filteredModuli = podaci.modul.filter(
       (odgovor) => odgovor.vrijednost !== ""
     );
-    console.log(filteredModuli);
-    // newData.append("id_forme", podaci.id_forme);
-    // //korisnik.id
-    // // newData.append("id_pacijenta", korisnik.id);
-    // newData.append("id_pacijenta", "465820");
-    // newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
-    //
-    // const response = await povuciPodatke("napravi_dokument", "POST", newData);
-    //
-    // if (response.ok) {
-    //   setIdDokumenta(response.data.id["id_dokumenta"]);
-    // } else {
-    //   console.error("Došlo je do greške pri slanju podataka.");
-    // }
+    newData.append("id_forme", podaci.id_forme);
+    //korisnik.id
+    // newData.append("id_pacijenta", korisnik.id);
+    newData.append("id_pacijenta", "465820");
+    newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
+
+    const response = await povuciPodatke("napravi_dokument", "POST", newData);
+
+    if (response.ok) {
+      setIdDokumenta(response.data.id["id_dokumenta"]);
+    } else {
+      console.error("Došlo je do greške pri slanju podataka.");
+    }
   };
 
   const fetchDataPacijent = async (jmbg) => {
@@ -95,7 +94,8 @@ function App() {
     setTrenutnaStranicaApp(0);
     setTrenutnaStranica(0);
     setKorisnik(null);
-    setOdgovoriMR(mrPocetnaPolja);
+    setOdgovoriMR(JSON.parse(JSON.stringify(mrPocetnaPolja)));
+
     setTimeout(() => {
       toast.success("Uspjesno ste se odjavili!", {
         duration: 3000,
@@ -104,7 +104,6 @@ function App() {
   };
 
   const automatskaOdjava = (pregled) => {
-    console.log("Uradio sam");
     const timeoutIdSecond = setTimeout(() => {
       posaljiPodatke(pregled).then();
     }, 200);

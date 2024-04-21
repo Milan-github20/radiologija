@@ -15,6 +15,7 @@ const MagnetPitanja = ({
   odjava,
   tokKoraka,
   setTokKoraka,
+  ocistiVrijednosti,
 }) => {
   const trenutnaPitanja = magnetnaPitanja[trenutnaStranica];
 
@@ -32,14 +33,14 @@ const MagnetPitanja = ({
     ocisti(74158, 74159);
   };
 
-  const ocistiVrijednosti = () => {
-    const prethodnaPitanja = magnetnaPitanja[tokKoraka[tokKoraka.length - 1]];
-    const neModul = prethodnaPitanja.ne.odgovor,
-      daModul = prethodnaPitanja.da.odgovor;
+  // const ocistiVrijednosti = () => {
+  //   const prethodnaPitanja = magnetnaPitanja[tokKoraka[tokKoraka.length - 1]];
+  //   const neModul = prethodnaPitanja.ne.odgovor,
+  //     daModul = prethodnaPitanja.da.odgovor;
 
-    if (daModul !== undefined || neModul !== undefined)
-      ocisti(daModul, neModul);
-  };
+  //   if (daModul !== undefined || neModul !== undefined)
+  //     ocisti(daModul, neModul);
+  // };
 
   // const uslovnoVracanjeNaOdabirPola = () => {
   //   if (korisnik.pol === 1) {
@@ -73,7 +74,7 @@ const MagnetPitanja = ({
   // };
 
   const daFunkcija = () => {
-    setTokKoraka(prevState => ([...prevState, trenutnaStranica]));
+    setTokKoraka((prevState) => [...prevState, trenutnaStranica]);
     setTrenutnaStranica(trenutnaPitanja.da.akcija);
     if (trenutnaPitanja.da.odgovor !== undefined)
       sacuvaj(trenutnaPitanja.da.odgovor);
@@ -81,21 +82,24 @@ const MagnetPitanja = ({
 
   const neFunkcija = () => {
     if (trenutnaStranica === 34) return odjava();
-    setTokKoraka(prevState => ([...prevState, trenutnaStranica]))
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);
+    setTokKoraka((prevState) => [...prevState, trenutnaStranica]);
     if (trenutnaPitanja.ne.odgovor !== undefined)
       sacuvaj(trenutnaPitanja.ne.odgovor);
   };
 
   const vratiNazad = () => {
-    if (trenutnaStranica === 0 || trenutnaStranica === 5 && korisnik.pol ===1) vratiNaPocetnu();
+    if (
+      trenutnaStranica === 0 ||
+      (trenutnaStranica === 5 && korisnik.pol === 1)
+    )
+      vratiNaPocetnu();
     else {
       setTrenutnaStranica(tokKoraka[tokKoraka.length - 1]);
-      setTokKoraka(prevState => prevState.slice(0, -1));
+      setTokKoraka((prevState) => prevState.slice(0, -1));
       if (tokKoraka.length > 0) ocistiVrijednosti();
     }
-  }
-
+  };
 
   return (
     <div>
