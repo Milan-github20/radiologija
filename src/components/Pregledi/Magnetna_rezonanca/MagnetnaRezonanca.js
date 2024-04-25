@@ -25,6 +25,8 @@ const MagnetnaRezonanca = ({
     postaviOdgovor(korisnik.pol === 0 ? 74159 : 74158);
   }, []);
 
+  // console.log(trenutnaStranica);
+
   useEffect(() => {
     if (eGFR === null) return;
     const mapaPoruka = {

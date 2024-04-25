@@ -27,7 +27,7 @@ function App() {
 
   const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
 
-  console.log(odgovoriMR);
+  // console.log(odgovoriMR);
 
   const povuciPodatke = useCallback(async (url, metod, data = null) => {
     const response = await fetch(
@@ -108,6 +108,8 @@ function App() {
       posaljiPodatke(pregled).then();
     }, 200);
 
+    console.log("poslao sam podatke");
+
     if (pregled === "mr") setPokreniOdjavu(true);
 
     return () => {
@@ -132,6 +134,7 @@ function App() {
       return (
         <>
           <HotToast />
+          <div className="verzija">2.0</div>
           <div className="divApp">
             <div className="bodyDiv">
               <div className="divLogo">

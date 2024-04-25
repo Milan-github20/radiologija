@@ -127,7 +127,7 @@ const PocetnaStranica = ({
           </>
         ) : korak === 1 ? ( // Prikazuje se samo na drugom koraku
           <>
-            <Header korisnik={korisnik} headerAlt />
+            <Header korisnik={korisnik} headerAlt odjava={odjava} />
             <PotvrdaPol
               pol={pol === 1 ? "muškog" : "ženskog"}
               polAlt={pol === 1 ? "ženskog" : "muškog"}
@@ -176,7 +176,7 @@ const PocetnaStranica = ({
           </>
         ) : korak === 5 ? (
           <>
-            <HeaderKontrastInfo korisnik={korisnik} />
+            <HeaderKontrastInfo korisnik={korisnik} odjava={odjava} />
             <MagnetnaRezonanca
               odjava={odjava}
               korisnik={korisnik}

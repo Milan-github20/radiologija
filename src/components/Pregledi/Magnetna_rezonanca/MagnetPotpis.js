@@ -12,9 +12,10 @@ const MagnetPotpis = ({ setTrenutnaStranica, idDokumenta, korisnik }) => {
         back
         alt
         buttonBack
-        onClick={() => {
-          setTrenutnaStranica(32);
-        }}
+        disabled2
+        // onClick={() => {
+        //   setTrenutnaStranica(32);
+        // }}
         text={<img alt="x" src={`${x}`} />}
       />
       <div className={styles.main_div}>

@@ -19,3 +19,9 @@
 .header h1 {
   font-size: 45px;
 }
+
+.button {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}

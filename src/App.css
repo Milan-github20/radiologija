@@ -42,6 +42,11 @@ body {
     url("./fonts/WarnockPro-Regular.otf") format("opentype");
 }
 
+.verzija {
+  position: absolute;
+  font-size: 12px;
+}
+
 /* body::before {
   content: "";
   display: flex;

@@ -12,9 +12,10 @@ const QrKodStranica = ({ setTrenutnaStranica, setKorak, odjava }) => {
         back
         alt
         buttonBack
+        // disabled2
         onClick={() => {
-          odjava();
-          // setTrenutnaStranica(34);
+          // odjava();
+          setTrenutnaStranica(34);
         }}
         text={<img alt="x" src={`${x}`} />}
       />

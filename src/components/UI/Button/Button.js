@@ -2,19 +2,19 @@ import React from "react";
 import styles from "./Button.module.css";
 
 const Button = ({
-                  alt,
-                  disabled,
-                  buttonBack,
-                  back,
-                  potpisButtonNazad,
-                  potpisButton,
-                  onClick,
-                  style,
-                  next,
-                  info,
-                  disabled2,
-                  text
-                }) => {
+  alt,
+  disabled,
+  buttonBack,
+  back,
+  potpisButtonNazad,
+  potpisButton,
+  onClick,
+  style,
+  next,
+  info,
+  disabled2,
+  text,
+}) => {
   return (
     <button
       className={`
