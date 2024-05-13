@@ -39,6 +39,8 @@ const PocetnaStranica = ({
   povuciKorisnika,
   automatskaOdjava,
   idDokumenta,
+  setSign,
+  sign,
 }) => {
   const [korak, setKorak] = useState(0);
   const [selectedOption, setSelectedOption] = useState("1");
@@ -190,6 +192,8 @@ const PocetnaStranica = ({
               trenutnaStranica={trenutnaStranica}
               automatskaOdjava={automatskaOdjava}
               idDokumenta={idDokumenta}
+              setSign={setSign}
+              sign={sign}
             />
           </>
         ) : korak === 6 ? (

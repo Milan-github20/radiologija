@@ -15,6 +15,8 @@ const MagnetnaRezonanca = ({
   trenutnaStranica,
   automatskaOdjava,
   idDokumenta,
+  setSign,
+  sign,
 }) => {
   const [eGFR, setEGFR] = useState(null);
   const [eGFRPrikaz, setEGFRPrikaz] = useState(null);
@@ -83,7 +85,7 @@ ${message[0]} ${message[1]}`);
       return prethodnaVrijednost;
     });
 
-    if (id === 74240 || id === 74241) automatskaOdjava("mr");
+    // if (id === 74240 || id === 74241) automatskaOdjava("mr");
   };
 
   //poništi odgovor za oba modula vezana za pitanje
@@ -141,6 +143,9 @@ ${message[0]} ${message[1]}`);
       setKorak={setKorak}
       idDokumenta={idDokumenta}
       korisnik={korisnik}
+      setSign={setSign}
+      sign={sign}
+      automatskaOdjava={automatskaOdjava}
     />
   ) : trenutnaStranica === 36 ? (
     <QrKodStranica

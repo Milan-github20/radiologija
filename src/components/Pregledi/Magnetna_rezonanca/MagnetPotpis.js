@@ -5,7 +5,14 @@ import x from "../../../assets/back.png";
 import info from "../../../assets/info.png";
 import Potpis from "../../../potpis/Potpis";
 
-const MagnetPotpis = ({ setTrenutnaStranica, idDokumenta, korisnik }) => {
+const MagnetPotpis = ({
+  setTrenutnaStranica,
+  idDokumenta,
+  korisnik,
+  setSign,
+  sign,
+  automatskaOdjava,
+}) => {
   return (
     <div>
       <Button
@@ -27,6 +34,9 @@ const MagnetPotpis = ({ setTrenutnaStranica, idDokumenta, korisnik }) => {
           setTrenutnaStranica={setTrenutnaStranica}
           idDokumenta={idDokumenta}
           korisnik={korisnik}
+          setSign={setSign}
+          sign={sign}
+          automatskaOdjava={automatskaOdjava}
         />
       </div>
     </div>

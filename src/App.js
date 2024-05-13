@@ -14,7 +14,7 @@ function App() {
   const [pol, setPol] = useState(null);
   const [korisnik, setKorisnik] = useState(null);
   const [trenutnaStranicaApp, setTrenutnaStranicaApp] = useState(0);
-  const [idDokumenta, setIdDokumenta] = useState();
+  // const [idDokumenta, setIdDokumenta] = useState();
 
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
@@ -27,7 +27,40 @@ function App() {
 
   const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
 
-  // console.log(odgovoriMR);
+  const [sign, setSign] = useState();
+
+  const dodajPotpis = async (dokumentId) => {
+    const potpisUrl = sign.toDataURL("image/png");
+
+    const newData = new URLSearchParams();
+    newData.append("id_dokumenta", dokumentId);
+    // newData.append("id_pacijenta", korisnik.id);
+    newData.append("id_pacijenta", 465820);
+    newData.append("potpis", JSON.stringify(potpisUrl));
+
+    try {
+      const response = await fetch(
+        `http://10.8.0.14:8080/kis/rpc/radiologija_lokal.cfc?method=dodaj_potpis`,
+        // `../rpc/radiologija.cfc?method=dodaj_potpis`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: newData,
+          // mode: "no-cors",
+        }
+      );
+
+      if (response.ok) {
+        console.log("Podaci uspešno poslati!");
+      } else {
+        console.error("Došlo je do greške pri slanju podataka.");
+      }
+    } catch (error) {
+      console.error("Došlo je do greške pri slanju podataka:", error);
+    }
+  };
 
   const povuciPodatke = useCallback(async (url, metod, data = null) => {
     const response = await fetch(
@@ -72,8 +105,7 @@ function App() {
     const response = await povuciPodatke("napravi_dokument", "POST", newData);
 
     if (response.ok) {
-      setIdDokumenta(response.data.id["id_dokumenta"]);
-      console.log(response.data.id["id_dokumenta"]);
+      await dodajPotpis(response.data.id["id_dokumenta"]);
     } else {
       console.error("Došlo je do greške pri slanju podataka.");
     }
@@ -108,8 +140,6 @@ function App() {
     const timeoutIdSecond = setTimeout(() => {
       posaljiPodatke(pregled).then();
     }, 200);
-
-    console.log("poslao sam podatke");
 
     if (pregled === "mr") setPokreniOdjavu(true);
 
@@ -177,7 +207,9 @@ function App() {
             setTrenutnaStranica={setTrenutnaStranica}
             trenutnaStranica={trenutnaStranica}
             setOdgovoriMR={setOdgovoriMR}
-            idDokumenta={idDokumenta}
+            // idDokumenta={idDokumenta}
+            setSign={setSign}
+            sign={sign}
           />
         </div>
       );
@@ -185,12 +217,12 @@ function App() {
       return (
         <div className="App">
           <HotToast />
-          <Potpis
+          {/* <Potpis
             setTrenutnaStranicaApp={setTrenutnaStranicaApp}
             idDokumenta={idDokumenta}
             setKorisnik={setKorisnik}
             setTrenutnaStranica={setTrenutnaStranica}
-          />
+          /> */}
         </div>
       );
     default:
