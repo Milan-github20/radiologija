@@ -40,7 +40,7 @@ const MagnetSlider = ({
   };
 
   const handleNastaviClick = () => {
-    if (sliderValue !== 0) setTrenutnaStranica(22);
+    if (sliderValue !== 0) setTrenutnaStranica(23);
   };
 
   const daFunkcija = () => {

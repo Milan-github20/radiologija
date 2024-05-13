@@ -73,6 +73,7 @@ function App() {
 
     if (response.ok) {
       setIdDokumenta(response.data.id["id_dokumenta"]);
+      console.log(response.data.id["id_dokumenta"]);
     } else {
       console.error("Došlo je do greške pri slanju podataka.");
     }
@@ -120,7 +121,7 @@ function App() {
   useEffect(() => {
     if (!pokreniOdjavu) return;
     const timeoutId = setTimeout(() => {
-      if (trenutnaStranica === 34) odjaviSe();
+      if (trenutnaStranica === 35) odjaviSe();
       else setPokreniOdjavu(false);
     }, 20000);
 

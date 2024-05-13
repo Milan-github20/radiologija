@@ -176,7 +176,11 @@ const PocetnaStranica = ({
           </>
         ) : korak === 5 ? (
           <>
-            <HeaderKontrastInfo korisnik={korisnik} odjava={odjava} />
+            <HeaderKontrastInfo
+              korisnik={korisnik}
+              odjava={odjava}
+              trenutnaStranica={trenutnaStranica}
+            />
             <MagnetnaRezonanca
               odjava={odjava}
               korisnik={korisnik}

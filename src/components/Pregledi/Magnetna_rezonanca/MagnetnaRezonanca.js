@@ -125,7 +125,7 @@ ${message[0]} ${message[1]}`);
       ponistiVrijednosti(daModul, neModul);
   };
 
-  return trenutnaStranica === 21 ? (
+  return trenutnaStranica === 22 ? (
     <MagnetSlider
       setTrenutnaStranica={setTrenutnaStranica}
       korisnik={korisnik}
@@ -135,14 +135,14 @@ ${message[0]} ${message[1]}`);
       ocisti={ponistiVrijednosti}
       ocistiVrijednosti={ocistiVrijednosti}
     />
-  ) : trenutnaStranica === 33 ? (
+  ) : trenutnaStranica === 34 ? (
     <MagnetPotpis
       setTrenutnaStranica={setTrenutnaStranica}
       setKorak={setKorak}
       idDokumenta={idDokumenta}
       korisnik={korisnik}
     />
-  ) : trenutnaStranica === 35 ? (
+  ) : trenutnaStranica === 36 ? (
     <QrKodStranica
       setTrenutnaStranica={setTrenutnaStranica}
       setKorak={setKorak}
@@ -153,7 +153,7 @@ ${message[0]} ${message[1]}`);
       trenutnaStranica={trenutnaStranica}
       odjava={odjava}
       posebniNaslov={
-        trenutnaStranica === 22 ? eGFRPrikaz : posebniNaslov34Pitanje
+        trenutnaStranica === 23 ? eGFRPrikaz : posebniNaslov34Pitanje
       }
       ocisti={ponistiVrijednosti}
       sacuvaj={postaviOdgovor}

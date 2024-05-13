@@ -306,6 +306,16 @@ export const mrPocetnaPolja = {
       vrijednost: "",
       odgovor: "Zensko",
     },
+    {
+      id: 75509,
+      vrijednost: "",
+      odgovor: "ima kreatinin",
+    },
+    {
+      id: 75510,
+      vrijednost: "",
+      odgovor: "nema kreatinin",
+    },
   ],
 };
 
@@ -419,20 +429,28 @@ export const magnetnaPitanja = [
   },
   {
     id: 21,
-    ne: { odgovor: 74169 },
-    da: {},
-    nazad: { broj: 19 },
+    uslov: {},
+    pitanje: <>Da li imate svjež nalaz serumskog kreatinina?</>,
+    da: { ima: true, tekst: "DA", akcija: 22, odgovor: 75509 },
+    ne: { ima: true, tekst: "NE", akcija: 24, odgovor: 75510 },
+    nazad: { ima: true, tip: "stranica", broj: 19 },
   },
   {
     id: 22,
+    ne: { odgovor: 74169 },
+    da: {},
+    nazad: { broj: 21 },
+  },
+  {
+    id: 23,
     uslov: {},
-    da: { ima: true, tekst: "NASTAVI", akcija: 23, odgovor: 74169 },
+    da: { ima: true, tekst: "NASTAVI", akcija: 24, odgovor: 74169 },
     ne: { ima: false, tekst: "NE", akcija: undefined },
-    nazad: { ima: true, tip: "stranica", broj: 21 },
+    nazad: { ima: true, tip: "stranica", broj: 22 },
     posebniNaslov: true,
   },
   {
-    id: 29,
+    id: 30,
     uslov: {},
     pitanje: (
       <>
@@ -440,46 +458,46 @@ export const magnetnaPitanja = [
         imate ugrađen materijal.
       </>
     ),
-    da: { ima: true, tekst: "NASTAVI", akcija: 30 },
+    da: { ima: true, tekst: "NASTAVI", akcija: 31 },
     ne: { ima: false, tekst: "NE", akcija: undefined },
-    nazad: { ima: true, tip: "stranica", broj: 28 },
-  },
-  {
-    id: 30,
-    uslov: {},
-    pitanje: <>Da li ste imali povredu oka metalnim predmetom?</>,
-    da: { ima: true, tekst: "DA", akcija: 31, odgovor: 74236 },
-    ne: { ima: true, tekst: "NE", akcija: 31, odgovor: 74237 },
-    nazad: { ima: true, tip: "stranica", broj: 28 },
+    nazad: { ima: true, tip: "stranica", broj: 29 },
   },
   {
     id: 31,
     uslov: {},
-    pitanje: (
-      <>Da li u svom tijelu imate metalna strana tijela (metak , geler…)?</>
-    ),
-    da: { ima: true, tekst: "DA", akcija: 32, odgovor: 74238 },
-    ne: { ima: true, tekst: "NE", akcija: 32, odgovor: 74239 },
-    nazad: { ima: true, tip: "stranica", broj: 30 },
+    pitanje: <>Da li ste imali povredu oka metalnim predmetom?</>,
+    da: { ima: true, tekst: "DA", akcija: 32, odgovor: 74236 },
+    ne: { ima: true, tekst: "NE", akcija: 32, odgovor: 74237 },
+    nazad: { ima: true, tip: "stranica", broj: 29 },
   },
   {
     id: 32,
     uslov: {},
-    pitanje: <>Da li ste tetovirani?</>,
-    da: { ima: true, tekst: "DA", akcija: 33, odgovor: 74240 },
-    ne: { ima: true, tekst: "NE", akcija: 33, odgovor: 74241 },
+    pitanje: (
+      <>Da li u svom tijelu imate metalna strana tijela (metak , geler…)?</>
+    ),
+    da: { ima: true, tekst: "DA", akcija: 33, odgovor: 74238 },
+    ne: { ima: true, tekst: "NE", akcija: 33, odgovor: 74239 },
     nazad: { ima: true, tip: "stranica", broj: 31 },
   },
   {
     id: 33,
-    ne: {},
-    da: { ima: true, tekst: "NASTAVI", akcija: 34 },
+    uslov: {},
+    pitanje: <>Da li ste tetovirani?</>,
+    da: { ima: true, tekst: "DA", akcija: 34, odgovor: 74240 },
+    ne: { ima: true, tekst: "NE", akcija: 34, odgovor: 74241 },
     nazad: { ima: true, tip: "stranica", broj: 32 },
   },
   {
     id: 34,
+    ne: {},
+    da: { ima: true, tekst: "NASTAVI", akcija: 35 },
+    nazad: { ima: true, tip: "stranica", broj: 33 },
+  },
+  {
+    id: 35,
     uslov: {},
-    da: { ima: true, tekst: "DA", akcija: 35 },
+    da: { ima: true, tekst: "DA", akcija: 36 },
     ne: { ima: true, tekst: "NE" },
     nazad: { ima: false },
     posebniNaslov: true,
@@ -546,7 +564,7 @@ const ugradjenPitanja = [
   "Bilo kakav drugi implant, metalne pločice, šipke ili zavrtnje?",
 ];
 
-for (let i = 23, j = 0; i < 29; i++, j++) {
+for (let i = 24, j = 0; i < 30; i++, j++) {
   magnetnaPitanja.push({
     id: i,
     uslov: {},
@@ -566,7 +584,7 @@ for (let i = 23, j = 0; i < 29; i++, j++) {
     ne: {
       ima: true,
       tekst: "NE",
-      akcija: i === 28 ? i + 2 : i + 1,
+      akcija: i === 29 ? i + 2 : i + 1,
       odgovor: 74225 + j * 2,
     },
     nazad: { ima: true, tip: "stranica", broj: i - 1 },

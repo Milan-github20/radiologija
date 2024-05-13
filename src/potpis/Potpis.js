@@ -50,7 +50,7 @@ const Potpis = ({ idDokumenta, setTrenutnaStranica, korisnik }) => {
     } else {
       console.log("Potpis uradio");
       await dodajPotpis();
-      setTrenutnaStranica(34);
+      setTrenutnaStranica(35);
       // setKorisnik(null);
       // setTimeout(() => {
       //   toast.success("Uspjesno ste se odjavili i sačuvali potpis!", {

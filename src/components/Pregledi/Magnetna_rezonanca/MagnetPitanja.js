@@ -81,7 +81,7 @@ const MagnetPitanja = ({
   };
 
   const neFunkcija = () => {
-    if (trenutnaStranica === 34) return odjava();
+    if (trenutnaStranica === 35) return odjava();
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);
     setTokKoraka((prevState) => [...prevState, trenutnaStranica]);
     if (trenutnaPitanja.ne.odgovor !== undefined)
