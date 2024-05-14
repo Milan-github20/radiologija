@@ -6,6 +6,7 @@ import minus from "../../../assets/minus.png";
 import { Slider } from "@mui/material";
 import plus from "../../../assets/plus.png";
 import dayjs from "dayjs";
+import { magnetnaPitanja } from "../../../konstante/konstante";
 
 const MagnetSlider = ({
   setTrenutnaStranica,
@@ -14,8 +15,12 @@ const MagnetSlider = ({
   setTokKoraka,
   tokKoraka,
   ocistiVrijednosti,
+  trenutnaStranica,
+  sacuvaj,
 }) => {
   const [sliderValue, setSliderValue] = useState(100);
+
+  const trenutnaPitanja = magnetnaPitanja[trenutnaStranica];
 
   const dodajOduzmi = (val) => {
     if (val === 1 && sliderValue < 200)
@@ -40,8 +45,17 @@ const MagnetSlider = ({
   };
 
   const handleNastaviClick = () => {
-    if (sliderValue !== 0) setTrenutnaStranica(23);
+    if (sliderValue !== 0) {
+      setTokKoraka((prevState) => [...prevState, trenutnaStranica]);
+      setTrenutnaStranica(trenutnaPitanja.da.akcija);
+      // if (trenutnaPitanja.da.odgovor !== undefined)
+      //   sacuvaj(trenutnaPitanja.da.odgovor);
+    }
   };
+
+  // const daFunkcija = () => {
+
+  // };
 
   const daFunkcija = () => {
     calculateEGFR();
@@ -58,7 +72,6 @@ const MagnetSlider = ({
   // };
 
   const nazad = () => {
-    // setTrenutnaStranica(19);
     setTrenutnaStranica(tokKoraka[tokKoraka.length - 1]);
     setTokKoraka((prevState) => prevState.slice(0, -1));
     if (tokKoraka.length > 0) ocistiVrijednosti();

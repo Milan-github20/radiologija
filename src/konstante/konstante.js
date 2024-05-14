@@ -437,8 +437,8 @@ export const magnetnaPitanja = [
   },
   {
     id: 22,
-    ne: { odgovor: 74169 },
-    da: {},
+    ne: {},
+    da: { ima: true, tekst: "NASTAVI", akcija: 23 },
     nazad: { broj: 21 },
   },
   {

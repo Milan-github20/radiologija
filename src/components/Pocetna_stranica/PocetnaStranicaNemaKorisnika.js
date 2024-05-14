@@ -1,11 +1,16 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from "react";
 import styles from "./PocetnaStranica.module.css";
 import Button from "../UI/Button/Button";
 import back from "../../assets/back.png";
 import logo from "../../assets/ukcrs-removebg-preview.png";
 import Keyboard from "react-simple-keyboard";
+import toast from "react-hot-toast";
+import HotToast from "../HotToast/HotToast";
 
-const PocetnaStranicaNemaKorisnika = ({setTrenutnaStranicaApp, povuciKorisnika}) => {
+const PocetnaStranicaNemaKorisnika = ({
+  setTrenutnaStranicaApp,
+  povuciKorisnika,
+}) => {
   const [layout, setLayout] = useState("default");
   const [input, setInput] = useState("");
   const keyboard = useRef();
@@ -20,19 +25,22 @@ const PocetnaStranicaNemaKorisnika = ({setTrenutnaStranicaApp, povuciKorisnika})
 
   const onKeyPress = (button) => {
     if (button === "{shift}" || button === "{lock}") handleShift();
-    if (button === "{enter}" && input.trim().length === 13) {
-      potvrdiUnos();
-    }
+    if (button === "{enter}") potvrdiUnos();
   };
 
   const onChangeInput = (event) => {
     const input = event.target.value;
     setInput(input.trim());
-    keyboard.current['setInput'](input);
+    keyboard.current["setInput"](input);
   };
 
   const potvrdiUnos = () => {
-    povuciKorisnika(input);
+    const trimmedInput = input.trim();
+    if (trimmedInput.length !== 13) {
+      toast.error("Matični broj mora imati tačno 13 cifara.");
+    } else {
+      povuciKorisnika(trimmedInput);
+    }
   };
 
   const handleShift = () => {
@@ -42,23 +50,22 @@ const PocetnaStranicaNemaKorisnika = ({setTrenutnaStranicaApp, povuciKorisnika})
 
   return (
     <>
+      <HotToast />
       <div className={styles.nazadDiv}>
         <Button
           back
           alt
           onClick={() => setTrenutnaStranicaApp(0)}
-          text={<img src={`${back}`} alt="back"/>}
+          text={<img src={`${back}`} alt="back" />}
         />
       </div>
 
       <div className={styles.bodyDiv}>
         <div className={styles.divLogo}>
-          <img className={styles.logo} src={`${logo}`} alt="logo UKC"/>
+          <img className={styles.logo} src={`${logo}`} alt="logo UKC" />
         </div>
         <div className={styles.divTekst}>
-          <h1 className={styles.divApp_h1}>
-            Unesite matični broj...
-          </h1>
+          <h1 className={styles.divApp_h1}>Unesite matični broj...</h1>
         </div>
       </div>
 

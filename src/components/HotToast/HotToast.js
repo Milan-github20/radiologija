@@ -20,7 +20,7 @@ const HotToast = () => {
         error: {
           position: "top-right",
           style: {
-            height: 170,
+            height: 140,
             width: 700,
             fontSize: 40,
             margin: 50,

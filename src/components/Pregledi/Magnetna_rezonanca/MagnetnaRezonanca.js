@@ -23,6 +23,9 @@ const MagnetnaRezonanca = ({
   const [eGFRTekst, setEGFRTekst] = useState(null);
   const [tokKoraka, setTokKoraka] = useState([]);
 
+  console.log(tokKoraka);
+  console.log(trenutnaStranica);
+
   useEffect(() => {
     postaviOdgovor(korisnik.pol === 0 ? 74159 : 74158);
   }, []);
@@ -136,6 +139,8 @@ ${message[0]} ${message[1]}`);
       tokKoraka={tokKoraka}
       ocisti={ponistiVrijednosti}
       ocistiVrijednosti={ocistiVrijednosti}
+      trenutnaStranica={trenutnaStranica}
+      sacuvaj={postaviOdgovor}
     />
   ) : trenutnaStranica === 34 ? (
     <MagnetPotpis

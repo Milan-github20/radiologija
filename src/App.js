@@ -17,8 +17,6 @@ function App() {
 
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
 
-  console.log(trenutnaStranica);
-
   const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(
     ultrazvukPocetnaPolja
   );
@@ -100,7 +98,7 @@ function App() {
     newData.append("id_forme", podaci.id_forme);
     //korisnik.id
     // newData.append("id_pacijenta", korisnik.id);
-    newData.append("id_pacijenta", "465820");
+    newData.append("id_pacijenta", 465820);
     newData.append("moduli", JSON.stringify({ modul: filteredModuli }));
 
     const response = await povuciPodatke("napravi_dokument", "POST", newData);
@@ -119,8 +117,12 @@ function App() {
     );
 
     if (response.ok) {
-      setKorisnik(response.data["lista"][0]);
-      setPol(response.data["lista"][0].pol);
+      if (response.data["lista"] && response.data["lista"].length > 0) {
+        setKorisnik(response.data["lista"][0]);
+        setPol(response.data["lista"][0].pol);
+      } else {
+        toast.error("Ne postoji karton pacijenta!");
+      }
     }
   };
 
