@@ -5,7 +5,6 @@ import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
 import Button from "./components/UI/Button/Button";
 import logo from "./assets/ukcrs-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
-import Potpis from "./potpis/Potpis";
 import { mrPocetnaPolja, ultrazvukPocetnaPolja } from "./konstante/konstante";
 import toast from "react-hot-toast";
 
@@ -17,6 +16,8 @@ function App() {
   // const [idDokumenta, setIdDokumenta] = useState();
 
   const [trenutnaStranica, setTrenutnaStranica] = useState(0);
+
+  console.log(trenutnaStranica);
 
   const [odgovoriUltrazvuk, setOdgovoriUltrazvuk] = useState(
     ultrazvukPocetnaPolja
@@ -165,7 +166,7 @@ function App() {
       return (
         <>
           <HotToast />
-          <div className="verzija">2.0</div>
+          <div className="verzija">2.1</div>
           <div className="divApp">
             <div className="bodyDiv">
               <div className="divLogo">

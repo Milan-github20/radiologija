@@ -4,12 +4,7 @@ import styles from "./HeaderKontrast.module.css";
 import Button from "../Button/Button";
 import x from "../../../assets/close.png";
 
-const HeaderKontrastInfo = ({
-  korisnik,
-  odjava,
-  headerAlt,
-  trenutnaStranica,
-}) => {
+const HeaderKontrastInfo = ({ odjava, headerAlt, trenutnaStranica }) => {
   // const imeKorisnika = korisnik ? `${korisnik.ime} ${korisnik.prezime}` : null;
   return (
     <div
@@ -18,25 +13,12 @@ const HeaderKontrastInfo = ({
       <img src={logo} alt="logo" />
       {/* <h1>{imeKorisnika}</h1> */}
       <div className={styles.button}>
-        {trenutnaStranica !== 34 ? (
-          <Button
-            alt
-            back
-            onClick={odjava}
-            text={
-              <img style={{ width: "40%", height: "50%" }} src={x} alt="x" />
-            }
-          />
-        ) : (
-          <Button
-            alt
-            back
-            disabled2
-            text={
-              <img style={{ width: "40%", height: "50%" }} src={x} alt="x" />
-            }
-          />
-        )}
+        <Button
+          alt
+          back
+          onClick={odjava}
+          text={<img style={{ width: "40%", height: "50%" }} src={x} alt="x" />}
+        />
       </div>
     </div>
   );

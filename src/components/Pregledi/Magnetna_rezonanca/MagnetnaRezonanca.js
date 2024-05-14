@@ -146,6 +146,9 @@ ${message[0]} ${message[1]}`);
       setSign={setSign}
       sign={sign}
       automatskaOdjava={automatskaOdjava}
+      tokKoraka={tokKoraka}
+      setTokKoraka={setTokKoraka}
+      ocistiVrijednosti={ocistiVrijednosti}
     />
   ) : trenutnaStranica === 36 ? (
     <QrKodStranica
