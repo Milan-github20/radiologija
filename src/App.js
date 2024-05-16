@@ -28,39 +28,6 @@ function App() {
 
   const [sign, setSign] = useState();
 
-  const dodajPotpis = async (dokumentId) => {
-    const potpisUrl = sign.toDataURL("image/png");
-
-    const newData = new URLSearchParams();
-    newData.append("id_dokumenta", dokumentId);
-    // newData.append("id_pacijenta", korisnik.id);
-    newData.append("id_pacijenta", 465820);
-    newData.append("potpis", JSON.stringify(potpisUrl));
-
-    try {
-      const response = await fetch(
-        `http://10.8.0.14:8080/kis/rpc/radiologija_lokal.cfc?method=dodaj_potpis`,
-        // `../rpc/radiologija.cfc?method=dodaj_potpis`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: newData,
-          // mode: "no-cors",
-        }
-      );
-
-      if (response.ok) {
-        console.log("Podaci uspešno poslati!");
-      } else {
-        console.error("Došlo je do greške pri slanju podataka.");
-      }
-    } catch (error) {
-      console.error("Došlo je do greške pri slanju podataka:", error);
-    }
-  };
-
   const povuciPodatke = useCallback(async (url, metod, data = null) => {
     const response = await fetch(
       `http://10.8.0.14:8080/kis/rpc/radiologija_lokal.cfc?method=${url}`,
@@ -77,6 +44,24 @@ function App() {
 
     return { ok: response.ok, data: await response.json() };
   }, []);
+
+  const dodajPotpis = async (dokumentId) => {
+    const potpisUrl = sign.toDataURL("image/png");
+
+    const newData = new URLSearchParams();
+    newData.append("id_dokumenta", dokumentId);
+    // newData.append("id_pacijenta", korisnik.id);
+    newData.append("id_pacijenta", 465820);
+    newData.append("potpis", JSON.stringify(potpisUrl));
+
+    const response = await povuciPodatke("dodaj_potpis", "POST", newData);
+
+    if (response.ok) {
+      console.log("Podaci uspešno poslati!");
+    } else {
+      console.error("Došlo je do greške pri slanju podataka.");
+    }
+  };
 
   const posaljiPodatke = async (vrsta) => {
     let podaci = {};

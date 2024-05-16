@@ -23,14 +23,9 @@ const MagnetnaRezonanca = ({
   const [eGFRTekst, setEGFRTekst] = useState(null);
   const [tokKoraka, setTokKoraka] = useState([]);
 
-  console.log(tokKoraka);
-  console.log(trenutnaStranica);
-
   useEffect(() => {
     postaviOdgovor(korisnik.pol === 0 ? 74159 : 74158);
   }, []);
-
-  // console.log(trenutnaStranica);
 
   useEffect(() => {
     if (eGFR === null) return;
