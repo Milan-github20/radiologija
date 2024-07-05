@@ -34,6 +34,7 @@ const PocetnaStranica = ({
   setTrenutnaStranica,
   trenutnaStranica,
   setOdgovoriMR,
+  setOdgovoriKT,
   odjava,
   povuciPodatke,
   povuciKorisnika,
@@ -41,9 +42,12 @@ const PocetnaStranica = ({
   idDokumenta,
   setSign,
   sign,
+  pokreniOdjavu,
+  setPokreniOdjavu,
+  uputnica,
 }) => {
   const [korak, setKorak] = useState(0);
-  const [selectedOption, setSelectedOption] = useState("1");
+  const [selectedOption, setSelectedOption] = useState("");
   const [epizoda, setEpizoda] = useState([]);
 
   const [showBackdrop, setShowBackdrop] = useState(false);
@@ -67,6 +71,29 @@ const PocetnaStranica = ({
   useEffect(() => {
     povuciEpizodu().then();
   }, [povuciEpizodu]);
+
+  useEffect(() => {
+    if (!pokreniOdjavu) return;
+    const timeoutId = setTimeout(() => {
+      if (selectedOption === "5" && trenutnaStranica === 35) odjava();
+      if (selectedOption === "3" && trenutnaStranica === 23) odjava();
+      else setPokreniOdjavu(false);
+    }, 20000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [pokreniOdjavu, trenutnaStranica]);
+
+  const odabirPregledaHandler = () => {
+    if (!selectedOption) return;
+
+    if (selectedOption === "8") {
+      setKorak(6);
+    } else {
+      setKorak(1);
+    }
+  };
 
   return (
     <>
@@ -111,7 +138,9 @@ const PocetnaStranica = ({
                 <OdabirPregleda
                   selectedOption={selectedOption}
                   setSelectedOption={setSelectedOption}
-                />
+                  uputnica={uputnica}
+                />{" "}
+                ?
               </h3>
             </div>
             <div className={styles.buttons}>
@@ -119,10 +148,8 @@ const PocetnaStranica = ({
 
               <Button
                 next
-                // disabled={!selectedOption}
-                onClick={() =>
-                  selectedOption === "4" ? setKorak(6) : setKorak(1)
-                }
+                disabled={!selectedOption}
+                onClick={odabirPregledaHandler}
                 text={"DA"}
               />
             </div>
@@ -178,11 +205,7 @@ const PocetnaStranica = ({
           </>
         ) : korak === 5 ? (
           <>
-            <HeaderKontrastInfo
-              korisnik={korisnik}
-              odjava={odjava}
-              trenutnaStranica={trenutnaStranica}
-            />
+            <HeaderKontrastInfo korisnik={korisnik} odjava={odjava} />
             <MagnetnaRezonanca
               odjava={odjava}
               korisnik={korisnik}
@@ -194,6 +217,7 @@ const PocetnaStranica = ({
               idDokumenta={idDokumenta}
               setSign={setSign}
               sign={sign}
+              selectedOption={selectedOption}
             />
           </>
         ) : korak === 6 ? (
@@ -233,15 +257,19 @@ const PocetnaStranica = ({
           />
         ) : korak === 9 ? (
           <>
-            <HeaderKontrastInfo korisnik={korisnik} />
+            <HeaderKontrastInfo korisnik={korisnik} odjava={odjava} />
             <Kt
-              epizoda={epizoda}
-              korak={korak}
-              setUser={setUser}
+              odjava={odjava}
               korisnik={korisnik}
               setKorak={setKorak}
-              setKorisnik={setKorisnik}
-              setTrenutnaStranicaApp={setTrenutnaStranicaApp}
+              setOdgovoriKT={setOdgovoriKT}
+              setTrenutnaStranica={setTrenutnaStranica}
+              trenutnaStranica={trenutnaStranica}
+              automatskaOdjava={automatskaOdjava}
+              idDokumenta={idDokumenta}
+              setSign={setSign}
+              sign={sign}
+              selectedOption={selectedOption}
             />
           </>
         ) : korak === 10 ? (

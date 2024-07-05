@@ -5,7 +5,12 @@ import x from "../../../assets/back.png";
 import info from "../../../assets/info.png";
 import qrCode from "../../../assets/Untitled 1.png";
 
-const QrKodStranica = ({ setTrenutnaStranica, setKorak, odjava }) => {
+const QrKodStranica = ({
+  setTrenutnaStranica,
+  setKorak,
+  odjava,
+  selectedOption,
+}) => {
   return (
     <div>
       <Button
@@ -14,8 +19,11 @@ const QrKodStranica = ({ setTrenutnaStranica, setKorak, odjava }) => {
         buttonBack
         // disabled2
         onClick={() => {
-          // odjava();
-          setTrenutnaStranica(34);
+          if (selectedOption === "5") {
+            setTrenutnaStranica(34);
+          } else {
+            setTrenutnaStranica(22);
+          }
         }}
         text={<img alt="x" src={`${x}`} />}
       />
@@ -36,7 +44,11 @@ const QrKodStranica = ({ setTrenutnaStranica, setKorak, odjava }) => {
           <div
             className={styles.pregled}
             onClick={() => {
-              setKorak(7);
+              if (selectedOption === "5") {
+                setKorak(7);
+              } else {
+                setKorak(10);
+              }
             }}
           >
             <div className={styles.pregledDiv}>

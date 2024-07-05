@@ -31,9 +31,376 @@ export const ultrazvukPocetnaPolja = {
   ],
 };
 
+export const ktPocetnaPolja = {
+  id_forme: 816,
+  modul: [
+    {
+      id: 74251,
+      vrijednost: "",
+      odgovor: "broj telefona",
+    },
+    {
+      id: 74307,
+      vrijednost: "",
+      odgovor: "trudna",
+    },
+    {
+      id: 74308,
+      vrijednost: "",
+      odgovor: "nije trudna",
+    },
+    {
+      id: 74257,
+      vrijednost: "",
+      odgovor: "kontrast",
+    },
+    {
+      id: 74258,
+      vrijednost: "",
+      odgovor: "nema kontrast",
+    },
+    {
+      id: 74259,
+      vrijednost: "",
+      odgovor: "alergija na kontrast",
+    },
+    {
+      id: 74260,
+      vrijednost: "",
+      odgovor: "nema alergije na kontrast",
+    },
+    {
+      id: 74261,
+      vrijednost: "",
+      odgovor: "mucnina",
+    },
+    {
+      id: 74262,
+      vrijednost: "",
+      odgovor: "nije mucnina",
+    },
+    {
+      id: 74263,
+      vrijednost: "",
+      odgovor: "povracanje",
+    },
+    {
+      id: 74264,
+      vrijednost: "",
+      odgovor: "nije povracanje",
+    },
+    {
+      id: 74265,
+      vrijednost: "",
+    },
+    {
+      id: 74266,
+      vrijednost: "",
+    },
+    {
+      id: 74267,
+      vrijednost: "",
+    },
+    {
+      id: 74268,
+      vrijednost: "",
+    },
+    {
+      id: 74269,
+      vrijednost: "",
+    },
+    {
+      id: 74270,
+      vrijednost: "",
+    },
+    {
+      id: 74271,
+      vrijednost: "",
+    },
+    {
+      id: 74272,
+      vrijednost: "",
+    },
+    {
+      id: 74273,
+      vrijednost: "",
+    },
+    {
+      id: 74274,
+      vrijednost: "",
+    },
+    {
+      id: 74275,
+      vrijednost: "",
+    },
+    {
+      id: 74276,
+      vrijednost: "",
+    },
+    {
+      id: 74277,
+      vrijednost: "",
+    },
+    {
+      id: 74278,
+      vrijednost: "",
+    },
+    {
+      id: 74279,
+      vrijednost: "",
+    },
+    {
+      id: 74280,
+      vrijednost: "",
+    },
+    {
+      id: 74281,
+      vrijednost: "",
+    },
+    {
+      id: 74282,
+      vrijednost: "",
+    },
+    {
+      id: 74283,
+      vrijednost: "",
+    },
+    {
+      id: 74284,
+      vrijednost: "",
+    },
+    {
+      id: 74285,
+      vrijednost: "",
+    },
+    {
+      id: 74286,
+      vrijednost: "",
+    },
+    {
+      id: 74287,
+      vrijednost: "",
+    },
+    {
+      id: 74246,
+      vrijednost: "",
+    },
+    {
+      id: 74247,
+      vrijednost: "",
+    },
+    {
+      id: 74780,
+      vrijednost: "",
+    },
+    {
+      id: 74781,
+      vrijednost: "",
+    },
+  ],
+};
+
+export const ktPitanja = [
+  {
+    id: 0,
+    uslov: { pol: 0, akoNije: 2 },
+    pitanje: "Da li ste trudni?",
+    da: { ima: true, tekst: "DA", akcija: 1, odgovor: 74307 },
+    ne: { ima: true, tekst: "NE", akcija: 2, odgovor: 74308 },
+    nazad: { ima: true, tip: "pol", broj: 1 },
+  },
+  {
+    id: 1,
+    uslov: { pol: 0, akoNije: 2 },
+    pitanje: "Ovo je stranica za ako je trudna nesto cemo tu napraviti",
+    da: { ima: true, tekst: "DA", akcija: 1, odgovor: 74173 },
+    ne: { ima: true, tekst: "NE", akcija: 2, odgovor: 74174 },
+    nazad: { ima: true, tip: "pol", broj: 1 },
+  },
+  {
+    id: 2,
+    uslov: {},
+    pitanje:
+      "Jeste li već imali neki pregled koji je zahtijevao upotrebu kontrastnih sredstava?",
+    da: { ima: true, tekst: "DA", akcija: 3, odgovor: 74257 },
+    ne: { ima: true, tekst: "NE", akcija: 10, odgovor: 74258 },
+    nazad: {
+      ima: true,
+      tip: "pol",
+      akoMusko: {
+        tip: "korak",
+        broj: 1,
+      },
+      akoZensko: {
+        tip: "stranica",
+        broj: 0,
+      },
+    },
+  },
+  {
+    id: 3,
+    uslov: {},
+    pitanje: (
+      <>
+        Da li ste imali neki od slijedećih problema prilikom prethodnog
+        pregleda:
+        <br /> <br />
+        Alergijsku reakciju na jodno kontrastno sredstvo?
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: 4, odgovor: 74259 },
+    ne: { ima: true, tekst: "NE", akcija: 4, odgovor: 74260 },
+    nazad: { ima: true, tip: "stranica", broj: 2 },
+  },
+  {
+    id: 15,
+    uslov: {},
+    pitanje: "Da li uzimate metformin?",
+    da: { ima: true, tekst: "DA", akcija: 16, odgovor: 74283 },
+    ne: { ima: true, tekst: "NE", akcija: 17, odgovor: 74284 },
+    nazad: { ima: true, tip: "stranica", broj: 14 },
+  },
+  {
+    id: 16,
+    uslov: {},
+    pitanje: (
+      <>
+        Pošto uzimate metformin, nakon primanja intravenskog kontrasta morate
+        prestati uzimati metformin u periodu od 2 dana nakon radiološkog
+        pregleda. <br /> <br /> Počnite ponovo uzimati metformin
+        {dayjs().add(2, "d").format("DD.MM.YYYY")}
+      </>
+    ),
+    da: { ima: true, tekst: "NASTAVI", akcija: 17 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 15 },
+  },
+  {
+    id: 17,
+    uslov: {},
+    pitanje: <>Da li ste imali operativne zahvate?</>,
+    da: { ima: true, tekst: "DA", akcija: 18, odgovor: 74285 },
+    ne: { ima: true, tekst: "NE", akcija: 19, odgovor: 74286 },
+    nazad: { ima: true, tip: "stranica", broj: 16 },
+  },
+  {
+    id: 18,
+    uslov: {},
+    pitanje: (
+      <>
+        Molimo Vas da kad budete prozvani obavijestite osoblje na šalteru koje
+        ste operativne zahvate imali.
+      </>
+    ),
+    da: { ima: true, tekst: "NASTAVI", akcija: 19 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 17 },
+  },
+  {
+    id: 19,
+    uslov: {},
+    pitanje: <>Da li imate svjež nalaz serumskog kreatinina?</>,
+    da: { ima: true, tekst: "DA", akcija: 20, odgovor: 74780 },
+    ne: { ima: true, tekst: "NE", akcija: 22, odgovor: 74781 },
+    nazad: { ima: true, tip: "stranica", broj: 18 },
+  },
+  {
+    id: 20,
+    ne: {},
+    da: { ima: true, tekst: "NASTAVI", akcija: 21 },
+    nazad: { broj: 19 },
+  },
+  {
+    id: 21,
+    uslov: {},
+    da: { ima: true, tekst: "NASTAVI", akcija: 22, odgovor: 74287 },
+    ne: { ima: false, tekst: "NE", akcija: undefined },
+    nazad: { ima: true, tip: "stranica", broj: 20 },
+    posebniNaslov: true,
+  },
+  {
+    id: 22,
+    ne: {},
+    da: { ima: true, akcija: 23, odgovor: 74251 },
+    nazad: { ima: true, tip: "stranica", broj: 21 },
+  },
+  {
+    id: 23,
+    ne: {},
+    da: { ima: true, tekst: "NASTAVI", akcija: 24 },
+    nazad: { ima: true, tip: "stranica", broj: 22 },
+  },
+  {
+    id: 24,
+    uslov: {},
+    da: { ima: true, tekst: "DA", akcija: 25 },
+    ne: { ima: true, tekst: "NE" },
+    nazad: { ima: false },
+    posebniNaslov: true,
+  },
+];
+
+const kontrastPitanjaKT = [
+  "Mučnina?",
+  "Povraćanje?",
+  "Osjećaj davljenja/gušenje?",
+  "Osip?",
+  "Grčevi?",
+  "Nesvjestica?",
+];
+
+for (let i = 4, j = 0; i < 10; i++, j++) {
+  ktPitanja.push({
+    id: i,
+    uslov: {},
+    pitanje: (
+      <>
+        Da li ste nakon primanja kontrasta imali neku od sljedećih tegoba:
+        <br /> <br />
+        {kontrastPitanjaKT[j]}
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: i + 1, odgovor: 74261 + j * 2 },
+    ne: { ima: true, tekst: "NE", akcija: i + 1, odgovor: 74262 + j * 2 },
+    nazad: { ima: true, tip: "stranica", broj: i - 1 },
+  });
+}
+
+const bolestiPitanjaKT = [
+  "Astma?",
+  "Alergija koju morate liječiti?",
+  "Bolesti bubrega ili nadbubrežnih žlijezda?",
+  "Bolesti štitne žlijezde?",
+  "Šećerna bolest?",
+];
+
+for (let i = 10, j = 0; i < 15; i++, j++) {
+  ktPitanja.push({
+    id: i,
+    uslov: {},
+    pitanje: (
+      <>
+        Da li bolujete od neke od slijedećih bolesti:
+        <br /> <br />
+        {bolestiPitanjaKT[j]}
+      </>
+    ),
+    da: { ima: true, tekst: "DA", akcija: i + 1, odgovor: 74273 + j * 2 },
+    ne: { ima: true, tekst: "NE", akcija: i + 1, odgovor: 74274 + j * 2 },
+    nazad: { ima: true, tip: "stranica", broj: i - 1 },
+  });
+}
+
+ktPitanja.sort((a, b) => (a.id > b.id ? 1 : -1));
+
 export const mrPocetnaPolja = {
   id_forme: 815,
   modul: [
+    {
+      id: 74163,
+      vrijednost: "",
+      odgovor: "Broj telefona",
+    },
     {
       id: 74173,
       vrijednost: "",
@@ -490,14 +857,21 @@ export const magnetnaPitanja = [
   },
   {
     id: 34,
-    ne: {},
-    da: { ima: true, tekst: "NASTAVI", akcija: 35 },
+    uslov: {},
+    da: { ima: true, akcija: 35, odgovor: 74163 },
+    ne: { ima: false },
     nazad: { ima: true, tip: "stranica", broj: 33 },
   },
   {
     id: 35,
+    ne: {},
+    da: { ima: true, tekst: "NASTAVI", akcija: 36 },
+    nazad: { ima: true, tip: "stranica", broj: 34 },
+  },
+  {
+    id: 36,
     uslov: {},
-    da: { ima: true, tekst: "DA", akcija: 36 },
+    da: { ima: true, tekst: "DA", akcija: 37 },
     ne: { ima: true, tekst: "NE" },
     nazad: { ima: false },
     posebniNaslov: true,

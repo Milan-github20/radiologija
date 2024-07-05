@@ -5,6 +5,7 @@ import MagnetSlider from "./MagnetSlider";
 import QrKodStranica from "./QrKodStranica";
 import MagnetPotpis from "./MagnetPotpis";
 import { magnetnaPitanja } from "../../../konstante/konstante";
+import BrojTelefona from "./Broj_telefona";
 
 const MagnetnaRezonanca = ({
   odjava,
@@ -17,11 +18,13 @@ const MagnetnaRezonanca = ({
   idDokumenta,
   setSign,
   sign,
+  selectedOption,
 }) => {
   const [eGFR, setEGFR] = useState(null);
   const [eGFRPrikaz, setEGFRPrikaz] = useState(null);
   const [eGFRTekst, setEGFRTekst] = useState(null);
   const [tokKoraka, setTokKoraka] = useState([]);
+  const [brojTelefona, setBrojTelefona] = useState("");
 
   useEffect(() => {
     postaviOdgovor(korisnik.pol === 0 ? 74159 : 74158);
@@ -76,7 +79,10 @@ ${message[0]} ${message[1]}`);
       const trenutniModul = prethodnaVrijednost.modul.findIndex(
         (modul) => modul.id === id
       );
-      if (id === 74169)
+
+      if (id === 74163) {
+        prethodnaVrijednost.modul[trenutniModul].vrijednost = brojTelefona;
+      } else if (id === 74169)
         prethodnaVrijednost.modul[trenutniModul].vrijednost = eGFRTekst;
       else prethodnaVrijednost.modul[trenutniModul].vrijednost = 1;
 
@@ -137,7 +143,7 @@ ${message[0]} ${message[1]}`);
       trenutnaStranica={trenutnaStranica}
       sacuvaj={postaviOdgovor}
     />
-  ) : trenutnaStranica === 34 ? (
+  ) : trenutnaStranica === 35 ? (
     <MagnetPotpis
       setTrenutnaStranica={setTrenutnaStranica}
       setKorak={setKorak}
@@ -149,12 +155,26 @@ ${message[0]} ${message[1]}`);
       tokKoraka={tokKoraka}
       setTokKoraka={setTokKoraka}
       ocistiVrijednosti={ocistiVrijednosti}
+      selectedOption={selectedOption}
     />
-  ) : trenutnaStranica === 36 ? (
+  ) : trenutnaStranica === 37 ? (
     <QrKodStranica
       setTrenutnaStranica={setTrenutnaStranica}
       setKorak={setKorak}
       odjava={odjava}
+      selectedOption={selectedOption}
+    />
+  ) : trenutnaStranica === 34 ? (
+    <BrojTelefona
+      setTrenutnaStranica={setTrenutnaStranica}
+      korisnik={korisnik}
+      setTokKoraka={setTokKoraka}
+      tokKoraka={tokKoraka}
+      ocistiVrijednosti={ocistiVrijednosti}
+      trenutnaStranica={trenutnaStranica}
+      setBrojTelefona={setBrojTelefona}
+      brojTelefona={brojTelefona}
+      sacuvaj={postaviOdgovor}
     />
   ) : (
     <MagnetPitanja

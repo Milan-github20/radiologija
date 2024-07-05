@@ -10,17 +10,17 @@ const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
         <Button
           back
           onClick={() => {
-            if (selectedOption === "1") {
+            if (selectedOption === "5") {
               setKorak(5);
-            } else if (selectedOption === "2") {
+            } else if (selectedOption === "7") {
               setKorak(11);
-            } else if (selectedOption === "3") {
-              setKorak(2);
-            } else if (selectedOption === "4") {
-              setKorak(6);
-            } else if (selectedOption === "5") {
-              setKorak(9);
             } else if (selectedOption === "6") {
+              setKorak(2);
+            } else if (selectedOption === "8") {
+              setKorak(6);
+            } else if (selectedOption === "3") {
+              setKorak(9);
+            } else if (selectedOption === "9") {
               setKorak(4);
             }
 
@@ -41,20 +41,19 @@ const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
         <Button
           next
           onClick={() => {
-            if (selectedOption === "1") {
+            if (selectedOption === "5") {
               setKorak(5);
-            } else if (selectedOption === "2") {
+            } else if (selectedOption === "7") {
               setKorak(11);
-            } else if (selectedOption === "3") {
-              setKorak(2);
-            } else if (selectedOption === "4") {
-              setKorak(6);
-            } else if (selectedOption === "5") {
-              setKorak(9);
             } else if (selectedOption === "6") {
+              setKorak(2);
+            } else if (selectedOption === "8") {
+              setKorak(6);
+            } else if (selectedOption === "3") {
+              setKorak(9);
+            } else if (selectedOption === "9") {
               setKorak(4);
             }
-
 
             setKorisnik((prev) => {
               if (pol === "muškog") {
@@ -68,7 +67,7 @@ const PotvrdaPol = ({ pol, setKorak, setKorisnik, polAlt, selectedOption }) => {
               }
             });
           }}
-          text={'DA'}
+          text={"DA"}
         />
       </div>
     </>

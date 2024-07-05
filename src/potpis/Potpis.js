@@ -4,7 +4,13 @@ import styles from "./Potpis.module.css";
 import Button from "../components/UI/Button/Button";
 import toast from "react-hot-toast";
 
-const Potpis = ({ setTrenutnaStranica, setSign, sign, automatskaOdjava }) => {
+const Potpis = ({
+  setTrenutnaStranica,
+  setSign,
+  sign,
+  automatskaOdjava,
+  selectedOption,
+}) => {
   const handleOcisti = () => {
     sign.clear();
   };
@@ -13,8 +19,17 @@ const Potpis = ({ setTrenutnaStranica, setSign, sign, automatskaOdjava }) => {
     if (sign.isEmpty()) {
       toast.error("Polje za potpis ne smije biti prazno!");
     } else {
-      await automatskaOdjava("mr");
-      setTrenutnaStranica(35);
+      if (selectedOption === "5") {
+        await automatskaOdjava("mr");
+        setTrenutnaStranica(35);
+      } else if (selectedOption === "3") {
+        await automatskaOdjava("kt");
+        setTrenutnaStranica(23);
+      } else {
+        //nesto drugo umjesto toga ispod
+        await automatskaOdjava("kt");
+        setTrenutnaStranica(23);
+      }
     }
   };
 

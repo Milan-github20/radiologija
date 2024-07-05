@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Button from "../../UI/Button/Button";
-import styles from "./MagnetnaRezonanca.module.css";
+import styles from "../Magnetna_rezonanca/MagnetnaRezonanca.module.css";
 import x from "../../../assets/back.png";
-import { magnetnaPitanja } from "../../../konstante/konstante";
+import { ktPitanja } from "../../../konstante/konstante";
 
-const MagnetPitanja = ({
+const KTPitanja = ({
   trenutnaStranica,
   setTrenutnaStranica,
   korisnik,
@@ -17,7 +17,7 @@ const MagnetPitanja = ({
   setTokKoraka,
   ocistiVrijednosti,
 }) => {
-  const trenutnaPitanja = magnetnaPitanja[trenutnaStranica];
+  const trenutnaPitanja = ktPitanja[trenutnaStranica];
 
   useEffect(() => {
     if (
@@ -30,7 +30,7 @@ const MagnetPitanja = ({
   const vratiNaPocetnu = () => {
     setKorak(1);
     setTrenutnaStranica(0);
-    ocisti(74158, 74159);
+    ocisti(74246, 74247);
   };
 
   const daFunkcija = () => {
@@ -41,7 +41,7 @@ const MagnetPitanja = ({
   };
 
   const neFunkcija = () => {
-    if (trenutnaStranica === 35) return odjava();
+    if (trenutnaStranica === 23) return odjava();
     setTrenutnaStranica(trenutnaPitanja.ne.akcija);
     setTokKoraka((prevState) => [...prevState, trenutnaStranica]);
     if (trenutnaPitanja.ne.odgovor !== undefined)
@@ -49,11 +49,11 @@ const MagnetPitanja = ({
   };
 
   const vratiNazad = () => {
-    if (trenutnaStranica === 35) return;
+    if (trenutnaStranica === 23) return;
 
     if (
       trenutnaStranica === 0 ||
-      (trenutnaStranica === 5 && korisnik.pol === 1)
+      (trenutnaStranica === 2 && korisnik.pol === 1)
     )
       vratiNaPocetnu();
     else {
@@ -101,4 +101,4 @@ const MagnetPitanja = ({
   );
 };
 
-export default MagnetPitanja;
+export default KTPitanja;

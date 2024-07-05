@@ -17,7 +17,9 @@ const HeaderKontrastInfo = ({ odjava, headerAlt, trenutnaStranica }) => {
           alt
           back
           onClick={odjava}
-          text={<img style={{ width: "40%", height: "50%" }} src={x} alt="x" />}
+          text={
+            <img style={{ width: "40%", height: "50%" }} src={`${x}`} alt="x" />
+          }
         />
       </div>
     </div>

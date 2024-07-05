@@ -5,13 +5,18 @@ import PocetnaStranica from "./components/Pocetna_stranica/PocetnaStranica";
 import Button from "./components/UI/Button/Button";
 import logo from "./assets/ukcrs-removebg-preview.png";
 import HotToast from "./components/HotToast/HotToast";
-import { mrPocetnaPolja, ultrazvukPocetnaPolja } from "./konstante/konstante";
+import {
+  mrPocetnaPolja,
+  ultrazvukPocetnaPolja,
+  ktPocetnaPolja,
+} from "./konstante/konstante";
 import toast from "react-hot-toast";
 
 function App() {
   const [user, setUser] = useState("");
   const [pol, setPol] = useState(null);
   const [korisnik, setKorisnik] = useState(null);
+  const [uputnica, setUputnica] = useState(null);
   const [trenutnaStranicaApp, setTrenutnaStranicaApp] = useState(0);
   // const [idDokumenta, setIdDokumenta] = useState();
 
@@ -22,6 +27,9 @@ function App() {
   );
   const [odgovoriMR, setOdgovoriMR] = useState(
     JSON.parse(JSON.stringify(mrPocetnaPolja))
+  );
+  const [odgovoriKT, setOdgovoriKT] = useState(
+    JSON.parse(JSON.stringify(ktPocetnaPolja))
   );
 
   const [pokreniOdjavu, setPokreniOdjavu] = useState(false);
@@ -44,6 +52,24 @@ function App() {
 
     return { ok: response.ok, data: await response.json() };
   }, []);
+
+  const prikaziUputnicu = async (korisnikId) => {
+    // newData.append("id_pacijenta", korisnik.id)
+    // newData.append("id_pacijenta", 106647);
+
+    const response = await povuciPodatke(
+      `povuci_uputnicu&id_pacijenta=${korisnikId}`,
+      "GET"
+    );
+
+    if (response.ok) {
+      setUputnica(response.data["lista"]);
+    }
+  };
+
+  // useEffect(() => {
+  //   prikaziUputnicu();
+  // }, []);
 
   const dodajPotpis = async (dokumentId) => {
     const potpisUrl = sign.toDataURL("image/png");
@@ -72,7 +98,11 @@ function App() {
     }
     if (vrsta === "mr") {
       podaci = JSON.parse(JSON.stringify(odgovoriMR));
-      setOdgovoriMR(mrPocetnaPolja);
+      setOdgovoriMR(JSON.parse(JSON.stringify(mrPocetnaPolja)));
+    }
+    if (vrsta === "kt") {
+      podaci = JSON.parse(JSON.stringify(odgovoriKT));
+      setOdgovoriKT(JSON.parse(JSON.stringify(ktPocetnaPolja)));
     }
 
     const newData = new URLSearchParams();
@@ -102,6 +132,7 @@ function App() {
     );
 
     if (response.ok) {
+      prikaziUputnicu(response.data["lista"][0].id);
       if (response.data["lista"] && response.data["lista"].length > 0) {
         setKorisnik(response.data["lista"][0]);
         setPol(response.data["lista"][0].pol);
@@ -111,11 +142,16 @@ function App() {
     }
   };
 
-  const odjaviSe = () => {
+  const odjaviSe = (vrsta) => {
     setTrenutnaStranicaApp(0);
     setTrenutnaStranica(0);
     setKorisnik(null);
-    setOdgovoriMR(JSON.parse(JSON.stringify(mrPocetnaPolja)));
+    if (vrsta === "mr") {
+      setOdgovoriMR(JSON.parse(JSON.stringify(mrPocetnaPolja)));
+    }
+    if (vrsta === "kt") {
+      setOdgovoriKT(JSON.parse(JSON.stringify(ktPocetnaPolja)));
+    }
 
     setTimeout(() => {
       toast.success("Uspjesno ste se odjavili!", {
@@ -129,6 +165,7 @@ function App() {
       posaljiPodatke(pregled).then();
     }, 200);
 
+    if (pregled === "kt") setPokreniOdjavu(true);
     if (pregled === "mr") setPokreniOdjavu(true);
 
     return () => {
@@ -136,24 +173,24 @@ function App() {
     };
   };
 
-  useEffect(() => {
-    if (!pokreniOdjavu) return;
-    const timeoutId = setTimeout(() => {
-      if (trenutnaStranica === 35) odjaviSe();
-      else setPokreniOdjavu(false);
-    }, 20000);
+  // useEffect(() => {
+  //   if (!pokreniOdjavu) return;
+  //   const timeoutId = setTimeout(() => {
+  //     if (trenutnaStranica === 35) odjaviSe();
+  //     else setPokreniOdjavu(false);
+  //   }, 20000);
 
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [pokreniOdjavu, trenutnaStranica]);
+  //   return () => {
+  //     clearTimeout(timeoutId);
+  //   };
+  // }, [pokreniOdjavu, trenutnaStranica]);
 
   switch (trenutnaStranicaApp) {
     case 0:
       return (
         <>
           <HotToast />
-          <div className="verzija">2.1</div>
+          <div className="verzija">3.0</div>
           <div className="divApp">
             <div className="bodyDiv">
               <div className="divLogo">
@@ -195,9 +232,13 @@ function App() {
             setTrenutnaStranica={setTrenutnaStranica}
             trenutnaStranica={trenutnaStranica}
             setOdgovoriMR={setOdgovoriMR}
+            setOdgovoriKT={setOdgovoriKT}
             // idDokumenta={idDokumenta}
             setSign={setSign}
             sign={sign}
+            pokreniOdjavu={pokreniOdjavu}
+            setPokreniOdjavu={setPokreniOdjavu}
+            uputnica={uputnica}
           />
         </div>
       );

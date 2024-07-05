@@ -1,12 +1,12 @@
 import React from "react";
 import Button from "../../UI/Button/Button";
-import styles from "./MagnetnaRezonanca.module.css";
+import styles from "../Magnetna_rezonanca/MagnetnaRezonanca.module.css";
 import x from "../../../assets/back.png";
 // import SignatureCanvas from "react-signature-canvas";
 // import toast from "react-hot-toast";
 import Potpis from "../../../potpis/Potpis";
 
-const MagnetPotpis = ({
+const KTPotpis = ({
   setTrenutnaStranica,
   setSign,
   sign,
@@ -48,4 +48,4 @@ const MagnetPotpis = ({
   );
 };
 
-export default MagnetPotpis;
+export default KTPotpis;
